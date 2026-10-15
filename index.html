@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tokyo — 14–23 January 2027</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&display=swap">
+<script>document.documentElement.classList.add("js");</script>
 <style>
 :root{
   --paper:#eef1f4; --ink:#1b2430; --soft:#5c6a7a; --line:#c9d2db;
@@ -27,7 +28,7 @@
   color-scheme: dark;
 }
 *,*::before,*::after{box-sizing:inherit}
-html{scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 16px); scroll-behavior:smooth}
+html{scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 120px); scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
 body{
   margin:0; background:var(--paper); color:var(--ink);
@@ -49,14 +50,24 @@ header.hero{padding:64px 0 20px}
 .facts dt{flex:0 0 118px; color:var(--soft)}
 .facts dd{margin:0}
 
-nav.days{position:sticky; top:env(safe-area-inset-top, 0px); z-index:5; background:var(--paper); padding:12px 0; margin:40px 0 8px; border-bottom:1px solid var(--line); display:flex; gap:8px; overflow-x:auto; scrollbar-width:none}
-nav.days::-webkit-scrollbar{display:none}
+/* Sticky header: section tabs, plus the day strip while the itinerary is open */
+.stick{position:sticky; top:env(safe-area-inset-top, 0px); z-index:5; background:var(--paper); margin:34px 0 8px; border-bottom:1px solid var(--line)}
+nav.tabs, nav.days{display:flex; gap:8px; overflow-x:auto; scrollbar-width:none}
+nav.tabs::-webkit-scrollbar, nav.days::-webkit-scrollbar{display:none}
+nav.tabs{padding:12px 0 10px}
+nav.days{padding:0 0 12px}
 body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top, 0px); background:var(--paper); z-index:10}
-nav.days a{flex:0 0 auto; text-decoration:none; color:var(--ink); border:1px solid var(--line); border-radius:999px; padding:5px 13px; font-size:.86rem; background:var(--card)}
-nav.days a:hover{border-color:var(--shu)}
+nav.tabs a{flex:0 0 auto; text-decoration:none; color:var(--ink); border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:.9rem; font-weight:650; background:var(--card)}
+nav.tabs a[aria-current="page"]{background:var(--shu); border-color:var(--shu); color:#fff}
+nav.days a{flex:0 0 auto; text-decoration:none; color:var(--ink); border:1px solid var(--line); border-radius:999px; padding:4px 12px; font-size:.82rem; background:var(--card)}
+nav.tabs a:hover, nav.days a:hover{border-color:var(--shu)}
 nav.days a:focus-visible, a:focus-visible, summary:focus-visible{outline:2px solid var(--shu); outline-offset:2px}
+.js .panel{display:none}
+.js .panel.on{display:block}
+.js body:not(.tab-plan) nav.days{display:none}
 
 h2{font-family:"Shippori Mincho", Georgia, serif; font-weight:700; font-size:1.7rem; line-height:1.25; margin:64px 0 6px}
+.panel > h2:first-child{margin-top:36px}
 h2 + p.sub{color:var(--soft); margin:0 0 18px; font-size:.98rem}
 h3{font-size:1.02rem; font-weight:650; margin:28px 0 8px}
 p{margin:0 0 14px}
@@ -65,14 +76,14 @@ ul{padding-left:20px; margin:0 0 14px}
 li{margin:0 0 7px}
 a{color:var(--shu)}
 
-.day{margin:56px 0 0}
+.day{margin:56px 0 0; scroll-margin-top:calc(env(safe-area-inset-top, 0px) + 120px)}
 .day .head{display:grid; grid-template-columns:64px 1fr; gap:18px; align-items:start}
 .day .num{font-family:"Shippori Mincho", serif; font-weight:800; font-size:3rem; line-height:1; color:var(--shu); text-align:center; padding-top:2px}
 .day .num small{display:block; font-family:inherit; font-weight:700; font-size:.8rem; color:var(--soft); margin-top:6px; letter-spacing:.08em}
 .day h2{margin:0}
 .day .date{color:var(--soft); font-size:.95rem; margin:2px 0 0}
 .day .theme{color:var(--soft); font-style:italic; margin:10px 0 18px; max-width:60ch}
-.tl{border-top:1px solid var(--line)}
+.tl{border-top:1px solid var(--line); margin-top:16px}
 .tl .row{display:grid; grid-template-columns:76px 1fr; gap:14px; padding:12px 0; border-bottom:1px solid var(--line)}
 .tl .t{color:var(--shu); font-weight:650; font-size:.9rem; font-variant-numeric:tabular-nums; padding-top:1px}
 .tl .what{font-weight:650}
@@ -92,6 +103,7 @@ table{width:100%; border-collapse:collapse; font-size:.93rem; margin:0 0 16px}
 th{text-align:left; font-weight:650; padding:8px 10px 8px 0; border-bottom:2px solid var(--ink)}
 td{padding:9px 10px 9px 0; border-bottom:1px solid var(--line); vertical-align:top}
 td:first-child{font-weight:650; white-space:nowrap; padding-right:16px}
+table.wide1 td:first-child{white-space:normal; width:36%}
 
 footer{margin-top:72px; border-top:1px solid var(--line); padding-top:22px; color:var(--soft); font-size:.95rem}
 footer .serif{color:var(--ink); font-size:1.15rem}
@@ -99,6 +111,11 @@ footer .serif{color:var(--ink); font-size:1.15rem}
   .day .head{grid-template-columns:52px 1fr; gap:12px}
   .day .num{font-size:2.4rem}
   .facts dt{flex-basis:96px}
+  /* Thumb-sized pills, and a fade on the right edge so the strips read as scrollable */
+  nav.tabs a{padding:10px 16px}
+  nav.days a{padding:8px 14px}
+  .viewbar button{padding:10px 20px}
+  nav.tabs, nav.days{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent); mask-image:linear-gradient(90deg,#000 88%,transparent); padding-right:24px}
 }
 
 .viewbar{display:flex; width:max-content; margin:26px 0 0; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:var(--card)}
@@ -114,22 +131,35 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
 #compact .mini td:first-child{white-space:normal; font-weight:650}
 </style>
 </head>
-<body>
+<body class="tab-plan">
 <div class="wrap">
 
 <header class="hero">
   <p class="kicker">Group trip plan for four</p>
   <h1>TOKYO<span class="jp">東京 · 冬</span></h1>
-  <p class="dates"><strong>14 – 23 January 2027.</strong> Nine nights: eight in a house in Sumida, one in a manga cafe.</p>
+  <p class="dates"><strong>14 – 23 January 2027.</strong> Nine nights: eight in a house in east Tokyo, one in a manga cafe.</p>
   <p class="lede">Mid-January is Tokyo's secret season. The sunniest, driest month of the year, the emptiest window between New Year and Chinese New Year, and the best Mt Fuji visibility you can get. The trade: cold nights, 4:50pm sunsets, and air so dry it cracks your lips. All of that is planned around below.</p>
   <dl class="facts">
-    <div><dt>Arrivals</dt><dd>VN306 lands Narita 07:45 on Thursday the 14th with three of us on board. The fourth arrives separately; default meet point is the apartment, fallback is Kaminarimon gate in Asakusa.</dd></div>
-    <div><dt>Base</dt><dd>Private floor of a house, 7 minutes' walk from Kanegafuchi Station (Tobu Skytree Line), checked in 14–22 Jan.</dd></div>
+    <div><dt>Arrivals</dt><dd>Narita Terminal 1 at 07:45 on Thursday the 14th, most of the group on the same flight. Anyone arriving separately meets at the apartment; fallback is the Kaminarimon gate in Asakusa.</dd></div>
+    <div><dt>Base</dt><dd>Private floor of a house near Kanegafuchi Station (Tobu Skytree Line), checked in 14–22 Jan.</dd></div>
     <div><dt>Last night</dt><dd>Checkout is the morning of the 22nd. Final night is a manga cafe near Ueno, because the first airport train leaves from there at 05:58.</dd></div>
     <div><dt>Departure</dt><dd>Morning of Saturday the 23rd from Narita Terminal 1.</dd></div>
     <div><dt>Weather</dt><dd>Days 8–11°C and sunny. Nights 0–3°C. Rain unlikely. Kawaguchiko runs 5–8 degrees colder than the city.</dd></div>
+    <div><dt>Time</dt><dd>Japan is UTC+9, barely an hour off Southeast Asia — no jet lag to pay for the overnight flight.</dd></div>
   </dl>
 </header>
+
+<div class="stick">
+  <nav class="tabs" aria-label="Guide sections">
+    <a href="#plan" data-tab="plan">Itinerary</a><a href="#prep" data-tab="prep">Before you fly</a><a href="#around" data-tab="around">Getting around</a><a href="#eat" data-tab="eat">Eat &amp; drink</a><a href="#shop" data-tab="shop">Shopping</a><a href="#help" data-tab="help">Pack &amp; help</a>
+  </nav>
+  <nav class="days" aria-label="Jump to a day">
+    <a href="#d1">1 · Arrive</a><a href="#d2">2 · Shinjuku</a><a href="#d3">3 · Kamakura</a><a href="#d4">4 · Akihabara</a><a href="#d5">5 · Mt Fuji</a><a href="#d6">6 · Disney</a><a href="#d7">7 · teamLab</a><a href="#d8">8 · Shibuya</a><a href="#d9">9 · Finale</a><a href="#d10">10 · Fly</a>
+  </nav>
+</div>
+
+<!-- ============ ITINERARY ============ -->
+<section class="panel" id="plan" aria-label="Itinerary">
 
 <div class="viewbar" role="group" aria-label="Choose a view">
   <button id="v-full" aria-pressed="true">Full plan</button>
@@ -165,69 +195,41 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   </table>
 </section>
 
-
-<section>
-  <h2>Before anyone flies</h2>
-  <p class="sub">Four things need booking, one thing can stop you boarding.</p>
-  <div class="box">
-    <h3>JAVES is not optional</h3>
-    <p>Indonesian passports are not visa-free by default. The 15-day visa waiver only works with an e-passport (chip symbol on the cover) registered in advance through JAVES, Japan's online exemption system. It's free, takes 2–4 working days, and lasts 3 years or until the passport expires. Airlines check it at the gate; no registration means no boarding.</p>
-    <p>One quirk: the approval notice must be shown live from your phone (email or the JAVES account) — printouts and screenshots are not accepted. That's the opposite of Visit Japan Web, where screenshots of your QR codes are exactly what you want. Do both before flying: JAVES now, Visit Japan Web (vjw.digital.go.jp) a week or two out.</p>
-  </div>
-  <ul class="check">
-    <li>JAVES registration, every person individually, done well ahead</li>
-    <li>Tokyo Disneyland tickets for Tuesday 19 January, bought the moment the date opens</li>
-    <li>teamLab Planets, midday slot, Wednesday 20 January — sells out weeks ahead</li>
-    <li>Kawaguchiko highway bus, both directions, Monday 18 January (highway-buses.jp, opens ~1 month out, genuinely sells out)</li>
-    <li>Timed-entry extras once dates are certain: Tokyo Skytree (evening of the 14th) and Shibuya Sky (sunset on the 21st)</li>
-    <li>Dinner reservations: shabu-shabu in Shibuya for the 21st, farewell yakiniku for the 22nd</li>
-  </ul>
-</section>
-
-<section class="full-only">
-  <h2>The house, and its rules</h2>
-  <p class="sub">A private floor of a family home in a quiet residential street — the real-Tokyo experience, with real-Tokyo etiquette.</p>
-  <table>
-    <tr><td>Check-in</td><td>From 16:00, self check-in by smart-lock PIN (sent before arrival). Nobody is on site.</td></tr>
-    <tr><td>Checkout</td><td>By 10:00 on the 22nd. No desk, so no bag storage — plan on station coin lockers either side of the stay.</td></tr>
-    <tr><td>Beds</td><td>Two double beds for four people. Agree the pairs before night one, not during it.</td></tr>
-    <tr><td>Laundry</td><td>No washer in the house. Coin laundry nearby: ¥400–600 a load, about an hour. Slotted for Sunday night or the slow Wednesday morning — pack five or six days of clothes, not ten.</td></tr>
-    <tr><td>House rules</td><td>Non-smoking. Shoes off inside. Quiet after 23:00 — the neighbours are real people, so late returns happen at a whisper.</td></tr>
-    <tr><td>Nearby</td><td>FamilyMart and 7-Eleven in walking distance, a good seafood izakaya (Uoma) by the station, and Mimatsuyu, a proper local sento (public bath) — the cheap, authentic answer to sore legs.</td></tr>
-  </table>
-  <h3>Getting around from here</h3>
-  <p>Kanegafuchi is deep east-side: about 20 minutes to Asakusa, 15 to Oshiage under the Skytree, 30 to Ueno, 40 to Tokyo Station, and roughly 50 to Shibuya or Shinjuku. The plan works with that, not against it — east-side days cluster near home, west-side nights are planned outings. The number that matters: trains stop around 00:30 and restart at 05:00, so leaving Shinjuku or Shibuya by midnight is the difference between a train home and karaoke until dawn. Decide which before the night starts.</p>
-</section>
-
-<nav class="days" aria-label="Jump to a day">
-  <a href="#d1">1 · Arrive</a><a href="#d2">2 · Shinjuku</a><a href="#d3">3 · Kamakura</a><a href="#d4">4 · Akihabara</a><a href="#d5">5 · Mt Fuji</a><a href="#d6">6 · Disney</a><a href="#d7">7 · teamLab</a><a href="#d8">8 · Shibuya</a><a href="#d9">9 · Finale</a><a href="#d10">10 · Fly</a>
-</nav>
+<div class="box calm full-only">
+  <h3>How the days are built</h3>
+  <p>Disneyland sits on a Tuesday and the Fuji day on a Monday because both are dramatically better midweek. Kamakura takes the Saturday because it needs no reservations; Akihabara takes the Sunday for the car-free afternoon. Times are guidance — the sequence matters more than the clock.</p>
+  <p>Sunset is around 16:50, so anything outdoors or view-dependent happens before then. There is no formal rest day; the relief valves are built in instead — Wednesday's midday teamLab slot buys a slow morning, Thursday's shrine stop is optional, and Round1 is fun you do sitting down. Use them.</p>
+</div>
 
 <article class="day" id="d1">
   <div class="head"><div class="num serif">一<small>Thu 14</small></div>
   <div><h2>Arrival · Asakusa · Skytree</h2><p class="date">Land together, stash the bags, old Tokyo on foot. Everyone slept on a plane — keep it gentle.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">07:45</div><div><div class="what">Land at Narita</div><div class="note">Immigration via the Visit Japan Web QR, JAVES notice ready on the phone. Grab a Welcome Suica and ¥30,000–50,000 from the 7-Bank ATM before leaving the terminal.</div></div></div>
-    <div class="row"><div class="t">09:00</div><div><div class="what">Keisei Access Express to Oshiage</div><div class="note">About an hour, ~¥1,200, and Oshiage is three Tobu stops from the house — one easy transfer instead of dragging luggage across town.</div></div></div>
-    <div class="row"><div class="t">10:15</div><div><div class="what">Bags into lockers</div><div class="note">Check-in isn't until 16:00, so large coin lockers at Skytree Town or Asakusa Station (¥700–1,000) and you're free.</div></div></div>
-    <div class="row"><div class="t">11:00</div><div><div class="what">Senso-ji + Nakamise-dori</div><div class="note">Tokyo's oldest temple through the Kaminarimon gate. Ningyo-yaki and age-manju on the approach.</div></div></div>
+    <div class="row"><div class="t">07:45</div><div><div class="what">Land at Narita</div><div class="note">Immigration via the Visit Japan Web QR, JAVES notice ready live on the phone (not a screenshot). Grab a Welcome Suica and ¥30,000–50,000 from the 7-Bank ATM before leaving the terminal.</div></div></div>
+    <div class="row"><div class="t">09:00</div><div><div class="what">Keisei Access Express to Oshiage</div><div class="note">About an hour, ~¥1,200, and Oshiage is three Tobu stops from the house — one easy transfer instead of dragging luggage across town. The Skyliner via Ueno adds a second transfer.</div></div></div>
+    <div class="row"><div class="t">10:15</div><div><div class="what">Bags into lockers</div><div class="note">Check-in isn't until 16:00 with nobody on site, so large coin lockers at Skytree Town or Asakusa Station (¥700–1,000) and you're free.</div></div></div>
+    <div class="row"><div class="t">11:00</div><div><div class="what">Senso-ji + Nakamise-dori</div><div class="note">Tokyo's oldest temple through the Kaminarimon gate. Ningyo-yaki and age-manju on the approach. A weekday morning keeps the crowds manageable.</div></div></div>
+    <div class="row"><div class="t">12:30</div><div><div class="what">Lunch near Asakusa</div><div class="note">Ramen or a tonkatsu set. Nothing that needs a booking today.</div></div></div>
     <div class="row"><div class="t">14:00</div><div><div class="what">Kappabashi Kitchen Street</div><div class="note">Knives, ceramics, plastic food samples, and a clean street-level view of Skytree.</div></div></div>
-    <div class="row"><div class="t">16:00</div><div><div class="what">Collect bags, check in</div><div class="note">PIN arrives from the host beforehand. Sunset is 16:50.</div></div></div>
+    <div class="row"><div class="t">16:00</div><div><div class="what">Collect bags, check in</div><div class="note">The door code arrives from the host beforehand. Drop everything, catch your breath. Sunset is 16:50.</div></div></div>
     <div class="row"><div class="t">17:30</div><div><div class="what">Tokyo Skytree</div><div class="note">Fifteen minutes from home. Timed slot booked in advance; a clear January evening means city lights plus the Fuji silhouette. ¥2,100–3,400.</div></div></div>
-    <div class="row"><div class="t">19:30</div><div><div class="what">Dinner</div><div class="note">Kaiten Sushi Toriton in Skytree Town, or the izakaya by Kanegafuchi Station if legs are done. Konbini run, early night.</div></div></div>
+    <div class="row"><div class="t">19:30</div><div><div class="what">Dinner + first drink</div><div class="note">Kaiten Sushi Toriton in Skytree Town for conveyor-belt sushi, or the seafood izakaya by Kanegafuchi Station if legs are done.</div></div></div>
+    <div class="row"><div class="t">21:30</div><div><div class="what">Konbini run, early night</div><div class="note">FamilyMart and 7-Eleven are both walkable from the house. Water, breakfast onigiri, hot canned coffee for the morning.</div></div></div>
   </div>
 </article>
 
 <article class="day" id="d2">
   <div class="head"><div class="num serif">二<small>Fri 15</small></div>
-  <div><h2>Shinjuku · Isetan · Kabukicho</h2><p class="date">Free skyline views, Japan's greatest department store, the loudest night of the trip.</p></div></div>
+  <div><h2>Shinjuku · Isetan · Kabukicho</h2><p class="date">Free skyline views, Japan's greatest department store, the loudest night of the trip. Know the last train — leave Shinjuku around midnight.</p></div></div>
   <div class="tl">
     <div class="row"><div class="t">09:30</div><div><div class="what">Metropolitan Government Building</div><div class="note">Free 45F observation deck. Clear January mornings are the year's best odds of seeing Fuji from here.</div></div></div>
-    <div class="row"><div class="t">10:45</div><div><div class="what">Shinjuku Gyoen</div><div class="note">¥500. Bare and quiet in winter, which is its own thing; the greenhouse is warm.</div></div></div>
-    <div class="row"><div class="t">12:00</div><div><div class="what">Isetan Shinjuku</div><div class="note">Start in the depachika basement — the best food hall in Japan, graze it as lunch — then the fashion floors. The Men's building next door is its own trip. Tax-free counter handles paperwork over ¥5,000; refund comes at the airport, so keep receipts.</div></div></div>
-    <div class="row"><div class="t">14:30</div><div><div class="what">Omoide Yokocho, Don Quijote, Hanazono Shrine</div><div class="note">Lantern alley for photos, discount chaos for scouting (buy later, cheaper), hidden shrine between the blocks.</div></div></div>
+    <div class="row"><div class="t">10:45</div><div><div class="what">Shinjuku Gyoen</div><div class="note">¥500. Bare and quiet in winter, which is its own thing; the greenhouse is warm and worth the detour.</div></div></div>
+    <div class="row"><div class="t">12:00</div><div><div class="what">Isetan Shinjuku</div><div class="note">Start in the depachika basement — the best food hall in Japan, graze it as lunch — then the fashion floors. The Men's building next door is its own trip. Tax-free counter handles paperwork over ¥5,000; the refund comes at the airport, so keep receipts.</div></div></div>
+    <div class="row"><div class="t">14:30</div><div><div class="what">Omoide Yokocho</div><div class="note">Lantern-lit alley of yakitori stalls. More photogenic than delicious, but do it once.</div></div></div>
+    <div class="row"><div class="t">15:30</div><div><div class="what">Don Quijote + Daiso</div><div class="note">Multi-floor discount chaos. Scout now, buy souvenirs later — they're cheaper elsewhere.</div></div></div>
+    <div class="row"><div class="t">16:30</div><div><div class="what">Hanazono Shrine</div><div class="note">Hidden shrine tucked between the shopping blocks. A quick stop.</div></div></div>
     <div class="row"><div class="t">17:30</div><div><div class="what">Gyukatsu Kyoto Katsugyu</div><div class="note">Beef cutlet grilled on a hot stone at the table. The queue is real and worth it.</div></div></div>
-    <div class="row"><div class="t">19:00</div><div><div class="what">Godzilla Road + Kabukicho</div><div class="note">Neon at full strength. Ignore every tout — a bar that recruits on the street is a bar to avoid.</div></div></div>
+    <div class="row"><div class="t">19:00</div><div><div class="what">Godzilla Road + Kabukicho</div><div class="note">Neon at full strength, Godzilla's head on the Toho building. Ignore every tout — a bar that recruits on the street is a bar to avoid.</div></div></div>
     <div class="row"><div class="t">20:30</div><div><div class="what">Golden Gai</div><div class="note">Two hundred bars seating eight each. Cover ¥300–500, drinks ¥500–800, lots of cash-only. English signage means tourists welcome; four people may need two adjacent bars.</div></div></div>
     <div class="row"><div class="t">23:30</div><div><div class="what">Last train or commit</div><div class="note">Home is ~50 minutes with transfers — leave by about midnight, or it's karaoke until the 05:00 first train.</div></div></div>
   </div>
@@ -237,12 +239,13 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="head"><div class="num serif">三<small>Sat 16</small></div>
   <div><h2>Day trip — Kamakura · Enoshima</h2><p class="date">The old capital: a giant Buddha, a seaside railway, and a winter-clear coastline an hour from Tokyo. No reservations needed, which is why it owns the Saturday.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">07:45</div><div><div class="what">To Tokyo Station, then Kamakura</div><div class="note">JR Yokosuka line direct, ~55 min, ~¥950. Buy the Enoden day pass (Noriorikun, ¥800) on arrival.</div></div></div>
-    <div class="row"><div class="t">09:30</div><div><div class="what">Tsurugaoka Hachimangu + Komachi-dori</div><div class="note">The great shrine up the main approach. Graze the street — shirasu-don (whitebait over rice) is the local dish; eat early, queues are real even in winter.</div></div></div>
+    <div class="row"><div class="t">07:45</div><div><div class="what">To Tokyo Station, then Kamakura</div><div class="note">About 40 minutes to Tokyo Station, then the JR Yokosuka line direct, ~55 min, ~¥950. Buy the Enoden day pass (Noriorikun, ¥800) on arrival.</div></div></div>
+    <div class="row"><div class="t">09:30</div><div><div class="what">Tsurugaoka Hachimangu</div><div class="note">Kamakura's great shrine, straight up the approach from the station. New Year decorations are still up in January; the crowds are long gone.</div></div></div>
+    <div class="row"><div class="t">11:00</div><div><div class="what">Komachi-dori grazing</div><div class="note">Street snacks and shops. Shirasu-don (whitebait over rice) is the local dish — eat early, Kamakura lunch queues are real even in winter.</div></div></div>
     <div class="row"><div class="t">12:30</div><div><div class="what">Enoden to Hase</div><div class="note">The Great Buddha (Kotoku-in, ¥300): bronze, 13 metres, sitting outdoors since 1252. Then Hasedera (¥400) for the hillside ocean view.</div></div></div>
     <div class="row"><div class="t">15:00</div><div><div class="what">Kamakurakokomae crossing</div><div class="note">The Slam Dunk shot, sea behind the railway crossing — and on clear winter days, Fuji across the bay.</div></div></div>
-    <div class="row"><div class="t">16:00</div><div><div class="what">Enoshima at sunset</div><div class="note">Cross the causeway: shrine, cats, lighthouse. Sunset over the water at 16:50 is the day's finale.</div></div></div>
-    <div class="row"><div class="t">18:00</div><div><div class="what">Back to Tokyo</div><div class="note">Odakyu from Katase-Enoshima to Shinjuku, or retrace via Kamakura. A nabe hotpot suits the evening.</div></div></div>
+    <div class="row"><div class="t">16:00</div><div><div class="what">Enoshima at sunset</div><div class="note">Cross the causeway: shrine, cats, lighthouse. Sunset over the water at 16:50 with the Fuji silhouette is the day's finale.</div></div></div>
+    <div class="row"><div class="t">18:00</div><div><div class="what">Back to Tokyo</div><div class="note">Odakyu from Katase-Enoshima to Shinjuku (~65 min), or retrace via Kamakura. A nabe hotpot suits the evening.</div></div></div>
   </div>
 </article>
 
@@ -250,13 +253,15 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="head"><div class="num serif">四<small>Sun 17</small></div>
   <div><h2>Yanaka · Ueno · Akihabara</h2><p class="date">Old Tokyo in the morning, electric town at full volume — Sunday afternoons close the main Akiba street to cars.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">09:00</div><div><div class="what">Nezu Shrine + Yanaka Ginza</div><div class="note">A small torii tunnel, then the old shopping street. Cats everywhere; seven wooden ones are hidden along it.</div></div></div>
-    <div class="row"><div class="t">11:30</div><div><div class="what">Ameyoko Market</div><div class="note">Under the tracks at Ueno. Street food, cheap clothes, loud energy.</div></div></div>
+    <div class="row"><div class="t">09:00</div><div><div class="what">Nezu Shrine</div><div class="note">A small torii tunnel, the quiet cousin of Fushimi Inari. Empty early.</div></div></div>
+    <div class="row"><div class="t">10:00</div><div><div class="what">Yanaka Ginza</div><div class="note">Old-school shopping street, cats everywhere. Find the seven hidden wooden cats.</div></div></div>
+    <div class="row"><div class="t">11:30</div><div><div class="what">Ameyoko Market</div><div class="note">Under the tracks at Ueno. Street food, cheap clothes, cosmetics, loud energy.</div></div></div>
     <div class="row"><div class="t">13:00</div><div><div class="what">Tokyo National Museum</div><div class="note">¥1,000. Samurai armour, swords, scrolls — two hours, the Honkan building first.</div></div></div>
-    <div class="row"><div class="t">15:00</div><div><div class="what">2k540, then Akihabara</div><div class="note">Craft workshops in the railway arches on the walk down. Chuo-dori is pedestrianised Sunday afternoons (to 17:00 in winter) — the lit signs over a carless street at dusk is the shot.</div></div></div>
-    <div class="row"><div class="t">17:00</div><div><div class="what">Super Potato + arcades</div><div class="note">Retro-game heaven, then HEY for classic cabinets and Taito for UFO catchers and purikura.</div></div></div>
+    <div class="row"><div class="t">15:00</div><div><div class="what">2k540 Aki-Oka Artisan</div><div class="note">Craft workshops in the railway arches between Ueno and Akihabara. Walkable, uncrowded, good gifts.</div></div></div>
+    <div class="row"><div class="t">16:00</div><div><div class="what">Akihabara, car-free</div><div class="note">Chuo-dori is pedestrianised Sunday afternoons (to 17:00 in winter) — the lit signs over a carless street at dusk is the shot. Super Potato for retro games after.</div></div></div>
+    <div class="row"><div class="t">18:30</div><div><div class="what">Arcades: HEY + Taito Station</div><div class="note">HEY for classic cabinets, Taito for UFO catchers, rhythm games and purikura.</div></div></div>
     <div class="row"><div class="t">20:00</div><div><div class="what">Ichiran or CoCo Ichibanya</div><div class="note">Solo-booth ramen as a rite of passage, or build-your-own curry.</div></div></div>
-    <div class="row"><div class="t">21:30</div><div><div class="what">Home + coin laundry</div><div class="note">Close to home tonight and tomorrow starts early. Drop a wash at the coin laundry — it keeps the back half of the trip clean.</div></div></div>
+    <div class="row"><div class="t">21:30</div><div><div class="what">Home + coin laundry</div><div class="note">Close to home tonight and tomorrow starts early. Drop a wash at the coin laundry (¥400–600, about an hour) — it keeps the back half of the trip clean.</div></div></div>
   </div>
 </article>
 
@@ -264,13 +269,14 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="head"><div class="num serif">五<small>Mon 18</small></div>
   <div><h2>Day trip — Mt Fuji · Kawaguchiko</h2><p class="date">January is the best Fuji visibility of the year, and a weekday keeps buses and viewpoints calm. It is properly cold up there — every layer.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">06:30</div><div><div class="what">Highway bus from Shinjuku</div><div class="note">Shinjuku Expressway Bus Terminal to Kawaguchiko Station, ~1h45, ~¥2,300 each way. Both directions reserved in advance — these sell out. The Fuji Excursion train (¥4,130, reserved seats) is the fallback.</div></div></div>
-    <div class="row"><div class="t">09:30</div><div><div class="what">Arrive, check the mountain</div><div class="note">Mornings are clearest. Live cams the night before say whether to trigger the swap plan (see the last section).</div></div></div>
+    <div class="row"><div class="t">06:30</div><div><div class="what">Highway bus from Shinjuku</div><div class="note">Shinjuku Expressway Bus Terminal (Busta) to Kawaguchiko Station, ~1h45, ~¥2,300 each way. Both directions reserved in advance on highway-buses.jp — these sell out. The Fuji Excursion train (~1h55, ¥4,130, reserved seats) is the fallback.</div></div></div>
+    <div class="row"><div class="t">09:30</div><div><div class="what">Arrive, check the mountain</div><div class="note">Mornings are clearest. The Kawaguchiko live cams the night before say whether to trigger the swap plan (see Pack &amp; help).</div></div></div>
     <div class="row"><div class="t">10:00</div><div><div class="what">Panoramic ropeway + lake</div><div class="note">Mt Tenjo ropeway, ~¥1,000 return, for the Fuji-over-the-lake panorama, then the north shore promenade.</div></div></div>
-    <div class="row"><div class="t">12:00</div><div><div class="what">Hoto lunch</div><div class="note">The local dish: thick flat noodles in pumpkin miso hotpot. On a freezing day it is exactly right.</div></div></div>
-    <div class="row"><div class="t">13:30</div><div><div class="what">Oishi Park</div><div class="note">The postcard angle across the water. In January the air is glass.</div></div></div>
-    <div class="row"><div class="t">15:00</div><div><div class="what">Optional: Chureito Pagoda</div><div class="note">Two train stops plus ~400 steps for Japan's most famous photograph — the pagoda with Fuji behind. Skip if legs object.</div></div></div>
-    <div class="row"><div class="t">16:30</div><div><div class="what">Reserved bus back</div><div class="note">Shinjuku by ~18:30; eat there before the train home.</div></div></div>
+    <div class="row"><div class="t">12:00</div><div><div class="what">Hoto lunch</div><div class="note">The local dish: thick flat noodles in pumpkin miso hotpot. On a freezing day it is exactly right. Hoto Fudo is the famous chain.</div></div></div>
+    <div class="row"><div class="t">13:30</div><div><div class="what">Oishi Park</div><div class="note">North-shore viewpoint, the postcard angle across the water. In January the air is glass.</div></div></div>
+    <div class="row"><div class="t">15:00</div><div><div class="what">Optional: Chureito Pagoda</div><div class="note">Two Fujikyu-line stops to Shimoyoshida, then ~400 steps for Japan's most famous photograph — the five-storey pagoda with Fuji behind. Skip if legs object.</div></div></div>
+    <div class="row"><div class="t">16:30</div><div><div class="what">Reserved bus back</div><div class="note">Shinjuku by ~18:30; eat there before the train home, since you're passing through anyway.</div></div></div>
+    <div class="row"><div class="t">Note</div><div><div class="what">Colder than Tokyo</div><div class="note">Kawaguchiko sits at 800m: expect −3 to 6°C and wind on the ropeway deck. Every layer you own, plus konbini kairo hand warmers.</div></div></div>
   </div>
 </article>
 
@@ -278,10 +284,12 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="head"><div class="num serif">六<small>Tue 19</small></div>
   <div><h2>Tokyo Disneyland</h2><p class="date">A weekday in low season means the shortest queues this park ever has.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">07:15</div><div><div class="what">To Maihama</div><div class="note">JR Keiyo Line, ~15 min from Tokyo Station. At the gates before opening — the first 90 minutes are worth three hours later.</div></div></div>
+    <div class="row"><div class="t">07:15</div><div><div class="what">To Maihama</div><div class="note">JR Keiyo Line, ~15 min from Tokyo Station.</div></div></div>
+    <div class="row"><div class="t">08:00</div><div><div class="what">At the gates</div><div class="note">Arrive before opening — the first 90 minutes are worth three hours later in the day.</div></div></div>
     <div class="row"><div class="t">All day</div><div><div class="what">The hit list</div><div class="note">Pooh's Hunny Hunt, Space Mountain, Big Thunder, Haunted Mansion, Pirates. The Tokyo Disney Resort app for wait times and Premier Access.</div></div></div>
-    <div class="row"><div class="t">Budget</div><div><div class="what">What it costs</div><div class="note">Ticket ¥7,900–10,900 by date, food ¥1,000–2,000 a meal — ¥13,000–15,000 all in. Eat the smoked turkey leg and the Japan-only popcorn flavours.</div></div></div>
-    <div class="row"><div class="t">20:30</div><div><div class="what">Fireworks + parade</div><div class="note">Standing still at 20:00 in 2°C is not like walking in it — heavy layer plus kairo hand warmers (¥100 at any konbini). Leave immediately after or wait out the crowd.</div></div></div>
+    <div class="row"><div class="t">Costs</div><div><div class="what">What it costs</div><div class="note">Ticket ¥7,900–10,900 by date, food ¥1,000–2,000 a meal — ¥13,000–15,000 all in.</div></div></div>
+    <div class="row"><div class="t">Food</div><div><div class="what">Worth eating</div><div class="note">Smoked turkey leg, Mike's melon bread, and the Japan-only popcorn flavours.</div></div></div>
+    <div class="row"><div class="t">20:30</div><div><div class="what">Fireworks + parade</div><div class="note">Standing still at 20:00 in 2°C is not like walking in it — heavy layer plus kairo hand warmers (¥100 at any konbini). Leave immediately after or wait 40 minutes for the crowd.</div></div></div>
   </div>
 </article>
 
@@ -289,9 +297,9 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="head"><div class="num serif">七<small>Wed 20</small></div>
   <div><h2>teamLab Planets · Odaiba</h2><p class="date">Art at midday, the waterfront after. Deliberately the gentlest day, parked between Disneyland and the west-side push — the midday slot buys everyone a slow morning.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">Morning</div><div><div class="what">Slow start, on purpose</div><div class="note">No alarm-racing after three huge days. Coin laundry now if Sunday's wash didn't happen.</div></div></div>
+    <div class="row"><div class="t">Morning</div><div><div class="what">Slow start, on purpose</div><div class="note">No alarm-racing after three huge days. Konbini breakfast; coin laundry now if Sunday's wash didn't happen.</div></div></div>
     <div class="row"><div class="t">11:30</div><div><div class="what">teamLab Planets</div><div class="note">Booked weeks ahead. You wade through knee-deep water, so wear trousers that roll up. ¥3,800, next to Shin-Toyosu station.</div></div></div>
-    <div class="row"><div class="t">14:00</div><div><div class="what">Unicorn Gundam + DiverCity</div><div class="note">Life-size, transforms on a schedule. Japan-exclusive goods in the mall behind it.</div></div></div>
+    <div class="row"><div class="t">14:00</div><div><div class="what">Unicorn Gundam + DiverCity</div><div class="note">Life-size, transforms on a schedule between 11:00 and 21:00. Japan-exclusive goods in the mall behind it.</div></div></div>
     <div class="row"><div class="t">15:30</div><div><div class="what">Round1</div><div class="note">Arcade, bowling, batting cages, karaoke under one roof — fun you do mostly sitting down, which is the point today.</div></div></div>
     <div class="row"><div class="t">17:30</div><div><div class="what">Rainbow Promenade</div><div class="note">The Statue of Liberty and Rainbow Bridge night skyline. Gloves: the bay wind is brutal in January.</div></div></div>
     <div class="row"><div class="t">19:30</div><div><div class="what">Dinner + sento night</div><div class="note">Eat at Aqua City or near home, then finish at the neighbourhood sento (around ¥550) — the most local thing on this whole plan. Visible tattoos: check first.</div></div></div>
@@ -302,13 +310,15 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="head"><div class="num serif">八<small>Thu 21</small></div>
   <div><h2>Harajuku · Omotesando · Shibuya</h2><p class="date">Fashion, the crossing, and the classic west-side day — saved for when legs are back.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">09:00</div><div><div class="what">Meiji Jingu</div><div class="note">Forested walk through the torii gates, free and genuinely peaceful before 10:00. (Vintage hunters can vote to swap this morning for Shimokitazawa, four minutes from Shibuya.)</div></div></div>
-    <div class="row"><div class="t">10:30</div><div><div class="what">Takeshita Street, then Cat Street</div><div class="note">Youth-fashion chaos early before it packs out, then the full length of Cat Street toward Shibuya — boutiques, secondhand, sneakers.</div></div></div>
+    <div class="row"><div class="t">09:00</div><div><div class="what">Meiji Jingu</div><div class="note">Forested walk through the torii gates, free and genuinely peaceful before 10:00. (Vintage hunters can vote to swap this morning for Shimokitazawa, four minutes from Shibuya on the Inokashira line.)</div></div></div>
+    <div class="row"><div class="t">10:30</div><div><div class="what">Takeshita Street</div><div class="note">Youth-fashion chaos, crepes, oddities. Go early — it packs out by noon.</div></div></div>
+    <div class="row"><div class="t">11:45</div><div><div class="what">Cat Street</div><div class="note">The full length toward Shibuya: boutiques, secondhand, sneakers. Better shopping than Takeshita.</div></div></div>
     <div class="row"><div class="t">13:00</div><div><div class="what">Lunch: Afuri</div><div class="note">Yuzu shio ramen, light and citrusy, ¥1,200.</div></div></div>
-    <div class="row"><div class="t">14:15</div><div><div class="what">Tokyu Plaza + Miyashita Park</div><div class="note">The kaleidoscope mirror entrance, then the rooftop park and a good coffee stop.</div></div></div>
-    <div class="row"><div class="t">15:30</div><div><div class="what">Scramble Square 12F + Loft</div><div class="note">Free indoor viewpoint straight down at the Crossing, then the best-value souvenir floor in the city.</div></div></div>
+    <div class="row"><div class="t">14:15</div><div><div class="what">Tokyu Plaza + Miyashita Park</div><div class="note">The kaleidoscope mirror entrance, then the rooftop park with KITH, Nike and good coffee.</div></div></div>
+    <div class="row"><div class="t">15:30</div><div><div class="what">Shibuya Scramble Square 12F</div><div class="note">Free indoor viewpoint straight down at the Crossing. Pokémon Center Mega on 11–12F.</div></div></div>
+    <div class="row"><div class="t">16:15</div><div><div class="what">Loft Shibuya</div><div class="note">Stationery and lifestyle goods — the best-value souvenir hunting in the city.</div></div></div>
     <div class="row"><div class="t">17:15</div><div><div class="what">Shibuya Sky</div><div class="note">Booked ahead for blue hour, right after sunset. ¥2,200.</div></div></div>
-    <div class="row"><div class="t">19:00</div><div><div class="what">All-you-can-eat shabu-shabu</div><div class="note">Two hours, great value for four, booked ahead — the timer starts at the reservation slot.</div></div></div>
+    <div class="row"><div class="t">19:00</div><div><div class="what">All-you-can-eat shabu-shabu</div><div class="note">Shabu-Shabu Let Us Shibuya: two hours, great value for four, booked ahead — the timer starts at the reservation slot.</div></div></div>
     <div class="row"><div class="t">21:30</div><div><div class="what">Nonbei Yokocho</div><div class="note">A tiny bar alley by the tracks: Golden Gai's atmosphere, a fraction of the tourists. Last train home is around midnight — check it on the night.</div></div></div>
   </div>
 </article>
@@ -317,14 +327,14 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="head"><div class="num serif">九<small>Fri 22</small></div>
   <div><h2>Checkout · Tsukiji · Ginza · Farewell</h2><p class="date">Bags to lockers, seafood brunch, flagships, the big shopping run, and a night in a manga cafe.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">08:00</div><div><div class="what">Pack and check out</div><div class="note">Out by 10:00 at the latest. Self checkout means no desk to hold luggage — everything comes along.</div></div></div>
+    <div class="row"><div class="t">08:00</div><div><div class="what">Pack and check out</div><div class="note">Bags packed the night before; out by 10:00 at the latest. Self checkout means no desk to hold luggage — everything comes along.</div></div></div>
     <div class="row"><div class="t">09:15</div><div><div class="what">Bags into Ueno Station lockers</div><div class="note">Large lockers ¥800–1,000 per calendar day, fine overnight — and Ueno is where tomorrow's 05:58 train leaves. One trip, done.</div></div></div>
-    <div class="row"><div class="t">10:00</div><div><div class="what">Tsukiji Outer Market</div><div class="note">Fatty tuna, tamagoyaki, grilled scallops, uni. ¥3,000–4,000 gets you properly fed.</div></div></div>
+    <div class="row"><div class="t">10:00</div><div><div class="what">Tsukiji Outer Market</div><div class="note">Fatty tuna, tamagoyaki, grilled scallops, uni. ¥3,000–4,000 gets you properly fed; late morning still works on a Friday.</div></div></div>
     <div class="row"><div class="t">12:30</div><div><div class="what">Ginza lunch sets</div><div class="note">Quality sushi ¥1,500–3,000 — the same kitchens charge triple at dinner. Best-value meal of the trip.</div></div></div>
     <div class="row"><div class="t">14:00</div><div><div class="what">Itoya + flagships</div><div class="note">Twelve floors of stationery, Uniqlo Ginza's exclusive lines, MUJI's food floor. Unhurried, for once.</div></div></div>
     <div class="row"><div class="t">16:00</div><div><div class="what">Drugstore + Don Quijote run</div><div class="note">Matsumoto Kiyoshi or Sundrug for the full haul. Passport at every till, keep every receipt, and everything tax-free rides in cabin bags tomorrow.</div></div></div>
-    <div class="row"><div class="t">19:30</div><div><div class="what">Farewell yakiniku</div><div class="note">All-you-can-eat Japanese BBQ, ¥3,000–5,000 each. No checkout tomorrow, only a flight.</div></div></div>
-    <div class="row"><div class="t">23:00</div><div><div class="what">Manga cafe, near Ueno</div><div class="note">Kaikatsu Club or similar: private booth, shower, free drinks bar, ~¥3,000 for the night. Booths are solo — everyone sets two alarms.</div></div></div>
+    <div class="row"><div class="t">19:30</div><div><div class="what">Farewell yakiniku</div><div class="note">All-you-can-eat Japanese BBQ, ¥3,000–5,000 each. Or one last Golden Gai run — no checkout tomorrow, only a flight.</div></div></div>
+    <div class="row"><div class="t">23:00</div><div><div class="what">Manga cafe, near Ueno</div><div class="note">Kaikatsu Club or similar: private booth, shower, free drinks bar, ~¥3,000 for the night package. Booths are solo — everyone sets two alarms.</div></div></div>
   </div>
 </article>
 
@@ -332,76 +342,265 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="head"><div class="num serif">十<small>Sat 23</small></div>
   <div><h2>Departure</h2><p class="date">A morning flight from Narita means a tightly-run dawn. First train or nothing.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">05:15</div><div><div class="what">Up and out</div><div class="note">Konbini breakfast on the walk: egg sandwich, onigiri, hot canned coffee. You will miss these.</div></div></div>
-    <div class="row"><div class="t">05:58</div><div><div class="what">First Skyliner from Ueno</div><div class="note">Bags out of the lockers, then the platform. Narita at ~06:44. There is no earlier train, which is why the manga cafe had to be near Ueno.</div></div></div>
+    <div class="row"><div class="t">05:15</div><div><div class="what">Up and out</div><div class="note">Two alarms. Konbini breakfast on the walk: egg sandwich, onigiri, hot canned coffee. You will miss these.</div></div></div>
+    <div class="row"><div class="t">05:40</div><div><div class="what">Bags out of the lockers</div><div class="note">Five minutes, then the platform.</div></div></div>
+    <div class="row"><div class="t">05:58</div><div><div class="what">First Skyliner from Ueno</div><div class="note">Narita at ~06:44. There is no earlier train, which is why the manga cafe had to be near Ueno — don't plan a taxi alternative, just make this train.</div></div></div>
     <div class="row"><div class="t">06:50</div><div><div class="what">Check in, Terminal 1</div><div class="note">Check-in closes 90 minutes before a morning departure — comfortable margin, not a lazy one.</div></div></div>
-    <div class="row"><div class="t">07:20</div><div><div class="what">Tax refund at customs</div><div class="note">Passport at the refund kiosk before security, goods and receipts in cabin bags. Skip this step and the 10% is gone for good; if the queue ever threatens the flight, abandon it.</div></div></div>
-    <div class="row"><div class="t">After</div><div><div class="what">Gate-side souvenirs, then home</div><div class="note">Tokyo Banana, Royce, regional KitKats. Sampai jumpa, Tokyo.</div></div></div>
+    <div class="row"><div class="t">07:20</div><div><div class="what">Tax refund at customs</div><div class="note">Passport at the refund kiosk before security, goods and receipts in cabin bags — customs can ask to see them. Skip this step and the 10% is gone for good; if the queue ever threatens the flight, abandon it.</div></div></div>
+    <div class="row"><div class="t">08:30</div><div><div class="what">Gate-side souvenirs, then home</div><div class="note">Last call for Tokyo Banana, Royce, regional KitKats — pricier than Donki, but right there. Sampai jumpa, Tokyo.</div></div></div>
   </div>
 </article>
 
-<section class="full-only">
-  <h2>Money, transport, apps</h2>
+</section>
+
+<!-- ============ BEFORE YOU FLY ============ -->
+<section class="panel" id="prep" aria-label="Before you fly">
+  <h2>Before anyone flies</h2>
+  <p class="sub">A handful of things need booking, one thing can stop you boarding.</p>
+  <div class="box">
+    <h3>JAVES is not optional</h3>
+    <p>Indonesian passports are not visa-free by default. The 15-day visa waiver only works with an e-passport (chip symbol on the cover) registered in advance through JAVES, Japan's online exemption system. It's free, takes 2–4 working days, and lasts 3 years or until the passport expires. Airlines check it at the gate; no registration means no boarding.</p>
+    <p>One quirk: the approval notice must be shown live from your phone (email or the JAVES account) — printouts and screenshots are not accepted. That's the opposite of Visit Japan Web, where screenshots of your QR codes are exactly what you want.</p>
+  </div>
+  <h3>How JAVES works</h3>
   <ul>
-    <li>Get a Suica on arrival and load ¥5,000 — it covers trains, buses, konbini and vending machines. iPhones can run Mobile Suica in Apple Wallet; most non-Japanese Androids can't, so take the physical Welcome Suica.</li>
-    <li>Carry ¥10,000–15,000 cash at all times. Golden Gai, small restaurants, temples and market stalls are cash-only. 7-Bank ATMs (inside 7-Eleven) take foreign cards reliably; fewer, larger withdrawals beat many small ones.</li>
-    <li>Skip the JR Pass — nothing on this plan needs it. Kamakura is a ¥950 local ride and Fuji goes by bus.</li>
-    <li>Trains stop ~00:30, restart ~05:00. A taxi split four ways is fine for short hops after midnight; a cross-town one is not. GO is the taxi app.</li>
-    <li>Install before flying: Google Maps (offline Tokyo), Google Translate (offline Japanese, camera mode), Visit Japan Web, Tabelog (anything above 3.5 is genuinely good — the scale is harsh), GO, the Tokyo Disney Resort app.</li>
+    <li>Register through the official JAVES system (linked from the MOFA Japan site). Create the account, fill in the details, upload passport scans — cover, biodata page, and endorsement page if any. Names and spacing must match the passport exactly.</li>
+    <li>Approval arrives by email as an electronic Visa Exemption Registration Notice, typically within 2–4 working days.</li>
+    <li>Everyone registers individually, and everyone first checks the passport has the chip symbol on the cover — a regular passport can't use JAVES and needs a full visa application instead.</li>
+    <li>Do it early. If the online route misbehaves there is still time to go through a Japan Visa Application Centre, which processes the same registration for a service fee, or to ask the nearest Japanese embassy.</li>
   </ul>
+  <h3>What else to have ready</h3>
+  <ul>
+    <li>A passport valid for the whole trip (six months beyond return is the safe margin) — with the JAVES registration on that same passport. Renew it and the registration dies with the old one.</li>
+    <li>Proof of onward travel and your first-night address. The return ticket and the stay booking cover both; immigration officers on the 15-day waiver do sometimes ask, so keep them reachable.</li>
+    <li>Visit Japan Web (vjw.digital.go.jp), a week or two before flying. It turns immigration and customs into QR scans — screenshot both codes.</li>
+  </ul>
+
+  <h3>September – October</h3>
+  <ul class="check">
+    <li>JAVES registration, every person individually</li>
+    <li>Tokyo Disneyland tickets for Tuesday 19 January, bought the moment the date opens</li>
+    <li>teamLab Planets, midday slot, Wednesday 20 January — sells out weeks ahead</li>
+  </ul>
+  <h3>November – December</h3>
+  <ul class="check">
+    <li>Kawaguchiko highway bus, both directions, Monday 18 January (highway-buses.jp, opens ~1 month out, genuinely sells out). The Fuji Excursion train is the reserved-seat fallback.</li>
+    <li>Timed-entry slots: Tokyo Skytree (evening of the 14th) and Shibuya Sky (sunset on the 21st)</li>
+    <li>A Japan eSIM (Ubigi, Mobal, Airalo) — activate on landing, not before</li>
+    <li>Tell the bank you're travelling, and check the card's foreign transaction fee</li>
+  </ul>
+  <h3>Final two weeks</h3>
+  <ul class="check">
+    <li>Visit Japan Web done, both QR codes screenshotted; re-confirm the JAVES notice opens on the phone</li>
+    <li>Change the first few days' cash to yen before flying — money changers at home usually beat the airport</li>
+    <li>Offline Tokyo in Google Maps, the Japanese offline pack in Google Translate</li>
+    <li>Mobile Suica set up on iPhones; Android users plan on a physical Welcome Suica at the airport</li>
+    <li>Dinner reservations: shabu-shabu in Shibuya for the 21st, farewell yakiniku for the 22nd</li>
+    <li>The host's online guest registration completed for everyone — Japan requires every guest registered with passport details</li>
+  </ul>
+</section>
+
+<!-- ============ GETTING AROUND ============ -->
+<section class="panel" id="around" aria-label="Getting around">
+  <h2>The house, and its rules</h2>
+  <p class="sub">A private floor of a family home in a quiet residential street — the real-Tokyo experience, with real-Tokyo etiquette.</p>
+  <table>
+    <tr><td>Check-in</td><td>From 16:00, self check-in by smart-lock code (sent before arrival). Nobody is on site.</td></tr>
+    <tr><td>Checkout</td><td>By 10:00 on the 22nd. No desk, so no bag storage — plan on station coin lockers either side of the stay.</td></tr>
+    <tr><td>Laundry</td><td>No washer in the house. Coin laundry nearby: ¥400–600 a load, about an hour. Slotted for Sunday night or the slow Wednesday morning — pack five or six days of clothes, not ten.</td></tr>
+    <tr><td>House rules</td><td>Non-smoking. Shoes off inside — it's a home, genkan rules apply. Quiet after 23:00 — the neighbours are real people, so late returns happen at a whisper.</td></tr>
+    <tr><td>Nearby</td><td>FamilyMart and 7-Eleven in walking distance, a good seafood izakaya (Uoma) by the station, and Mimatsuyu, a proper local sento (public bath) — the cheap, authentic answer to sore legs.</td></tr>
+  </table>
+
+  <h2>Getting around</h2>
+  <p class="sub">Home station is Kanegafuchi on the Tobu Skytree Line. Asakusa and Oshiage are the two hubs you'll transfer through constantly — learn that pattern on day one and the city opens up.</p>
+  <p>Kanegafuchi is deep east-side: about 20 minutes to Asakusa, 15 to Oshiage under the Skytree, 30 to Ueno, 40 to Tokyo Station, and roughly 50 to Shibuya or Shinjuku. The plan works with that, not against it — east-side days cluster near home, west-side nights are planned outings, and both day trips leave from major terminals anyway.</p>
+  <div class="box">
+    <h3>The last train shapes every evening</h3>
+    <p>Trains stop around 00:30 and restart around 05:00; there is no night service. From Shinjuku or Shibuya, leaving by midnight is the difference between a train home and karaoke until dawn. A taxi split four ways is fine for short hops after midnight (GO is the app); a cross-town one is not — avoid needing it.</p>
+  </div>
+  <h3>Airport runs</h3>
+  <table>
+    <tr><td>Arriving</td><td>Keisei Access Express from Narita to Oshiage, ~60 min, ~¥1,200, then three Tobu stops. One cheap transfer with luggage.</td></tr>
+    <tr><td>Leaving</td><td>First Skyliner from Ueno at 05:58, Narita ~06:44. There is no earlier train — which is why the last night is near Ueno.</td></tr>
+    <tr><td>Lockers</td><td>Large coin lockers ¥700–1,000 at every major station; the fallback whenever check-in is unattended.</td></tr>
+  </table>
+  <h3>Suica and cash</h3>
+  <ul>
+    <li>A Suica or Pasmo covers trains, buses, konbini, vending machines and most chain restaurants with a tap. Load ¥5,000 on arrival. iPhones can run Mobile Suica in Apple Wallet; most non-Japanese Androids can't, so take the physical Welcome Suica at the airport — valid 28 days, no deposit.</li>
+    <li>Carry ¥10,000–15,000 cash at all times. Golden Gai, small restaurants, temples and market stalls are cash-only.</li>
+    <li>7-Bank ATMs (inside 7-Eleven) and Japan Post ATMs take foreign Visa and Mastercard reliably. The fee is flat, so fewer, larger withdrawals beat many small ones.</li>
+    <li>Check your card's foreign transaction fee before relying on it — some charge 1–3% plus a markup.</li>
+    <li>Skip the JR Pass. Nothing on this plan needs it: Kamakura is a ¥950 local ride and Fuji goes by bus.</li>
+  </ul>
+  <h3>Apps to install before flying</h3>
+  <table>
+    <tr><td>Google Maps</td><td>Handles Tokyo transit well; you'll use it 90% of the time. Download offline Tokyo.</td></tr>
+    <tr><td>Google Translate</td><td>Camera mode for menus and labels. Download the Japanese offline pack.</td></tr>
+    <tr><td>Visit Japan Web</td><td>Immigration and customs QR codes.</td></tr>
+    <tr><td>JAVES access</td><td>Whatever gets you to the original approval email fast — it must display live.</td></tr>
+    <tr><td>Tabelog</td><td>The review app locals use. Above 3.5 is genuinely good — the scale is harsh.</td></tr>
+    <tr><td>GO</td><td>Taxis.</td></tr>
+    <tr><td>Tokyo Disney Resort</td><td>Wait times and Premier Access. Essential on Day 6.</td></tr>
+    <tr><td>highway-buses.jp</td><td>Where the Kawaguchiko bus reservations live.</td></tr>
+  </table>
   <h3>Etiquette that actually matters</h3>
   <ul>
-    <li>No tipping, ever. Many small places use a ticket machine at the door: pay, take the ticket, hand it over, sit.</li>
-    <li>Quiet on trains, no calls. Stand left on escalators. Carry your rubbish — public bins barely exist.</li>
+    <li>No tipping, ever — it confuses staff. Many small places use a ticket machine at the door: pay, take the ticket, hand it over, sit.</li>
+    <li>Don't eat while walking; stand still or sit.</li>
+    <li>Quiet on trains, no calls. Stand left on escalators. Carry your rubbish — public bins barely exist, so keep a plastic bag in the daypack.</li>
     <li>Shoes off where indicated, and always inside the house.</li>
     <li>Visible tattoos can bar entry to onsen and sento; cover patches help, but check first.</li>
   </ul>
 </section>
 
-<section class="full-only">
-  <h2>Eating well on any budget</h2>
-  <p>Japan is the rare country where cheap food is genuinely good. Konbini breakfasts (onigiri ¥130–200, egg sando ¥250) are what everyone does, not a compromise. Gyudon chains run ¥450–650 around the clock; ramen is ¥800–1,300 almost anywhere; supermarkets discount prepared food 20–50% after 19:00.</p>
-  <p>The single best trick: eat the good meals at lunch. Restaurants charging ¥6,000+ at dinner serve ¥1,500–2,500 lunch sets from the same kitchen. Group dinners default to izakaya (¥2,000–4,000 each, look for ¥1,500–2,500 nomihodai) or all-you-can-eat yakiniku. Winter-only things worth hunting: konbini oden, nabe hotpot, taiyaki from street stalls, hot canned coffee from any vending machine — and the day-trip dishes, hoto noodles at Kawaguchiko and shirasu-don in Kamakura.</p>
-  <p>Eat-in is taxed at 10%, takeaway at 8% — they will ask. Halal options are limited but real (Halal Navi lists them, mostly around Shinjuku, Asakusa and Ueno); vegetarian is harder than it looks because dashi hides in everything.</p>
+<!-- ============ EAT & DRINK ============ -->
+<section class="panel" id="eat" aria-label="Eat and drink">
+  <h2>Eating well at every price</h2>
+  <p class="sub">Japan is the rare country where cheap food is genuinely good. Roughly what each price band buys.</p>
+  <h3>Under ¥1,000</h3>
+  <table>
+    <tr><td>Konbini</td><td>7-Eleven, FamilyMart, Lawson. Onigiri ¥130–200, bento ¥450–750, egg sando ¥250. Famichiki fried chicken and melon pan are the cult items. Not a compromise.</td></tr>
+    <tr><td>Gyudon</td><td>Yoshinoya, Matsuya, Sukiya. Beef bowl ¥450–650, 24 hours, ticket machine at the door.</td></tr>
+    <tr><td>Ramen</td><td>¥800–1,300 almost anywhere. Ichiran's booths are the experience; the ramen itself is better elsewhere.</td></tr>
+    <tr><td>Udon</td><td>Marugame Seimen from ¥400. Fast, hot, absurdly cheap.</td></tr>
+    <tr><td>Curry</td><td>CoCo Ichibanya from ¥750, choose your heat and toppings.</td></tr>
+    <tr><td>Supermarkets</td><td>Prepared food 20–50% off once the yellow stickers go on, around 19:00–20:00. The best-value food in Japan.</td></tr>
+  </table>
+  <h3>¥1,000–3,000</h3>
+  <ul>
+    <li><strong>Lunch sets (teishoku)</strong> — the single best trick. Restaurants charging ¥6,000+ at dinner serve ¥1,500–2,500 sets at midday from the same kitchen. Eat the good meals at lunch.</li>
+    <li><strong>Conveyor-belt sushi</strong> — ¥1,500–2,500 and you're full. Uobei and Genki Sushi are the reliable chains.</li>
+    <li><strong>Izakaya</strong> — shared plates and drinks, ¥2,000–4,000 each; the default group dinner. Look for nomihodai (all-you-can-drink), ¥1,500–2,500 for two hours.</li>
+    <li><strong>Tonkatsu, tempura, gyukatsu</strong> — ¥1,200–2,000 for a proper set.</li>
+  </ul>
+  <h3>¥3,000 and up</h3>
+  <ul>
+    <li><strong>Yakiniku</strong> — Japanese BBQ, built for groups. All-you-can-eat ¥3,000–5,000. The best farewell-dinner format there is.</li>
+    <li><strong>Sushi counter</strong> — lunch omakase from ¥3,000, dinner from ¥10,000. Do it at lunch.</li>
+    <li><strong>A5 wagyu</strong> — from ¥5,000 for a steak. Worth doing once.</li>
+    <li><strong>Day-trip dishes</strong> — hoto at Kawaguchiko and shirasu-don in Kamakura, both under ¥1,500 and half the point of going.</li>
+  </ul>
+  <div class="box calm">
+    <h3>What a day of food costs</h3>
+    <p>About ¥3,500 a day eating lean (konbini breakfast, gyudon or ramen lunch, cheap izakaya) and about ¥6,500 eating comfortably (proper lunch sets, yakiniku, a sushi counter). Food can drop to ¥3,000 a day without anyone suffering.</p>
+  </div>
+  <h3>Good to know</h3>
+  <ul>
+    <li>Eat-in is taxed at 10%, takeaway at 8% — they will ask.</li>
+    <li>Winter-only things worth hunting: oden from the konbini counter, nabe hotpot, taiyaki from street stalls, hot canned coffee from any vending machine.</li>
+  </ul>
+
+  <h2>Nightlife</h2>
+  <p class="sub">Tiny bars, late karaoke, and one rule: trains stop around 00:30.</p>
+  <h3>Bar alleys</h3>
+  <table class="wide1">
+    <tr><td>Golden Gai, Shinjuku</td><td>Over 200 bars in six alleys, about eight seats each. Cover ¥300–500, drinks ¥500–800, many cash-only. English signage welcomes tourists; unmarked bars often prefer regulars — respect that. Four people may need to split across two bars.</td></tr>
+    <tr><td>Nonbei Yokocho, Shibuya</td><td>Same format, far fewer tourists. The better one if you only do one.</td></tr>
+    <tr><td>Omoide Yokocho, Shinjuku</td><td>Yakitori and beer under lanterns. More about the atmosphere than the food.</td></tr>
+    <tr><td>Ebisu Yokocho</td><td>Covered alley of small stalls. Cheap, loud, and where locals actually go.</td></tr>
+  </table>
+  <h3>Clubs, karaoke, arcades</h3>
+  <ul>
+    <li><strong>WOMB, Shibuya</strong> — the well-known one, entry ¥3,000–4,000. Bring photo ID; they check.</li>
+    <li><strong>Sound Museum Vision, Shibuya</strong> — electronic, entry ¥2,500–3,500.</li>
+    <li>Clubs don't fill until after midnight, and trains stop around 00:30. From Kanegafuchi that means committing until the ~05:00 first train or paying for a cross-town taxi — plan for it either way. Clubs turn away sportswear.</li>
+    <li><strong>Karaoke</strong> — Big Echo, Joysound, Karaoke Kan. ¥300–500 per hour each, cheaper before midnight, nomihodai available. Also a perfectly legitimate warm place for four to wait out the first train.</li>
+    <li><strong>Arcades</strong> — Taito Station, HEY, Round1. UFO catchers, rhythm games, purikura photo booths at ¥400–600 a session.</li>
+  </ul>
+  <div class="box">
+    <h3>Kabukicho, plainly</h3>
+    <p>It is safe to walk and worth seeing, but touts outside bars offering deals are running a scam — undisclosed cover charges, padded bills, occasionally card fraud. Never follow anyone into a bar you weren't already going to, and ignore anyone approaching you in English on the street. Bars worth visiting don't recruit outside.</p>
+  </div>
 </section>
 
-<section class="full-only">
+<!-- ============ SHOPPING ============ -->
+<section class="panel" id="shop" aria-label="Shopping">
   <h2>Shopping and the new tax refund</h2>
+  <p class="sub">Where to go, how the refund works now, and how to get it all home.</p>
   <div class="box">
     <h3>The rules changed on 1 November 2026</h3>
-    <p>Japan scrapped instant tax-free discounts at the register. You now pay the full price in store and claim the 10% back at a customs kiosk at the airport before flying. Any guide that says the tax comes off at the till is out of date. Spend ¥5,000+ in one store in one day, show your passport so it's recorded, keep every receipt, keep the goods reachable in cabin bags on departure day — and know that boarding without doing the kiosk step forfeits the refund permanently. Practical upshot: budget ~10% extra float while in Japan, and no more sealed bags, so skincare bought mid-trip can be used mid-trip.</p>
+    <p>Japan scrapped instant tax-free discounts at the register. You now pay the full price in store and claim the 10% back at a customs kiosk at the airport before flying. Any guide that says the tax comes off at the till is out of date.</p>
   </div>
+  <h3>How the refund works</h3>
+  <ul>
+    <li>Spend ¥5,000+ before tax in one store on one day, and show your passport at the till so the purchase is recorded against it.</li>
+    <li>You pay the full tax-inclusive price. Keep every receipt.</li>
+    <li>At Narita before departure, scan your passport at the self-service customs kiosk, which pulls up your recorded purchases. Customs may ask to see the goods, so keep them in cabin bags.</li>
+    <li>The refund is then paid by the store or its refund provider, usually back to the card you used. Timing varies by provider.</li>
+    <li>Board without doing the kiosk step and the refund is forfeited permanently.</li>
+    <li>Practical upshot: carry about 10% extra float while in Japan. The upside: no more sealed bags or separate consumables category, so skincare bought mid-trip can be used mid-trip — though anything consumed in Japan stops being eligible.</li>
+  </ul>
+  <h3>Where to go</h3>
   <table>
     <tr><td>Drugstores</td><td>Matsumoto Kiyoshi, Sundrug, Daikoku: sunscreen, sheet masks, eye drops, lip balm, Salonpas. The best value-for-money shopping in Japan. Full run on the last day.</td></tr>
-    <tr><td>Uniqlo + GU</td><td>Cheaper than back home with lines that never leave Japan; January sales still running. Buy Heattech here on day one, not before the trip.</td></tr>
+    <tr><td>Uniqlo + GU</td><td>Cheaper than back home with lines that never leave Japan; GU is the cheaper, underrated sibling. January sales still running. Buy Heattech here on day one, not before the trip.</td></tr>
     <tr><td>Isetan</td><td>Depachika food, department-store exclusives, and the best gift-wrapping culture on earth.</td></tr>
-    <tr><td>Don Quijote</td><td>Snacks, KitKat flavours, gifts, chaos. Many branches open 24 hours. Allow more time than seems reasonable.</td></tr>
-    <tr><td>Hundred-yen shops</td><td>Daiso, Seria, Can-Do — souvenirs, travel bits, and the ¥500 collapsible duffel if a suitcase overflows.</td></tr>
+    <tr><td>Don Quijote</td><td>Snacks, KitKat flavours, gifts, cosmetics, chaos. Many branches open 24 hours. Allow more time than seems reasonable.</td></tr>
+    <tr><td>Hundred-yen shops</td><td>Daiso, Seria, Can-Do — souvenirs, travel bits, collapsible bags. Better quality than the price suggests.</td></tr>
     <tr><td>Stationery</td><td>Ginza Itoya and Loft. Light, cheap, and the best gifts to carry home.</td></tr>
     <tr><td>Sneakers</td><td>ABC Mart, Atmos, and the Cat Street shops — Japan-exclusive colourways are the reason to look.</td></tr>
+    <tr><td>Electronics</td><td>Yodobashi and Bic Camera. Check prices back home first — the gap is smaller than it used to be, and warranties are often Japan-only.</td></tr>
   </table>
-</section>
-
-<section class="full-only">
-  <h2>Packing for a January Tokyo</h2>
-  <p>Cold but dry, with a ten-degree swing between afternoon and night, and one mountain day colder still. Layers solve it; one heavy coat does not. Pack five or six days of clothes — the coin laundry handles the rest and the empty space comes home full of shopping.</p>
+  <h3>Getting it home</h3>
   <ul>
-    <li>2–3 thermal base layers (buy Heattech Extra Warm in Tokyo), 3–4 mid layers, one wind-resistant insulated jacket.</li>
-    <li>Thermal leggings for the Fuji day and the Disneyland parade wait. Beanie, gloves, scarf, 5+ pairs of warm socks — cheap items that outperform a heavier coat.</li>
-    <li>Waterproof, comfortable shoes that slip off easily: 15,000–20,000 steps a day, and they come off at every temple and at the house.</li>
-    <li>Type A plug adapter (Japan's flat two-pin; 100V, fine for modern chargers), power bank (cold drains batteries), passport plus live JAVES access plus Visit Japan Web screenshots.</li>
-    <li>Heavy moisturiser, lip balm, hand cream from day one — the dry air, not the cold, is what nobody from the tropics is ready for.</li>
-    <li>Skip the umbrella (driest month; konbini sell them for ¥500) and full-size toiletries (drugstores are better and cheaper).</li>
+    <li>Pack light on the way out — the mid-trip coin-laundry wash frees most of a suitcase for the way home.</li>
+    <li>Know your checked-bag allowance and weigh the bag before the final shopping run. Excess is expensive at the airport and cheaper bought online beforehand.</li>
+    <li>Daiso sells a ¥500 collapsible duffel — but a second checked bag can cost more than the duffel saves, so know the number first.</li>
+    <li>Tax-free purchases and their receipts travel in the cabin bag on departure day; customs can't inspect what's already checked in.</li>
   </ul>
 </section>
 
-<section class="full-only">
-  <h2>If things go wrong</h2>
+<!-- ============ PACK & HELP ============ -->
+<section class="panel" id="help" aria-label="Packing and contingencies">
+  <h2>January weather</h2>
+  <p class="sub">Why mid-January, and what it actually feels like.</p>
+  <p>The New Year rush is over by 5 January and Coming of Age Day falls on 11 January 2027, so domestic crowds have cleared before arrival. Chinese New Year is 6 February 2027, so the regional wave hasn't started either: shorter queues, softer rates, no festival surcharges. It's also Tokyo's driest, clearest month — the best Fuji visibility of the year.</p>
   <table>
+    <tr><td>Daytime</td><td>8–11°C. Sunny and still — pleasant with one good layer. Kawaguchiko runs 5–8 degrees colder.</td></tr>
+    <tr><td>Night</td><td>0–3°C, occasionally below. This is where it bites, especially standing still.</td></tr>
+    <tr><td>Rain</td><td>Tokyo's lowest-rainfall month. Snow in the centre is possible but uncommon.</td></tr>
+    <tr><td>Sunset</td><td>~16:50 mid-month. Front-load outdoor sights; evenings are for food, shopping and bars.</td></tr>
+    <tr><td>Humidity</td><td>Around 30–40%, against the tropics' 80%. Dry air, not cold, is what gets you: cracked lips, dry nose, static, itchy skin. Buy lip balm and a heavy moisturiser on day one — any Matsumoto Kiyoshi has both.</td></tr>
+  </table>
+
+  <h2>Packing for a January Tokyo</h2>
+  <p class="sub">A ten-degree swing between afternoon and night, one mountain day colder still. Layers solve it; one heavy coat does not.</p>
+  <table>
+    <tr><td>Base</td><td>2–3 thermal base layers. Buy Uniqlo Heattech Extra Warm in Tokyo rather than before the trip — cheaper there.</td></tr>
+    <tr><td>Mid</td><td>3–4 long-sleeve shirts, sweaters or fleeces — the layer you add and remove all day.</td></tr>
+    <tr><td>Outer</td><td>One insulated or down jacket. Wind-resistant matters more than heavy; the Kawaguchiko ropeway deck is the windiest place on this trip.</td></tr>
+    <tr><td>Legs</td><td>2 pairs of jeans or trousers, thermal leggings underneath for the Fuji day and the Disneyland parade wait.</td></tr>
+    <tr><td>Extremities</td><td>Beanie, gloves, scarf, 5+ pairs of warm socks. Cheap, and they do more than a heavier coat.</td></tr>
+    <tr><td>Shoes</td><td>Waterproof and comfortable, easy to slip off: 15,000–20,000 steps a day, and they come off at every temple and at the house.</td></tr>
+    <tr><td>One good outfit</td><td>For the farewell dinner and any club night — clubs turn away sportswear.</td></tr>
+  </table>
+  <h3>Tech and documents</h3>
+  <ul>
+    <li>Passport, live JAVES access on the phone, screenshots of both Visit Japan Web QR codes.</li>
+    <li>Type A plug adapter — Japan uses the flat two-pin, so three-pin plugs won't fit. Japan runs 100V; modern chargers handle it.</li>
+    <li>Power bank. Cold drains phone batteries noticeably faster, and you'll navigate all day.</li>
+    <li>eSIM activation details and copies of bookings, saved offline.</li>
+  </ul>
+  <h3>For anyone coming from the tropics</h3>
+  <ul>
+    <li>Heavy moisturiser, lip balm and hand cream from day one. Knuckles crack otherwise.</li>
+    <li>Basic medicine: paracetamol, antacid, plasters. Japanese pharmacies stock equivalents, but the packaging is all in Japanese.</li>
+  </ul>
+  <h3>Deliberately not packing</h3>
+  <ul>
+    <li>Ten days of clothes. Pack five or six and wash mid-trip.</li>
+    <li>An umbrella — driest month, and any konbini sells one for ¥500.</li>
+    <li>Full-size toiletries. Drugstores are cheaper and better, and it's shopping you were going to do anyway.</li>
+  </ul>
+
+  <h2>If things go wrong</h2>
+  <table class="wide1">
     <tr><td>Fuji is hiding</td><td>Check the Kawaguchiko live cams the night before and at 06:00. Solid cloud: swap the Fuji day with Thursday — Shibuya Sky slots rebook easily, the dinner reservation is one call, and the bus can usually be changed once. January clarity means this mostly won't happen.</td></tr>
     <tr><td>Rain</td><td>Unlikely, and Wednesday is already the indoor day. Shuffle a soaked outdoor day toward museums, arcades and department stores rather than cancelling it.</td></tr>
+    <tr><td>Snow in central Tokyo</td><td>Possible, uncommon. Trains slow but rarely stop. It's a photo opportunity at Senso-ji more than a problem — waterproof shoes handle it.</td></tr>
     <tr><td>Disneyland sells out for the 19th</td><td>Move it to Wednesday and shift teamLab to Tuesday — teamLab slots move far more easily than Disney dates. Never the weekend.</td></tr>
-    <tr><td>Someone gets sick</td><td>Drugstores cover the basics; bigger hospitals have English-speaking staff. Japanese healthcare is excellent and expensive — this is what everyone's travel insurance is for.</td></tr>
+    <tr><td>Someone gets sick</td><td>Drugstores cover the basics; bigger hospitals have English-speaking staff. Japanese healthcare is excellent and expensive — this is what travel insurance is for.</td></tr>
     <tr><td>Money runs short</td><td>Cut the shopping, never the experiences. Uniqlo exists at home; the Fuji day doesn't. Food can drop to ¥3,000 a day without suffering.</td></tr>
     <tr><td>Group money friction</td><td>Split fixed costs (the stay, group dinners), keep everything discretionary individual. A shared pot for nine days never survives four people.</td></tr>
     <tr><td>Missed last train</td><td>Karaoke until 05:00 is the cheap answer, a taxi split four ways the fast one, a capsule hotel or manga cafe (¥3,000–5,000) the comfortable one. All normal.</td></tr>
@@ -417,6 +616,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
 </div>
 <script>
 (function(){
+  /* Full / compact itinerary view */
   var KEY="jpn-view";
   var full=document.getElementById("v-full"), comp=document.getElementById("v-compact");
   function apply(v){
@@ -431,6 +631,46 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   var v="full";
   try{ v = localStorage.getItem(KEY) || "full"; }catch(e){}
   apply(v);
+
+  /* Section tabs: one file, so the whole guide works offline once loaded */
+  var TABS=["plan","prep","around","eat","shop","help"];
+
+  var links=document.querySelectorAll("nav.tabs a");
+  function show(id, scroll){
+    TABS.forEach(function(t){ document.getElementById(t).classList.toggle("on", t===id); });
+    document.body.classList.toggle("tab-plan", id==="plan");
+    links.forEach(function(a){ if(a.getAttribute("data-tab")===id){ a.setAttribute("aria-current","page"); var n=a.parentNode; n.scrollLeft = Math.max(0, a.offsetLeft - n.offsetLeft - 20); } else a.removeAttribute("aria-current"); });
+    try{ localStorage.setItem("jpn-tab", id); }catch(e){}
+    if(scroll){
+      var top = document.querySelector(".hero").getBoundingClientRect().bottom + window.scrollY;
+      if(window.scrollY > top) window.scrollTo(0, top);
+    }
+  }
+  function fromHash(scroll){
+    var h=(location.hash||"").slice(1);
+    if(TABS.indexOf(h)>=0){ show(h, scroll); return true; }
+    if(/^d\d+$/.test(h) && document.getElementById(h)){
+      var wasPlan=document.body.classList.contains("tab-plan") && document.getElementById("plan").classList.contains("on");
+      show("plan", false);
+      if(!wasPlan) document.getElementById(h).scrollIntoView();
+      return true;
+    }
+    return false;
+  }
+  links.forEach(function(a){
+    a.addEventListener("click", function(e){
+      e.preventDefault();
+      var id=a.getAttribute("data-tab");
+      try{ history.replaceState(null, "", "#"+id); }catch(err){}
+      show(id, true);
+    });
+  });
+  window.addEventListener("hashchange", function(){ fromHash(true); });
+  if(!fromHash(false)){
+    var t="plan";
+    try{ t = localStorage.getItem("jpn-tab") || "plan"; }catch(e){}
+    show(TABS.indexOf(t)>=0 ? t : "plan", false);
+  }
 })();
 </script>
 </body>
