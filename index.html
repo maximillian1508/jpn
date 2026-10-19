@@ -75,6 +75,13 @@ section > p, section > ul{max-width:62ch}
 ul{padding-left:20px; margin:0 0 14px}
 li{margin:0 0 7px}
 a{color:var(--shu)}
+/* Official booking links: accent + underline like every link here, a little heavier, with padding
+   so a thumb can hit them, and an arrow to say they leave the page */
+a.go{font-weight:650; text-decoration-thickness:1px; text-underline-offset:3px; padding:6px 0; overflow-wrap:anywhere}
+a.go::after{content:"\00a0\2197"; content:"\00a0\2197" / ""; font-weight:400}
+.facts.buy{margin-top:8px}
+.facts.buy dd{line-height:1.9}
+.facts.buy .why{display:block; color:var(--soft); font-size:.88rem; line-height:1.5}
 
 .day{margin:56px 0 0; scroll-margin-top:calc(env(safe-area-inset-top, 0px) + 120px)}
 .day .head{display:grid; grid-template-columns:64px 1fr; gap:18px; align-items:start}
@@ -158,7 +165,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
     <div><dt>Flights</dt><dd>Land at Narita Terminal 1 at 07:45 on Thursday the 14th; fly home from Terminal 1 on the morning of Saturday the 23rd. <a href="#stay">Flights &amp; stay</a> has both ends.</dd></div>
     <div><dt>Base</dt><dd>A private floor of a house near Kanegafuchi Station on the Tobu Skytree Line, then one night in a manga cafe near Ueno.</dd></div>
     <div><dt>Day trips</dt><dd>Kamakura and Enoshima on Saturday the 16th; Mt Fuji and Kawaguchiko on Monday the 18th.</dd></div>
-    <div><dt>Booked ahead</dt><dd>Skytree, teamLab Planets (Tue 19), Tokyo DisneySea (Wed 20), Shibuya Sky, the Kawaguchiko bus. Dates and order in <a href="#prep">Before you fly</a>.</dd></div>
+    <div><dt>Booked ahead</dt><dd><a class="go" href="https://en.tokyo-skytree.jp/ticket/" target="_blank" rel="noopener">Skytree</a>, <a class="go" href="https://teamlabplanets.dmm.com/en/ticket" target="_blank" rel="noopener">teamLab Planets</a> (Tue 19), <a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Tokyo DisneySea</a> (Wed 20), <a class="go" href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Shibuya Sky</a>, the Kawaguchiko bus. Dates and order in <a href="#prep">Before you fly</a>; every official link is in <a href="#buy">Where to buy &amp; register</a>.</dd></div>
     <div><dt>Time</dt><dd>Japan is UTC+9, barely an hour off Southeast Asia — no jet lag to pay for the overnight flight.</dd></div>
   </dl>
 
@@ -186,16 +193,16 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <h3>Arriving · Thursday 14 January</h3>
   <table class="wide1">
     <tr><td>07:45 · Land</td><td>Narita Terminal 1, most of the group on the same flight. The flight in is overnight — it is the night's sleep, so board tired. Immigration runs on the Visit Japan Web QR codes, with the JAVES notice live on the phone.</td></tr>
-    <tr><td>Before leaving the terminal</td><td>A Welcome Suica and cash from the 7-Bank ATM.</td></tr>
-    <tr><td>Into town</td><td>Keisei Access Express to Oshiage, ~60 min, ~¥1,200, then three Tobu stops to Kanegafuchi. One cheap transfer with luggage; the Skyliner via Ueno adds a second.</td></tr>
+    <tr><td>Before leaving the terminal</td><td>A Welcome Suica and cash from the 7-Bank ATM. <a class="go" href="https://www.jreast.co.jp/en/multi/welcomesuica/welcomesuica.html" target="_blank" rel="noopener">About Welcome Suica</a></td></tr>
+    <tr><td>Into town</td><td>Keisei Access Express to Oshiage, ~60 min, ~¥1,200, then three Tobu stops to Kanegafuchi. One cheap transfer with luggage; the Skyliner via Ueno adds a second. <a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/directions/oshiage.php" target="_blank" rel="noopener">Route and fare</a></td></tr>
     <tr><td>Until 16:00</td><td>Check-in isn't until 16:00 and nobody is on site, so bags go into large coin lockers at Skytree Town or Asakusa Station (¥700–1,000).</td></tr>
     <tr><td>Meeting up</td><td>Anyone arriving separately meets the group at the house; the fallback is the Kaminarimon gate in Asakusa.</td></tr>
   </table>
   <h3>Leaving · Saturday 23 January</h3>
   <table class="wide1">
-    <tr><td>05:58 · Skyliner</td><td>First train from Ueno, at Narita ~06:44. There is no earlier train — which is why the last night is near Ueno. Don't plan a taxi alternative; make this train.</td></tr>
+    <tr><td>05:58 · Skyliner</td><td>First train from Ueno, at Narita ~06:44. There is no earlier train — which is why the last night is near Ueno. Don't plan a taxi alternative; make this train. <a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/en/" target="_blank" rel="noopener">Buy Skyliner tickets</a></td></tr>
     <tr><td>06:50 · Check in</td><td>Terminal 1. Check-in closes 90 minutes before a morning departure — a comfortable margin, not a lazy one.</td></tr>
-    <tr><td>07:20 · Tax refund</td><td>Passport at the customs refund kiosk before security, goods and receipts in cabin bags. Skip it and the 10% is gone; if the queue threatens the flight, abandon it.</td></tr>
+    <tr><td>07:20 · Tax refund</td><td>Passport at the customs refund kiosk before security, goods and receipts in cabin bags. Skip it and the 10% is gone; if the queue threatens the flight, abandon it. <a class="go" href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00028.html" target="_blank" rel="noopener">How the refund works</a></td></tr>
   </table>
   <div class="box calm">
     <h3>The ticket and the bags</h3>
@@ -223,7 +230,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <p class="sub">Checkout is the morning of the 22nd and the flight is the morning of the 23rd. The night between is spent near Ueno, on purpose.</p>
   <table>
     <tr><td>Bags</td><td>Into Ueno Station lockers after checkout — large ones are ¥800–1,000 per calendar day and fine overnight.</td></tr>
-    <tr><td>The night</td><td>Kaikatsu Club or similar: private booth, shower, free drinks bar, ~¥3,000 for the night package. Book on the day or a few days ahead.</td></tr>
+    <tr><td>The night</td><td>Kaikatsu Club or similar: private booth, shower, free drinks bar, ~¥3,000 for the night package. Book on the day or a few days ahead. <a class="go" href="https://www.kaikatsu.jp/shop/" target="_blank" rel="noopener">Find a branch (Japanese site)</a></td></tr>
     <tr><td>Booths</td><td>Solo — it's a sleep-alone format. Everyone sets two alarms.</td></tr>
     <tr><td>Why Ueno</td><td>The 05:58 first Skyliner leaves from there, a five-minute walk away.</td></tr>
   </table>
@@ -246,6 +253,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="box">
     <h3>JAVES is not optional</h3>
     <p>Indonesian passports are not visa-free by default. The 15-day visa waiver only works with an e-passport (chip symbol on the cover) registered in advance through JAVES, Japan's online exemption system. It's free, takes 2–4 working days, and lasts 3 years or until the passport expires. Airlines check it at the gate; no registration means no boarding.</p>
+    <p><a class="go" href="https://www.evisa.mofa.go.jp/personal/logintoko" target="_blank" rel="noopener">Register on JAVES</a> · <a class="go" href="https://www.evisa.mofa.go.jp/personal/faq" target="_blank" rel="noopener">JAVES FAQ</a></p>
     <p>One quirk: the approval notice must be shown live from your phone (email or the JAVES account) — printouts and screenshots are not accepted. That's the opposite of Visit Japan Web, where screenshots of your QR codes are exactly what you want.</p>
   </div>
   <h3>How JAVES works</h3>
@@ -259,31 +267,66 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <ul>
     <li>A passport valid for the whole trip (six months beyond return is the safe margin) — with the JAVES registration on that same passport. Renew it and the registration dies with the old one.</li>
     <li>Proof of onward travel and your first-night address. The return ticket and the stay booking cover both; immigration officers on the 15-day waiver do sometimes ask, so keep them reachable.</li>
-    <li>Visit Japan Web (vjw.digital.go.jp), a week or two before flying. It turns immigration and customs into QR scans — screenshot both codes.</li>
+    <li>Visit Japan Web (vjw.digital.go.jp), a week or two before flying. It turns immigration and customs into QR scans — screenshot both codes. <a class="go" href="https://services.digital.go.jp/en/visit-japan-web/" target="_blank" rel="noopener">Set up Visit Japan Web</a></li>
   </ul>
 
   <h3>September – October</h3>
   <ul class="check">
-    <li>JAVES registration, every person individually</li>
-    <li>Tokyo DisneySea tickets for Wednesday 20 January, bought the moment the date opens</li>
-    <li>teamLab Planets, midday slot, Tuesday 19 January — sells out weeks ahead</li>
+    <li>JAVES registration, every person individually. <a class="go" href="https://www.evisa.mofa.go.jp/personal/logintoko" target="_blank" rel="noopener">Register</a></li>
+    <li>Tokyo DisneySea tickets for Wednesday 20 January, bought the moment the date opens. <a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Buy tickets</a></li>
+    <li>teamLab Planets, midday slot, Tuesday 19 January — sells out weeks ahead. <a class="go" href="https://teamlabplanets.dmm.com/en/ticket" target="_blank" rel="noopener">Buy tickets</a></li>
   </ul>
   <h3>November – December</h3>
   <ul class="check">
-    <li>Kawaguchiko highway bus, both directions, Monday 18 January (opens ~1 month out, genuinely sells out; Keio-run departures on Highway Bus dot com, Fujikyu-run on Fujiyama Connect — booking sites changed 1 Oct 2026, check which operator runs your bus). The Fuji Excursion train is the reserved-seat fallback.</li>
-    <li>Timed-entry slots: Tokyo Skytree (evening of the 14th) and Shibuya Sky (sunset on the 21st)</li>
+    <li>Kawaguchiko highway bus, both directions, Monday 18 January (opens ~1 month out, genuinely sells out; Keio-run departures on Highway Bus dot com, Fujikyu-run on Fujiyama Connect — booking sites changed 1 Oct 2026, check which operator runs your bus). The Fuji Excursion train is the reserved-seat fallback. <a class="go" href="https://www.highwaybus.com/gp/inbound/index?lang=EN" target="_blank" rel="noopener">Book Keio buses</a> · <a class="go" href="https://www.fujiyamaconnect.jp/bus/inbound/?wovn=en" target="_blank" rel="noopener">Book Fujikyu buses</a></li>
+    <li>Timed-entry slots: Tokyo Skytree (evening of the 14th) and Shibuya Sky (sunset on the 21st). <a class="go" href="https://en.tokyo-skytree.jp/ticket/" target="_blank" rel="noopener">Skytree tickets</a> · <a class="go" href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Shibuya Sky tickets</a></li>
     <li>A Japan eSIM (Ubigi, Mobal, Airalo) — activate on landing, not before</li>
     <li>Tell the bank you're travelling, and check the card's foreign transaction fee</li>
   </ul>
   <h3>Final two weeks</h3>
   <ul class="check">
-    <li>Visit Japan Web done, both QR codes screenshotted; re-confirm the JAVES notice opens on the phone</li>
+    <li>Visit Japan Web done, both QR codes screenshotted; re-confirm the JAVES notice opens on the phone. <a class="go" href="https://services.digital.go.jp/en/visit-japan-web/" target="_blank" rel="noopener">Visit Japan Web</a></li>
     <li>Change the first few days' cash to yen before flying — money changers at home usually beat the airport</li>
     <li>Offline Tokyo in Google Maps, the Japanese offline pack in Google Translate</li>
-    <li>Mobile Suica set up on iPhones; Android users plan on a physical Welcome Suica at the airport</li>
+    <li>Mobile Suica set up on iPhones; Android users plan on a physical Welcome Suica at the airport. <a class="go" href="https://www.jreast.co.jp/en/multi/welcomesuica/welcomesuica.html" target="_blank" rel="noopener">About Welcome Suica</a></li>
     <li>Dinner reservations: shabu-shabu in Shibuya for the 21st, farewell yakiniku for the 22nd</li>
     <li>The host's online guest registration completed for everyone — Japan requires every guest registered with passport details</li>
   </ul>
+  <h2 id="buy">Where to buy &amp; register</h2>
+  <p class="sub">Every official site in one place: the operators and the government, no resellers. Each link opens in a new tab.</p>
+  <h3>Before you fly</h3>
+  <dl class="facts buy">
+    <div><dt>JAVES</dt><dd><a class="go" href="https://www.evisa.mofa.go.jp/personal/logintoko" target="_blank" rel="noopener">Register</a> · <a class="go" href="https://www.evisa.mofa.go.jp/personal/faq" target="_blank" rel="noopener">FAQ</a> · <a class="go" href="https://www.mofa.go.jp/j_info/visit/visa/short/novisa.html" target="_blank" rel="noopener">Visa-exemption rules</a><span class="why">Japan's foreign ministry. Free; one registration per passport.</span></dd></div>
+    <div><dt>Visit Japan Web</dt><dd><a class="go" href="https://services.digital.go.jp/en/visit-japan-web/" target="_blank" rel="noopener">Set up Visit Japan Web</a><span class="why">Japan's Digital Agency. Immigration and customs QR codes.</span></dd></div>
+  </dl>
+  <h3>Tickets to book</h3>
+  <dl class="facts buy">
+    <div><dt>DisneySea</dt><dd><a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Buy park tickets</a> · <a class="go" href="https://www.tokyodisneyresort.jp/en/tds/guide/disneypremieraccess.html" target="_blank" rel="noopener">Premier Access</a><span class="why">Tokyo Disney Resort. Premier Access is bought in the app on the day.</span></dd></div>
+    <div><dt>teamLab Planets</dt><dd><a class="go" href="https://teamlabplanets.dmm.com/en/ticket" target="_blank" rel="noopener">Buy tickets</a><span class="why">The official ticket store teamLab links to.</span></dd></div>
+    <div><dt>Tokyo Skytree</dt><dd><a class="go" href="https://en.tokyo-skytree.jp/ticket/" target="_blank" rel="noopener">Buy tickets</a></dd></div>
+    <div><dt>Shibuya Sky</dt><dd><a class="go" href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Buy tickets</a><span class="why">Opens in Japanese; the language button is at the top of the page.</span></dd></div>
+  </dl>
+  <h3>Transport</h3>
+  <dl class="facts buy">
+    <div><dt>Kawaguchiko bus</dt><dd><a class="go" href="https://www.highwaybus.com/gp/inbound/index?lang=EN" target="_blank" rel="noopener">Book Keio buses</a> · <a class="go" href="https://www.fujiyamaconnect.jp/bus/inbound/?wovn=en" target="_blank" rel="noopener">Book Fujikyu buses</a> · <a class="go" href="https://bus.fujikyu.co.jp/en/highway/fujisan/shinjuku-kawaguchiko/" target="_blank" rel="noopener">Timetable and fares</a><span class="why">Keio-run departures on Highway Bus dot com, Fujikyu-run on Fujiyama Connect. Check the operator of your bus first.</span></dd></div>
+    <div><dt>Skyliner</dt><dd><a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/en/" target="_blank" rel="noopener">Buy Skyliner tickets</a><span class="why">Keisei's e-ticket site.</span></dd></div>
+    <div><dt>Narita → Oshiage</dt><dd><a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/directions/oshiage.php" target="_blank" rel="noopener">Access Express route and fare</a></dd></div>
+    <div><dt>Welcome Suica</dt><dd><a class="go" href="https://www.jreast.co.jp/en/multi/welcomesuica/welcomesuica.html" target="_blank" rel="noopener">About Welcome Suica</a><span class="why">JR East. Bought at the airport, not online.</span></dd></div>
+    <div><dt>Enoden pass</dt><dd><a class="go" href="https://www.enoden.co.jp/en/tourism/ticket/noriorikun/" target="_blank" rel="noopener">Noriorikun day pass</a> · <a class="go" href="https://www.emot.jp/noriorikun.eng.chara.html" target="_blank" rel="noopener">Digital ticket in EMot</a></dd></div>
+  </dl>
+  <h3>Apps</h3>
+  <dl class="facts buy">
+    <div><dt>Tokyo Disney Resort</dt><dd><a class="go" href="https://www.tokyodisneyresort.jp/en/tdr/app.html" target="_blank" rel="noopener">Get the app</a><span class="why">Tickets, wait times, Premier Access.</span></dd></div>
+    <div><dt>EMot</dt><dd><a class="go" href="https://www.emot.jp/noriorikun.eng.chara.html" target="_blank" rel="noopener">Enoden pass in EMot</a><span class="why">Odakyu's travel app, for the digital Noriorikun.</span></dd></div>
+  </dl>
+  <h3>On the day</h3>
+  <dl class="facts buy">
+    <div><dt>Fuji ropeway</dt><dd><a class="go" href="https://www.mtfujiropeway.jp/en/" target="_blank" rel="noopener">Hours and fares</a></dd></div>
+    <div><dt>Shinjuku Gyoen</dt><dd><a class="go" href="https://policies.env.go.jp/national-garden/shinjukugyoen/english/index.html" target="_blank" rel="noopener">Hours and tickets</a></dd></div>
+    <div><dt>National Museum</dt><dd><a class="go" href="https://www.tnm.jp/?lang=en" target="_blank" rel="noopener">Hours and tickets</a></dd></div>
+    <div><dt>Kaikatsu Club</dt><dd><a class="go" href="https://www.kaikatsu.jp/shop/" target="_blank" rel="noopener">Find a branch</a><span class="why">Japanese-only site.</span></dd></div>
+    <div><dt>Tax refund</dt><dd><a class="go" href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00028.html" target="_blank" rel="noopener">How the refund works</a><span class="why">Japan Tourism Agency's page for travellers.</span></dd></div>
+  </dl>
 </section>
 
 <!-- ============ ITINERARY ============ -->
@@ -333,14 +376,14 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="head"><div class="num serif">一<small>Thu 14</small></div>
   <div><h2>Arrival · Asakusa · Skytree</h2><p class="date">Land together, stash the bags, old Tokyo on foot. Everyone slept on a plane — keep it gentle.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">07:45</div><div><div class="what">Land at Narita</div><div class="note">Immigration via the Visit Japan Web QR, JAVES notice ready live on the phone (not a screenshot). Grab a Welcome Suica and ¥30,000–50,000 from the 7-Bank ATM before leaving the terminal.</div></div></div>
-    <div class="row"><div class="t">09:00</div><div><div class="what">Keisei Access Express to Oshiage</div><div class="note">About an hour, ~¥1,200, and Oshiage is three Tobu stops from the house — one easy transfer instead of dragging luggage across town. The Skyliner via Ueno adds a second transfer.</div></div></div>
+    <div class="row"><div class="t">07:45</div><div><div class="what">Land at Narita</div><div class="note">Immigration via the Visit Japan Web QR, JAVES notice ready live on the phone (not a screenshot). Grab a Welcome Suica and ¥30,000–50,000 from the 7-Bank ATM before leaving the terminal. <a class="go" href="https://www.jreast.co.jp/en/multi/welcomesuica/welcomesuica.html" target="_blank" rel="noopener">About Welcome Suica</a></div></div></div>
+    <div class="row"><div class="t">09:00</div><div><div class="what">Keisei Access Express to Oshiage</div><div class="note">About an hour, ~¥1,200, and Oshiage is three Tobu stops from the house — one easy transfer instead of dragging luggage across town. The Skyliner via Ueno adds a second transfer. <a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/directions/oshiage.php" target="_blank" rel="noopener">Route and fare</a></div></div></div>
     <div class="row"><div class="t">10:15</div><div><div class="what">Bags into lockers</div><div class="note">Check-in isn't until 16:00 with nobody on site, so large coin lockers at Skytree Town or Asakusa Station (¥700–1,000) and you're free.</div></div></div>
     <div class="row"><div class="t">11:00</div><div><div class="what">Senso-ji + Nakamise-dori</div><div class="note">Tokyo's oldest temple through the Kaminarimon gate. Ningyo-yaki and age-manju on the approach. A weekday morning keeps the crowds manageable.</div></div></div>
     <div class="row"><div class="t">12:30</div><div><div class="what">Lunch near Asakusa</div><div class="note">Ramen or a tonkatsu set. Nothing that needs a booking today.</div></div></div>
     <div class="row"><div class="t">14:00</div><div><div class="what">Kappabashi Kitchen Street</div><div class="note">Knives, ceramics, plastic food samples, and a clean street-level view of Skytree.</div></div></div>
     <div class="row"><div class="t">16:00</div><div><div class="what">Collect bags, check in</div><div class="note">The door code arrives from the host beforehand. Drop everything, catch your breath. Sunset is 16:50.</div></div></div>
-    <div class="row"><div class="t">17:30</div><div><div class="what">Tokyo Skytree</div><div class="note">Fifteen minutes from home. Timed slot booked in advance; a clear January evening means city lights plus the Fuji silhouette. ¥2,100–3,400.</div></div></div>
+    <div class="row"><div class="t">17:30</div><div><div class="what">Tokyo Skytree</div><div class="note">Fifteen minutes from home. Timed slot booked in advance; a clear January evening means city lights plus the Fuji silhouette. ¥2,100–3,400. <a class="go" href="https://en.tokyo-skytree.jp/ticket/" target="_blank" rel="noopener">Buy tickets</a></div></div></div>
     <div class="row"><div class="t">19:30</div><div><div class="what">Dinner + first drink</div><div class="note">Kaiten Sushi Toriton in Skytree Town for conveyor-belt sushi, or the seafood izakaya by Kanegafuchi Station if legs are done.</div></div></div>
     <div class="row"><div class="t">21:30</div><div><div class="what">Konbini run, early night</div><div class="note">FamilyMart and 7-Eleven are both walkable from the house. Water, breakfast onigiri, hot canned coffee for the morning.</div></div></div>
   </div>
@@ -351,7 +394,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div><h2>Shinjuku · Isetan · Kabukicho</h2><p class="date">Free skyline views, Japan's greatest department store, the loudest night of the trip. Know the last train — leave Shinjuku around midnight.</p></div></div>
   <div class="tl">
     <div class="row"><div class="t">09:30</div><div><div class="what">Metropolitan Government Building</div><div class="note">Free 45F observation deck. Clear January mornings are the year's best odds of seeing Fuji from here.</div></div></div>
-    <div class="row"><div class="t">10:45</div><div><div class="what">Shinjuku Gyoen</div><div class="note">¥500. Bare and quiet in winter, which is its own thing; the greenhouse is warm and worth the detour.</div></div></div>
+    <div class="row"><div class="t">10:45</div><div><div class="what">Shinjuku Gyoen</div><div class="note">¥500. Bare and quiet in winter, which is its own thing; the greenhouse is warm and worth the detour. <a class="go" href="https://policies.env.go.jp/national-garden/shinjukugyoen/english/index.html" target="_blank" rel="noopener">Hours and tickets</a></div></div></div>
     <div class="row"><div class="t">12:00</div><div><div class="what">Isetan Shinjuku</div><div class="note">Start in the depachika basement — the best food hall in Japan, graze it as lunch — then the fashion floors. The Men's building next door is its own trip. Tax-free counter handles paperwork over ¥5,000; the refund comes at the airport, so keep receipts.</div></div></div>
     <div class="row"><div class="t">14:30</div><div><div class="what">Omoide Yokocho</div><div class="note">Lantern-lit alley of yakitori stalls. More photogenic than delicious, but do it once.</div></div></div>
     <div class="row"><div class="t">15:30</div><div><div class="what">Don Quijote + Daiso</div><div class="note">Multi-floor discount chaos. Scout now, buy souvenirs later — they're cheaper elsewhere.</div></div></div>
@@ -367,7 +410,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="head"><div class="num serif">三<small>Sat 16</small></div>
   <div><h2>Day trip — Kamakura · Enoshima</h2><p class="date">The old capital: a giant Buddha, a seaside railway, and a winter-clear coastline an hour from Tokyo. No reservations needed, which is why it owns the Saturday.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">07:45</div><div><div class="what">To Tokyo Station, then Kamakura</div><div class="note">About 40 minutes to Tokyo Station, then the JR Yokosuka Line direct to Kamakura, ~55 min, about ¥1,000 since JR East's 15 Mar 2026 fare rise (was ¥945). At Kamakura, get the Enoden 1-day pass, Noriorikun (¥800), from the ticket machines or as a digital ticket in the EMot app. It roughly breaks even on today's hops plus the ride out, so it's about convenience more than savings.</div></div></div>
+    <div class="row"><div class="t">07:45</div><div><div class="what">To Tokyo Station, then Kamakura</div><div class="note">About 40 minutes to Tokyo Station, then the JR Yokosuka Line direct to Kamakura, ~55 min, about ¥1,000 since JR East's 15 Mar 2026 fare rise (was ¥945). At Kamakura, get the Enoden 1-day pass, Noriorikun (¥800), from the ticket machines or as a digital ticket in the EMot app. It roughly breaks even on today's hops plus the ride out, so it's about convenience more than savings. <a class="go" href="https://www.enoden.co.jp/en/tourism/ticket/noriorikun/" target="_blank" rel="noopener">Noriorikun pass</a> · <a class="go" href="https://www.emot.jp/noriorikun.eng.chara.html" target="_blank" rel="noopener">EMot digital ticket</a></div></div></div>
     <div class="row"><div class="t">09:30</div><div><div class="what">Tsurugaoka Hachimangū</div><div class="note">Kamakura's great shrine, straight up the approach from the station. Walk up the Dankazura, the raised central path, first, before the crowds. New Year decorations are still up in January; the New Year crowds are long gone.</div></div></div>
     <div class="row"><div class="t">11:00</div><div><div class="what">Komachi-dori grazing</div><div class="note">Street snacks and shops. Shirasu-don (whitebait over rice) is the local dish — for a sit-down bowl, be in a queue by about 11:15. Kamakura lunch queues are real even in winter.</div></div></div>
     <div class="row"><div class="t">12:30</div><div><div class="what">Enoden to Hase</div><div class="note">Enoden 3 stops from Kamakura to Hase, ~5 min. The Great Buddha (Kōtoku-in, ¥300) is ~7–10 min on foot from Hase Station, so do it first: bronze, 13 metres, sitting outdoors since 1252. Then Hasedera (¥400) on the way back — don't skip its upper viewing platform, which looks out over Sagami Bay.</div></div></div>
@@ -384,7 +427,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
     <div class="row"><div class="t">09:00</div><div><div class="what">Nezu Shrine</div><div class="note">A small torii tunnel, the quiet cousin of Fushimi Inari. Empty early.</div></div></div>
     <div class="row"><div class="t">10:00</div><div><div class="what">Yanaka Ginza</div><div class="note">Old-school shopping street, cats everywhere. Find the seven hidden wooden cats.</div></div></div>
     <div class="row"><div class="t">11:30</div><div><div class="what">Ameyoko Market</div><div class="note">Under the tracks at Ueno. Street food, cheap clothes, cosmetics, loud energy.</div></div></div>
-    <div class="row"><div class="t">13:00</div><div><div class="what">Tokyo National Museum</div><div class="note">¥1,000. Samurai armour, swords, scrolls — two hours, the Honkan building first.</div></div></div>
+    <div class="row"><div class="t">13:00</div><div><div class="what">Tokyo National Museum</div><div class="note">¥1,000. Samurai armour, swords, scrolls — two hours, the Honkan building first. <a class="go" href="https://www.tnm.jp/?lang=en" target="_blank" rel="noopener">Hours and tickets</a></div></div></div>
     <div class="row"><div class="t">15:00</div><div><div class="what">2k540 Aki-Oka Artisan</div><div class="note">Craft workshops in the railway arches between Ueno and Akihabara. Walkable, uncrowded, good gifts.</div></div></div>
     <div class="row"><div class="t">16:00</div><div><div class="what">Akihabara, car-free</div><div class="note">Chuo-dori is pedestrianised Sunday afternoons (to 17:00 in winter) — the lit signs over a carless street at dusk is the shot. Super Potato for retro games after.</div></div></div>
     <div class="row"><div class="t">18:30</div><div><div class="what">Arcades: HEY + Taito Station</div><div class="note">HEY for classic cabinets, Taito for UFO catchers, rhythm games and purikura.</div></div></div>
@@ -397,9 +440,9 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="head"><div class="num serif">五<small>Mon 18</small></div>
   <div><h2>Day trip — Mt Fuji · Kawaguchiko</h2><p class="date">January is the best Fuji visibility of the year, and a weekday keeps buses and viewpoints calm. It is properly cold up there — every layer.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">06:30</div><div><div class="what">Highway bus from Shinjuku</div><div class="note">Busta Shinjuku (the Shinjuku Expressway Bus Terminal) to Kawaguchiko Station, ~1h45–2h30 depending on traffic, ~¥2,300 each way. Booking opens about a month before departure, and both directions sell out. Since 1 Oct 2026 the Keio-run departures book on Highway Bus dot com (highwaybus.com) and the Fujikyu-run ones on Fujiyama Connect — booking sites changed 1 Oct 2026, so check which operator runs your bus. The Fuji Excursion train (~1h55, ¥4,130, reserved seats) is the fallback.</div></div></div>
+    <div class="row"><div class="t">06:30</div><div><div class="what">Highway bus from Shinjuku</div><div class="note">Busta Shinjuku (the Shinjuku Expressway Bus Terminal) to Kawaguchiko Station, ~1h45–2h30 depending on traffic, ~¥2,300 each way. Booking opens about a month before departure, and both directions sell out. Since 1 Oct 2026 the Keio-run departures book on Highway Bus dot com (highwaybus.com) and the Fujikyu-run ones on Fujiyama Connect — booking sites changed 1 Oct 2026, so check which operator runs your bus. The Fuji Excursion train (~1h55, ¥4,130, reserved seats) is the fallback. <a class="go" href="https://www.highwaybus.com/gp/inbound/index?lang=EN" target="_blank" rel="noopener">Book Keio buses</a> · <a class="go" href="https://www.fujiyamaconnect.jp/bus/inbound/?wovn=en" target="_blank" rel="noopener">Book Fujikyu buses</a> · <a class="go" href="https://bus.fujikyu.co.jp/en/highway/fujisan/shinjuku-kawaguchiko/" target="_blank" rel="noopener">Timetable</a></div></div></div>
     <div class="row"><div class="t">09:30</div><div><div class="what">Arrive, check the mountain</div><div class="note">Mornings are clearest. The Kawaguchiko live cams the night before say whether to trigger the swap plan (see Packing).</div></div></div>
-    <div class="row"><div class="t">10:00</div><div><div class="what">Panoramic ropeway + lake</div><div class="note">Walk from Kawaguchiko Station, ~15–20 min — faster than the sightseeing-bus queue. Mt Tenjo ropeway, ~¥1,000 return, for the Fuji-over-the-lake panorama. The summit deck is far colder than the lake once the wind gets at it, so wear the heaviest layer. Afterwards, walk the lake edge.</div></div></div>
+    <div class="row"><div class="t">10:00</div><div><div class="what">Panoramic ropeway + lake</div><div class="note">Walk from Kawaguchiko Station, ~15–20 min — faster than the sightseeing-bus queue. Mt Tenjo ropeway, ~¥1,000 return, for the Fuji-over-the-lake panorama. The summit deck is far colder than the lake once the wind gets at it, so wear the heaviest layer. Afterwards, walk the lake edge. <a class="go" href="https://www.mtfujiropeway.jp/en/" target="_blank" rel="noopener">Ropeway hours and fares</a></div></div></div>
     <div class="row"><div class="t">12:00</div><div><div class="what">Hōtō lunch</div><div class="note">The local dish: thick flat noodles in pumpkin miso hotpot. On a freezing day it is exactly right. Hōtō Fudō is the famous chain, and its station-front branch suits the route. Bring cash for local spots generally.</div></div></div>
     <div class="row"><div class="t">13:30</div><div><div class="what">Oishi Park</div><div class="note">North-shore viewpoint, the postcard angle across the water. In January the air is glass. Red Line sightseeing bus from Kawaguchiko Station, ~30 min to the last stop (Kawaguchiko Natural Living Center), every ~15–20 min. Tap Suica.</div></div></div>
     <div class="row"><div class="t">15:00</div><div><div class="what">Optional: Chureito Pagoda</div><div class="note">Fujikyu line from Kawaguchiko to Shimoyoshida, 4 stops, ~15 min, then ~10 min on foot and 398 steps for Japan's most famous photograph — the five-storey pagoda with Fuji behind. Check the Shimoyoshida return timetable the moment you arrive. HARD CUT-OFF: be on the train back from Shimoyoshida by about 16:00 to make the 16:30 bus. If Oishi Park runs long, skip the pagoda.</div></div></div>
@@ -413,7 +456,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div><h2>teamLab Planets · Odaiba</h2><p class="date">Art at midday, the waterfront after. Deliberately the gentlest day, parked after Kamakura, Akihabara and Fuji and before DisneySea — the midday slot buys everyone a slow morning.</p></div></div>
   <div class="tl">
     <div class="row"><div class="t">Morning</div><div><div class="what">Slow start, on purpose</div><div class="note">No alarm-racing after three huge days. Konbini breakfast; coin laundry now if Sunday's wash didn't happen.</div></div></div>
-    <div class="row"><div class="t">11:30</div><div><div class="what">teamLab Planets</div><div class="note">Booked weeks ahead. You wade through knee-deep water, so wear trousers that roll up. ¥3,800, next to Shin-Toyosu station.</div></div></div>
+    <div class="row"><div class="t">11:30</div><div><div class="what">teamLab Planets</div><div class="note">Booked weeks ahead. You wade through knee-deep water, so wear trousers that roll up. ¥3,800, next to Shin-Toyosu station. <a class="go" href="https://teamlabplanets.dmm.com/en/ticket" target="_blank" rel="noopener">Buy tickets</a></div></div></div>
     <div class="row"><div class="t">14:00</div><div><div class="what">Unicorn Gundam + DiverCity</div><div class="note">Life-size, transforms on a schedule between 11:00 and 21:00. Japan-exclusive goods in the mall behind it.</div></div></div>
     <div class="row"><div class="t">15:30</div><div><div class="what">Round1</div><div class="note">Arcade, bowling, batting cages, karaoke under one roof — fun you do mostly sitting down, which is the point today.</div></div></div>
     <div class="row"><div class="t">17:30</div><div><div class="what">Rainbow Promenade</div><div class="note">The Statue of Liberty and Rainbow Bridge night skyline. Gloves: the bay wind is brutal in January.</div></div></div>
@@ -426,7 +469,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div><h2>Tokyo DisneySea</h2><p class="date">A weekday in low season means the shortest queues this park ever has. The harbour park: no parade, no fireworks, and this month no night show either — the day is the rides.</p></div></div>
   <div class="tl">
     <div class="row"><div class="t">07:15</div><div><div class="what">To Maihama</div><div class="note">JR Keiyo Line, ~15 min from Tokyo Station. From Maihama, the Disney Resort Line monorail to Tokyo DisneySea Station (Suica works; it's a separate fare from JR), or walk it.</div></div></div>
-    <div class="row"><div class="t">08:00</div><div><div class="what">At the gates</div><div class="note">Tokyo Disney Resort app open and logged in, everyone's tickets linked to one phone, a card saved. Arrive before opening — the first 90 minutes are worth three hours later in the day.</div></div></div>
+    <div class="row"><div class="t">08:00</div><div><div class="what">At the gates</div><div class="note">Tokyo Disney Resort app open and logged in, everyone's tickets linked to one phone, a card saved. Arrive before opening — the first 90 minutes are worth three hours later in the day. <a class="go" href="https://www.tokyodisneyresort.jp/en/tdr/app.html" target="_blank" rel="noopener">Get the app</a></div></div></div>
     <div class="row"><div class="t">On entry</div><div><div class="what">Buy Frozen Journey Premier Access</div><div class="note">BUY — ¥2,500 each. The one must-buy of the day; Fantasy Springs slots go fast once the park opens. Then check the app for Peter Pan and Rapunzel (the box below has how those work).</div></div></div>
     <div class="row"><div class="t">Opening</div><div><div class="what">Soaring: Fantastic Flight</div><div class="note">Free standby. Go straight there — opening is its shortest line of the day. Skipping its ¥2,500 Premier Access is the point.</div></div></div>
     <div class="row"><div class="t">~09:45</div><div><div class="what">Toy Story Mania!</div><div class="note">Free standby, and usually the longest standby in the park, so go early. Already over 60 min? Push it to the last hour (its Premier Access is ¥2,000).</div></div></div>
@@ -438,12 +481,12 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
     <div class="row"><div class="t">18:00</div><div><div class="what">Hot dinner</div><div class="note">Sit down somewhere warm before the cold evening.</div></div></div>
     <div class="row"><div class="t">19:00</div><div><div class="what">Last hour + the harbour at night</div><div class="note">Lines drop after dark, so redo anything missed. Then Mediterranean Harbor and the volcano lit up, the after-dark reward. The night show, Believe! Sea of Dreams, is suspended 6 Jan – 4 Feb, so there is no show tonight; check the app for what is on. Lingering by the water at 20:00 in 2°C is not like walking in it — heavy layer plus kairo hand warmers (¥100 at any konbini). At closing, leave straight away or wait 40 minutes for the crowd.</div></div></div>
     <div class="row"><div class="t">Note</div><div><div class="what">Closed this month</div><div class="note">Journey to the Center of the Earth is shut for refurbishment (8 Jan – 8 Mar) and the DisneySea Electric Railway is closed (8 Jan – 10 Feb). The park's own dates, marked subject to change.</div></div></div>
-    <div class="row"><div class="t">Costs</div><div><div class="what">What it costs</div><div class="note">1-Day Passport ¥7,900–10,900 by date, food ¥1,000–2,000 a meal, plus Premier Access: ~¥2,500 each for Frozen (~¥4,500 if the Peter Pan backup is needed). ≈ ¥15,500–19,500 all in.</div></div></div>
+    <div class="row"><div class="t">Costs</div><div><div class="what">What it costs</div><div class="note">1-Day Passport ¥7,900–10,900 by date, food ¥1,000–2,000 a meal, plus Premier Access: ~¥2,500 each for Frozen (~¥4,500 if the Peter Pan backup is needed). ≈ ¥15,500–19,500 all in. <a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Buy park tickets</a></div></div></div>
   </div>
   <div class="box calm">
     <h3>How Premier Access works</h3>
     <ul>
-      <li>Paid, per person, per ride, bought in the Tokyo Disney Resort app once you're inside the park. Limited numbers; it can sell out.</li>
+      <li>Paid, per person, per ride, bought in the Tokyo Disney Resort app once you're inside the park. Limited numbers; it can sell out. <a class="go" href="https://www.tokyodisneyresort.jp/en/tds/guide/disneypremieraccess.html" target="_blank" rel="noopener">Official Premier Access guide</a></li>
       <li>One at a time: the next one can be bought 60 minutes after the last purchase, or once that pass's return time arrives, whichever comes first (the official rule). Realistically three or four in a day, not the whole list.</li>
       <li>Prices rose on 1 Sep 2026. Confirmed: Frozen Journey ¥2,500, Soaring ¥2,500, Toy Story Mania! ¥2,000, Raging Spirits ¥1,500. Others: check the app.</li>
       <li>The free Priority Pass ended on 31 Aug 2026; there is no free line-skip any more.</li>
@@ -464,7 +507,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
     <div class="row"><div class="t">14:15</div><div><div class="what">Tokyu Plaza + Miyashita Park</div><div class="note">The kaleidoscope mirror entrance, then the rooftop park with KITH, Nike and good coffee.</div></div></div>
     <div class="row"><div class="t">15:30</div><div><div class="what">Shibuya Scramble Square 12F</div><div class="note">Free indoor viewpoint straight down at the Crossing. Pokémon Center Mega on 11–12F.</div></div></div>
     <div class="row"><div class="t">16:15</div><div><div class="what">Loft Shibuya</div><div class="note">Stationery and lifestyle goods — the best-value souvenir hunting in the city.</div></div></div>
-    <div class="row"><div class="t">17:15</div><div><div class="what">Shibuya Sky</div><div class="note">Booked ahead for blue hour, right after sunset. ¥2,200.</div></div></div>
+    <div class="row"><div class="t">17:15</div><div><div class="what">Shibuya Sky</div><div class="note">Booked ahead for blue hour, right after sunset. ¥2,200. <a class="go" href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Buy tickets</a></div></div></div>
     <div class="row"><div class="t">19:00</div><div><div class="what">All-you-can-eat shabu-shabu</div><div class="note">Shabu-Shabu Let Us Shibuya: two hours, great value for four, booked ahead — the timer starts at the reservation slot.</div></div></div>
     <div class="row"><div class="t">21:30</div><div><div class="what">Nonbei Yokocho</div><div class="note">A tiny bar alley by the tracks: Golden Gai's atmosphere, a fraction of the tourists. Last train home is around midnight — check it on the night.</div></div></div>
   </div>
@@ -481,7 +524,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
     <div class="row"><div class="t">14:00</div><div><div class="what">Itoya + flagships</div><div class="note">Twelve floors of stationery, Uniqlo Ginza's exclusive lines, MUJI's food floor. Unhurried, for once.</div></div></div>
     <div class="row"><div class="t">16:00</div><div><div class="what">Drugstore + Don Quijote run</div><div class="note">Matsumoto Kiyoshi or Sundrug for the full haul. Passport at every till, keep every receipt, and everything tax-free rides in cabin bags tomorrow.</div></div></div>
     <div class="row"><div class="t">19:30</div><div><div class="what">Farewell yakiniku</div><div class="note">All-you-can-eat Japanese BBQ, ¥3,000–5,000 each. Or one last Golden Gai run — no checkout tomorrow, only a flight.</div></div></div>
-    <div class="row"><div class="t">23:00</div><div><div class="what">Manga cafe, near Ueno</div><div class="note">Kaikatsu Club or similar: private booth, shower, free drinks bar, ~¥3,000 for the night package. Booths are solo — everyone sets two alarms.</div></div></div>
+    <div class="row"><div class="t">23:00</div><div><div class="what">Manga cafe, near Ueno</div><div class="note">Kaikatsu Club or similar: private booth, shower, free drinks bar, ~¥3,000 for the night package. Booths are solo — everyone sets two alarms. <a class="go" href="https://www.kaikatsu.jp/shop/" target="_blank" rel="noopener">Find a branch (Japanese site)</a></div></div></div>
   </div>
 </article>
 
@@ -491,9 +534,9 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="tl">
     <div class="row"><div class="t">05:15</div><div><div class="what">Up and out</div><div class="note">Two alarms. Konbini breakfast on the walk: egg sandwich, onigiri, hot canned coffee. You will miss these.</div></div></div>
     <div class="row"><div class="t">05:40</div><div><div class="what">Bags out of the lockers</div><div class="note">Five minutes, then the platform.</div></div></div>
-    <div class="row"><div class="t">05:58</div><div><div class="what">First Skyliner from Ueno</div><div class="note">Narita at ~06:44. There is no earlier train, which is why the manga cafe had to be near Ueno — don't plan a taxi alternative, just make this train.</div></div></div>
+    <div class="row"><div class="t">05:58</div><div><div class="what">First Skyliner from Ueno</div><div class="note">Narita at ~06:44. There is no earlier train, which is why the manga cafe had to be near Ueno — don't plan a taxi alternative, just make this train. <a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/en/" target="_blank" rel="noopener">Buy Skyliner tickets</a></div></div></div>
     <div class="row"><div class="t">06:50</div><div><div class="what">Check in, Terminal 1</div><div class="note">Check-in closes 90 minutes before a morning departure — comfortable margin, not a lazy one.</div></div></div>
-    <div class="row"><div class="t">07:20</div><div><div class="what">Tax refund at customs</div><div class="note">Passport at the refund kiosk before security, goods and receipts in cabin bags — customs can ask to see them. Skip this step and the 10% is gone for good; if the queue ever threatens the flight, abandon it.</div></div></div>
+    <div class="row"><div class="t">07:20</div><div><div class="what">Tax refund at customs</div><div class="note">Passport at the refund kiosk before security, goods and receipts in cabin bags — customs can ask to see them. Skip this step and the 10% is gone for good; if the queue ever threatens the flight, abandon it. <a class="go" href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00028.html" target="_blank" rel="noopener">How the refund works</a></div></div></div>
     <div class="row"><div class="t">08:30</div><div><div class="what">Gate-side souvenirs, then home</div><div class="note">Last call for Tokyo Banana, Royce, regional KitKats — pricier than Donki, but right there. Sampai jumpa, Tokyo.</div></div></div>
   </div>
 </article>
@@ -563,6 +606,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="box">
     <h3>The rules changed on 1 November 2026</h3>
     <p>Japan scrapped instant tax-free discounts at the register. You now pay the full price in store and claim the 10% back at a customs kiosk at the airport before flying. Any guide that says the tax comes off at the till is out of date.</p>
+    <p><a class="go" href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00028.html" target="_blank" rel="noopener">Official guide for travellers</a></p>
   </div>
   <h3>How the refund works</h3>
   <ul>
@@ -604,7 +648,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   </div>
   <h3>Suica and cash</h3>
   <ul>
-    <li>A Suica or Pasmo covers trains, buses, konbini, vending machines and most chain restaurants with a tap. Load ¥5,000 on arrival. iPhones can run Mobile Suica in Apple Wallet; most non-Japanese Androids can't, so take the physical Welcome Suica at the airport — valid 28 days, no deposit.</li>
+    <li>A Suica or Pasmo covers trains, buses, konbini, vending machines and most chain restaurants with a tap. Load ¥5,000 on arrival. iPhones can run Mobile Suica in Apple Wallet; most non-Japanese Androids can't, so take the physical Welcome Suica at the airport — valid 28 days, no deposit. <a class="go" href="https://www.jreast.co.jp/en/multi/welcomesuica/welcomesuica.html" target="_blank" rel="noopener">About Welcome Suica</a></li>
     <li>Carry ¥10,000–15,000 cash at all times. Golden Gai, small restaurants, temples and market stalls are cash-only.</li>
     <li>7-Bank ATMs (inside 7-Eleven) and Japan Post ATMs take foreign Visa and Mastercard reliably. The fee is flat, so fewer, larger withdrawals beat many small ones.</li>
     <li>Check your card's foreign transaction fee before relying on it — some charge 1–3% plus a markup.</li>
@@ -619,28 +663,28 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <h3>Tickets</h3>
   <table class="wide1">
     <tr><th>Sight</th><th>Price</th><th>Day</th></tr>
-    <tr><td>Tokyo Skytree</td><td>¥2,100–3,400</td><td>1</td></tr>
-    <tr><td>Shinjuku Gyoen</td><td>¥500</td><td>2</td></tr>
+    <tr><td><a class="go" href="https://en.tokyo-skytree.jp/ticket/" target="_blank" rel="noopener">Tokyo Skytree</a></td><td>¥2,100–3,400</td><td>1</td></tr>
+    <tr><td><a class="go" href="https://policies.env.go.jp/national-garden/shinjukugyoen/english/index.html" target="_blank" rel="noopener">Shinjuku Gyoen</a></td><td>¥500</td><td>2</td></tr>
     <tr><td>Golden Gai cover</td><td>¥300–500 a bar</td><td>2</td></tr>
-    <tr><td>Enoden day pass</td><td>¥800</td><td>3</td></tr>
+    <tr><td><a class="go" href="https://www.enoden.co.jp/en/tourism/ticket/noriorikun/" target="_blank" rel="noopener">Enoden day pass</a></td><td>¥800</td><td>3</td></tr>
     <tr><td>Kōtoku-in (Great Buddha)</td><td>¥300</td><td>3</td></tr>
     <tr><td>Hasedera</td><td>¥400</td><td>3</td></tr>
-    <tr><td>Tokyo National Museum</td><td>¥1,000</td><td>4</td></tr>
-    <tr><td>Mt Fuji Panoramic Ropeway</td><td>~¥1,000 return</td><td>5</td></tr>
-    <tr><td>teamLab Planets</td><td>¥3,800</td><td>6</td></tr>
+    <tr><td><a class="go" href="https://www.tnm.jp/?lang=en" target="_blank" rel="noopener">Tokyo National Museum</a></td><td>¥1,000</td><td>4</td></tr>
+    <tr><td><a class="go" href="https://www.mtfujiropeway.jp/en/" target="_blank" rel="noopener">Mt Fuji Panoramic Ropeway</a></td><td>~¥1,000 return</td><td>5</td></tr>
+    <tr><td><a class="go" href="https://teamlabplanets.dmm.com/en/ticket" target="_blank" rel="noopener">teamLab Planets</a></td><td>¥3,800</td><td>6</td></tr>
     <tr><td>Sento</td><td>~¥550</td><td>6</td></tr>
-    <tr><td>Tokyo DisneySea ticket</td><td>¥7,900–10,900 by date</td><td>7</td></tr>
-    <tr><td>DisneySea Premier Access, Frozen Journey</td><td>¥2,500 (~¥4,500 with the Peter Pan backup)</td><td>7</td></tr>
+    <tr><td><a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Tokyo DisneySea ticket</a></td><td>¥7,900–10,900 by date</td><td>7</td></tr>
+    <tr><td><a class="go" href="https://www.tokyodisneyresort.jp/en/tds/guide/disneypremieraccess.html" target="_blank" rel="noopener">DisneySea Premier Access, Frozen Journey</a></td><td>¥2,500 (~¥4,500 with the Peter Pan backup)</td><td>7</td></tr>
     <tr><td>DisneySea, all in with food and Premier Access</td><td>≈¥15,500–19,500</td><td>7</td></tr>
-    <tr><td>Shibuya Sky</td><td>¥2,200</td><td>8</td></tr>
+    <tr><td><a class="go" href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Shibuya Sky</a></td><td>¥2,200</td><td>8</td></tr>
   </table>
   <p>Free: the Metropolitan Government Building deck, Meiji Jingu, and the Shibuya Scramble Square 12F viewpoint.</p>
   <h3>Getting there</h3>
   <table class="wide1">
-    <tr><td>Narita → Oshiage</td><td>~¥1,200, Keisei Access Express, ~60 min. Arrival day.</td></tr>
+    <tr><td>Narita → Oshiage</td><td>~¥1,200, Keisei Access Express, ~60 min. Arrival day. <a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/directions/oshiage.php" target="_blank" rel="noopener">Route and fare</a></td></tr>
     <tr><td>Tokyo → Kamakura</td><td>About ¥1,000 each way since JR East's 15 Mar 2026 fare rise (was ¥945), JR Yokosuka Line, ~55 min; the way home from Fujisawa is about the same. With the Enoden pass the Kamakura day comes to about ¥2,800 in trains.</td></tr>
-    <tr><td>Shinjuku → Kawaguchiko</td><td>~¥2,300 each way by highway bus, ~1h45–2h30 depending on traffic — about ¥4,600 return. The fallback Fuji Excursion train is ¥4,130 one way, ~1h55.</td></tr>
-    <tr><td>Ueno → Narita</td><td>Skyliner, first train 05:58, at Narita ~06:44. The fare isn't in this plan — check it on Keisei's site before the day.</td></tr>
+    <tr><td>Shinjuku → Kawaguchiko</td><td>~¥2,300 each way by highway bus, ~1h45–2h30 depending on traffic — about ¥4,600 return. The fallback Fuji Excursion train is ¥4,130 one way, ~1h55. <a class="go" href="https://bus.fujikyu.co.jp/en/highway/fujisan/shinjuku-kawaguchiko/" target="_blank" rel="noopener">Timetable and fares</a></td></tr>
+    <tr><td>Ueno → Narita</td><td>Skyliner, first train 05:58, at Narita ~06:44. The fare isn't in this plan — check it on Keisei's site before the day. <a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/en/" target="_blank" rel="noopener">Buy Skyliner tickets</a></td></tr>
     <tr><td>Everyday trains</td><td>Load ¥5,000 on the Suica at the airport and top up as it runs down.</td></tr>
   </table>
   <h3>Small change</h3>
@@ -656,13 +700,13 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <table>
     <tr><td>Google Maps</td><td>Handles Tokyo transit well; you'll use it 90% of the time. Download offline Tokyo.</td></tr>
     <tr><td>Google Translate</td><td>Camera mode for menus and labels. Download the Japanese offline pack.</td></tr>
-    <tr><td>Visit Japan Web</td><td>Immigration and customs QR codes.</td></tr>
-    <tr><td>JAVES access</td><td>Whatever gets you to the original approval email fast — it must display live.</td></tr>
+    <tr><td>Visit Japan Web</td><td>Immigration and customs QR codes. <a class="go" href="https://services.digital.go.jp/en/visit-japan-web/" target="_blank" rel="noopener">Set it up</a></td></tr>
+    <tr><td>JAVES access</td><td>Whatever gets you to the original approval email fast — it must display live. <a class="go" href="https://www.evisa.mofa.go.jp/personal/logintoko" target="_blank" rel="noopener">JAVES log-in</a></td></tr>
     <tr><td>Tabelog</td><td>The review app locals use. Above 3.5 is genuinely good — the scale is harsh.</td></tr>
     <tr><td>GO</td><td>Taxis.</td></tr>
-    <tr><td>Tokyo Disney Resort</td><td>Wait times, Standby Passes and Premier Access. Essential on Day 7.</td></tr>
-    <tr><td>highwaybus.com</td><td>Highway Bus dot com: Keio-run Kawaguchiko buses.</td></tr>
-    <tr><td>Fujiyama Connect</td><td>Fujikyu-run Kawaguchiko buses. Booking sites changed 1 Oct 2026 — check which operator runs your bus.</td></tr>
+    <tr><td>Tokyo Disney Resort</td><td>Wait times, Standby Passes and Premier Access. Essential on Day 7. <a class="go" href="https://www.tokyodisneyresort.jp/en/tdr/app.html" target="_blank" rel="noopener">Get the app</a></td></tr>
+    <tr><td>highwaybus.com</td><td>Highway Bus dot com: Keio-run Kawaguchiko buses. <a class="go" href="https://www.highwaybus.com/gp/inbound/index?lang=EN" target="_blank" rel="noopener">Book the bus</a></td></tr>
+    <tr><td>Fujiyama Connect</td><td>Fujikyu-run Kawaguchiko buses. Booking sites changed 1 Oct 2026 — check which operator runs your bus. <a class="go" href="https://www.fujiyamaconnect.jp/bus/inbound/?wovn=en" target="_blank" rel="noopener">Book the bus</a></td></tr>
   </table>
   <h3>Etiquette that actually matters</h3>
   <ul>
