@@ -136,6 +136,22 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
 .scrollx table{min-width:600px}
 #compact td:first-child{white-space:nowrap}
 #compact .mini td:first-child{white-space:normal; font-weight:650}
+/* Plan A vs B comparison, collapsed by default */
+details.cmp{margin:26px 0 0; border:1px solid var(--line); border-radius:10px; background:var(--card); scroll-margin-top:calc(env(safe-area-inset-top, 0px) + 120px)}
+details.cmp > summary{cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 16px; font-weight:650}
+details.cmp > summary::-webkit-details-marker{display:none}
+details.cmp > summary::after{content:"+"; color:var(--shu); font-weight:700; font-size:1.2rem; line-height:1}
+details.cmp[open] > summary::after{content:"\2212"}
+details.cmp .in{padding:0 16px 16px; border-top:1px solid var(--line)}
+details.cmp .in > p:first-child{margin-top:14px}
+details.cmp h3{margin-top:22px}
+.tag{display:inline-block; font-size:.78rem; font-weight:700; padding:1px 8px; border-radius:999px; background:var(--shu); color:#fff; white-space:nowrap}
+.tag.alt{background:transparent; color:var(--soft); border:1px solid var(--line)}
+table.cmpt{font-size:.88rem}
+table.cmpt td:first-child{white-space:normal; width:24%}
+table.cmpt td:nth-child(2){font-weight:600}
+p.fine{color:var(--soft); font-size:.85rem}
+p.why-a{border-left:3px solid var(--shu); padding-left:12px; font-weight:600}
 </style>
 </head>
 <body class="tab-plan">
@@ -152,7 +168,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
     <a href="#overview" data-tab="overview">Overview</a><a href="#stay" data-tab="stay">Flights &amp; stay</a><a href="#prep" data-tab="prep">Before you fly</a><a href="#plan" data-tab="plan">Itinerary</a><a href="#eat" data-tab="eat">Food &amp; night</a><a href="#shop" data-tab="shop">Shopping</a><a href="#around" data-tab="around">Money</a><a href="#help" data-tab="help">Packing</a>
   </nav>
   <nav class="days" aria-label="Jump to a day">
-    <a href="#d1">1 · Arrive</a><a href="#d2">2 · Shinjuku</a><a href="#d3">3 · Kamakura</a><a href="#d4">4 · Mt Fuji</a><a href="#d5">5 · Akihabara</a><a href="#d6">6 · GALA</a><a href="#d7">7 · DisneySea</a><a href="#d8">8 · Shibuya</a><a href="#d9">9 · Finale</a><a href="#d10">10 · Fly</a>
+    <a href="#planb">A vs B</a><a href="#d1">1 · Arrive</a><a href="#d2">2 · GALA</a><a href="#d3">3 · Kamakura</a><a href="#d4">4 · Akihabara</a><a href="#d5">5 · DisneySea</a><a href="#d6">6 · Shinjuku</a><a href="#d7">7 · Mt Fuji</a><a href="#d8">8 · Shibuya</a><a href="#d9">9 · Finale</a><a href="#d10">10 · Fly</a>
   </nav>
 </div>
 
@@ -164,15 +180,15 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
     <div><dt>Who</dt><dd>A group of four, most of it on the same flight in.</dd></div>
     <div><dt>Flights</dt><dd>Land at Narita Terminal 1 at 07:45 on Thursday the 14th; fly home from Terminal 1 on the morning of Saturday the 23rd. <a href="#stay">Flights &amp; stay</a> has both ends.</dd></div>
     <div><dt>Base</dt><dd>A private floor of a house near Kanegafuchi Station on the Tobu Skytree Line, then one night in a manga cafe near Ueno.</dd></div>
-    <div><dt>Day trips</dt><dd>Kamakura and Enoshima on Saturday the 16th; Mt Fuji and Kawaguchiko by train on Sunday the 17th; GALA Yuzawa skiing on Tuesday the 19th. Sun–Tue run on the JR Tokyo Wide Pass (¥16,000): the Fuji Excursion and the GALA Shinkansen are both on it.</dd></div>
-    <div><dt>Booked ahead</dt><dd><a class="go" href="https://en.tokyo-skytree.jp/ticket/" target="_blank" rel="noopener">Skytree</a>, <a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Tokyo DisneySea</a> (Wed 20), <a class="go" href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Shibuya Sky</a>, GALA lift tickets and lesson (Tue 19), Tokyo Wide Pass seats for Fuji and GALA. Dates and order in <a href="#prep">Before you fly</a>; every official link is in <a href="#buy">Where to buy &amp; register</a>.</dd></div>
+    <div><dt>Day trips</dt><dd>GALA Yuzawa skiing on Friday the 15th; Kamakura and Enoshima on Saturday the 16th; Mt Fuji and Kawaguchiko on Wednesday the 20th. Each has a Tokyo day either side — <a href="#planb">Plan A vs B</a> shows the pass week that was weighed and why it wasn't picked.</dd></div>
+    <div><dt>Booked ahead</dt><dd><a class="go" href="https://en.tokyo-skytree.jp/ticket/" target="_blank" rel="noopener">Skytree</a>, <a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Tokyo DisneySea</a> (Mon 18), <a class="go" href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Shibuya Sky</a>, GALA early-bird lift tickets (by 30 Nov), lesson and rental (Fri 15), the GALA Shinkansen on <a class="go" href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank" rel="noopener">Eki-net</a>, and the Kawaguchiko bus both ways (Wed 20). Dates and order in <a href="#prep">Before you fly</a>; every official link is in <a href="#buy">Where to buy &amp; register</a>.</dd></div>
     <div><dt>Time</dt><dd>Japan is UTC+9, barely an hour off Southeast Asia — no jet lag to pay for the overnight flight.</dd></div>
   </dl>
 
   <h2 id="why">Why mid-January</h2>
   <p class="sub">The calendar does a lot of the work.</p>
   <p>The New Year rush is over by 5 January and Coming of Age Day falls on 11 January 2027, so domestic crowds have cleared before arrival. Chinese New Year is 6 February 2027, so the regional wave hasn't started either: shorter queues, softer rates, no festival surcharges.</p>
-  <p>It's also Tokyo's driest, clearest month — the best Fuji visibility of the year, which pays off twice: from the free Metropolitan Government deck on <a href="#d2">Day 2</a>, and for the whole Kawaguchiko trip on <a href="#d4">Day 4</a>.</p>
+  <p>It's also Tokyo's driest, clearest month — the best Fuji visibility of the year, which pays off twice: from the free Metropolitan Government deck on <a href="#d6">Day 6</a>, and for the whole Kawaguchiko trip on <a href="#d7">Day 7</a>.</p>
   <p>The trade-off is daylight and cold. The sun sets around 16:50, so outdoor and view-dependent sights go first and evenings are for food, shopping and bars; nights drop to near freezing, which <a href="#help">Packing</a> handles.</p>
 
   <h2 id="weather">January weather</h2>
@@ -193,7 +209,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <h3>Arriving · Thursday 14 January</h3>
   <table class="wide1">
     <tr><td>07:45 · Land</td><td>Narita Terminal 1, most of the group on the same flight. The flight in is overnight — it is the night's sleep, so board tired. Immigration runs on the Visit Japan Web QR codes, with the JAVES notice live on the phone.</td></tr>
-    <tr><td>Before leaving the terminal</td><td>Collect the JR Tokyo Wide Passes at the JR EAST Travel Service Center in Terminal 1 (or a reserved-seat machine, with passport) — they activate Sunday. Then a Welcome Suica and cash from the 7-Bank ATM. <a class="go" href="https://www.jreast.co.jp/en/multi/pass/tokyowidepass.html" target="_blank" rel="noopener">About the pass</a> · <a class="go" href="https://www.jreast.co.jp/en/multi/welcomesuica/welcomesuica.html" target="_blank" rel="noopener">About Welcome Suica</a></td></tr>
+    <tr><td>Before leaving the terminal</td><td>A Welcome Suica and cash from the 7-Bank ATM. <a class="go" href="https://www.jreast.co.jp/en/multi/welcomesuica/welcomesuica.html" target="_blank" rel="noopener">About Welcome Suica</a></td></tr>
     <tr><td>Into town</td><td>Keisei Access Express to Oshiage, ~60 min, ~¥1,200, then three Tobu stops to Kanegafuchi. One cheap transfer with luggage; the Skyliner via Ueno adds a second. <a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/directions/oshiage.php" target="_blank" rel="noopener">Route and fare</a></td></tr>
     <tr><td>Until 16:00</td><td>Check-in isn't until 16:00 and nobody is on site, so bags go into large coin lockers at Skytree Town or Asakusa Station (¥700–1,000).</td></tr>
     <tr><td>Meeting up</td><td>Anyone arriving separately meets the group at the house; the fallback is the Kaminarimon gate in Asakusa.</td></tr>
@@ -217,7 +233,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <table>
     <tr><td>Check-in</td><td>From 16:00, self check-in by smart-lock code (sent before arrival). Nobody is on site.</td></tr>
     <tr><td>Checkout</td><td>By 10:00 on the 22nd. No desk, so no bag storage — plan on station coin lockers either side of the stay.</td></tr>
-    <tr><td>Laundry</td><td>No washer in the house. Coin laundry nearby: ¥400–600 a load, about an hour. Slotted for Monday night, the near-home day — pack five or six days of clothes, not ten.</td></tr>
+    <tr><td>Laundry</td><td>No washer in the house. Coin laundry nearby: ¥400–600 a load, about an hour. Slotted for Sunday night, the near-home day before DisneySea — pack five or six days of clothes, not ten.</td></tr>
     <tr><td>House rules</td><td>Non-smoking. Shoes off inside — it's a home, genkan rules apply. Quiet after 23:00 — the neighbours are real people, so late returns happen at a whisper.</td></tr>
     <tr><td>Nearby</td><td>FamilyMart and 7-Eleven in walking distance, a good seafood izakaya (Uoma) by the station, and Mimatsuyu, a proper local sento (public bath) — the cheap, authentic answer to sore legs.</td></tr>
   </table>
@@ -277,10 +293,12 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   </ul>
   <h3>November – December</h3>
   <ul class="check">
-    <li>Tokyo DisneySea tickets for Wednesday 20 January, on sale at 14:00 Japan time on 20 November — two months ahead. Buy that afternoon. <a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Buy tickets</a></li>
-    <li>GALA Yuzawa early-bird 1-day lift tickets, ¥4,800 each, on sale until 23:00 Japan time on 30 November (¥7,500 online, ¥8,000 at the window after that). Check the product is valid on Tuesday 19 January before paying. <a class="go" href="https://webket.jp/pc/ticket/index?fc=00082&amp;ac=7000" target="_blank" rel="noopener">Webket</a> · <a class="go" href="https://event.jreast.co.jp/activity/detail/a087/a087-early-ticket-season2026-27" target="_blank" rel="noopener">JRE MALL</a> · <a class="go" href="https://gala.co.jp/winter/information/lifttickethayawarisale20261015/" target="_blank" rel="noopener">Early-bird notice</a></li>
-    <li>~15 December, one month out: JR Tokyo Wide Pass (¥16,000) for everyone, Sunday 17 – Tuesday 19, and reserve seats — Fuji Excursion Shinjuku → Kawaguchiko ~07:30 and back ~17:00 on Sunday 17 (Sunday seats sell out); Ueno → GALA Yuzawa ~07:10 and back ~16:30 on Tuesday 19. Passes are collected at Narita T1 on arrival. <a class="go" href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank" rel="noopener">JR-EAST Train Reservation</a> · <a class="go" href="https://www.jreast.co.jp/en/multi/pass/tokyowidepass.html" target="_blank" rel="noopener">About the pass</a></li>
-    <li>~15 December: pre-book GALA ski or board rental sets, and prepay the 2-hour private lesson, slot [2B] at 12:00. <a class="go" href="https://gala.co.jp/winter/" target="_blank" rel="noopener">GALA Yuzawa</a> · <a class="go" href="https://gala.co.jp/winter/examination-school/" target="_blank" rel="noopener">Ski school</a></li>
+    <li>Tokyo DisneySea tickets for Monday 18 January, on sale at 14:00 Japan time on 18 November — two months ahead. Buy that afternoon. <a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Buy tickets</a></li>
+    <li>GALA Yuzawa early-bird 1-day lift tickets, ¥4,800 each, on sale until 23:00 Japan time on 30 November (¥7,500 online, ¥8,000 at the window after that). Check the product is valid on Friday 15 January before paying. <a class="go" href="https://webket.jp/pc/ticket/index?fc=00082&amp;ac=7000" target="_blank" rel="noopener">Webket</a> · <a class="go" href="https://event.jreast.co.jp/activity/detail/a087/a087-early-ticket-season2026-27" target="_blank" rel="noopener">JRE MALL</a> · <a class="go" href="https://gala.co.jp/winter/information/lifttickethayawarisale20261015/" target="_blank" rel="noopener">Early-bird notice</a></li>
+    <li>Early December, by 15 Dec to keep cancellation free: the Giant Ski School 2-hour private lesson, slot [2A] 09:00 on Fri 15 Jan, ski, four adults, English requested. Registration form, then WhatsApp +81 70 9027 2247 or LINE @giantski; pay in full within 24 h of the quote. <a href="#d2">Day 2</a> has the full steps. <a class="go" href="https://gala.co.jp/winter/examination-school/" target="_blank" rel="noopener">Ski school</a></li>
+    <li>~15 December: the FIRST Shinkansen Ueno → GALA Yuzawa (~06:15) and back ~16:30 on Fri 15, reserved — Tokudane if offered. <a class="go" href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank" rel="noopener">Eki-net</a></li>
+    <li>~15 December, about a month out: the Kawaguchiko highway bus both ways for Wed 20 — 06:30 out of Busta Shinjuku, 16:30 back. Both directions sell out; check which operator runs your bus. <a class="go" href="https://www.highwaybus.com/gp/inbound/index?lang=EN" target="_blank" rel="noopener">Book Keio buses</a> · <a class="go" href="https://www.fujiyamaconnect.jp/bus/inbound/?wovn=en" target="_blank" rel="noopener">Book Fujikyu buses</a></li>
+    <li>~15 December: pre-book GALA rental on the official online form — ski set, helmet (mandatory for the lesson), goggles, and the wear set if renting. Choose counter pickup so the boots get fitted; the Pick Up Box only if you're sure of sizes. <a class="go" href="https://gala.co.jp/winter/rental/" target="_blank" rel="noopener">GALA rental</a></li>
     <li>Timed-entry slot: Tokyo Skytree (evening of the 14th). <a class="go" href="https://en.tokyo-skytree.jp/ticket/" target="_blank" rel="noopener">Skytree tickets</a></li>
     <li>A Japan eSIM (Ubigi, Mobal, Airalo) — activate on landing, not before</li>
     <li>Tell the bank you're travelling, and check the card's foreign transaction fee</li>
@@ -292,6 +310,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
     <li>Change the first few days' cash to yen before flying — money changers at home usually beat the airport</li>
     <li>Offline Tokyo in Google Maps, the Japanese offline pack in Google Translate</li>
     <li>Mobile Suica set up on iPhones; Android users plan on a physical Welcome Suica at the airport. <a class="go" href="https://www.jreast.co.jp/en/multi/welcomesuica/welcomesuica.html" target="_blank" rel="noopener">About Welcome Suica</a></li>
+    <li>~8 Jan: Giant Ski School's meeting-point email arrives — read it, and note the spot for 08:50 on the 15th</li>
     <li>Dinner reservations: shabu-shabu in Shibuya for the 21st, farewell yakiniku for the 22nd</li>
     <li>The host's online guest registration completed for everyone — Japan requires every guest registered with passport details</li>
   </ul>
@@ -306,12 +325,13 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <dl class="facts buy">
     <div><dt>DisneySea</dt><dd><a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Buy park tickets</a> · <a class="go" href="https://www.tokyodisneyresort.jp/en/tds/guide/disneypremieraccess.html" target="_blank" rel="noopener">Premier Access</a><span class="why">Tokyo Disney Resort. Premier Access is bought in the app on the day.</span></dd></div>
     <div><dt>Tokyo Skytree</dt><dd><a class="go" href="https://en.tokyo-skytree.jp/ticket/" target="_blank" rel="noopener">Buy tickets</a></dd></div>
-    <div><dt>GALA Yuzawa</dt><dd><a class="go" href="https://webket.jp/pc/ticket/index?fc=00082&amp;ac=7000" target="_blank" rel="noopener">Lift tickets on Webket</a> · <a class="go" href="https://event.jreast.co.jp/activity/detail/a087/a087-early-ticket-season2026-27" target="_blank" rel="noopener">Lift tickets on JRE MALL</a> · <a class="go" href="https://gala.co.jp/winter/information/lifttickethayawarisale20261015/" target="_blank" rel="noopener">Early-bird notice</a> · <a class="go" href="https://gala.co.jp/winter/hours-pricing/" target="_blank" rel="noopener">Hours and pricing</a> · <a class="go" href="https://gala.co.jp/winter/examination-school/" target="_blank" rel="noopener">Ski school</a> · <a class="go" href="https://gala.co.jp/winter/" target="_blank" rel="noopener">Resort site, rental</a><span class="why">GALA is run by JR East; Webket and JRE MALL are its official ticket stores. The resort site is Japanese-first.</span></dd></div>
+    <div><dt>GALA Yuzawa</dt><dd><a class="go" href="https://webket.jp/pc/ticket/index?fc=00082&amp;ac=7000" target="_blank" rel="noopener">Lift tickets on Webket</a> · <a class="go" href="https://event.jreast.co.jp/activity/detail/a087/a087-early-ticket-season2026-27" target="_blank" rel="noopener">Lift tickets on JRE MALL</a> · <a class="go" href="https://gala.co.jp/winter/information/lifttickethayawarisale20261015/" target="_blank" rel="noopener">Early-bird notice</a> · <a class="go" href="https://gala.co.jp/winter/hours-pricing/" target="_blank" rel="noopener">Hours and pricing</a> · <a class="go" href="https://gala.co.jp/winter/examination-school/" target="_blank" rel="noopener">Ski school</a> · <a class="go" href="https://gala.co.jp/winter/rental/" target="_blank" rel="noopener">Rental</a> · <a class="go" href="https://gala.co.jp/winter/english/access-en/" target="_blank" rel="noopener">Access</a><span class="why">GALA is run by JR East; Webket and JRE MALL are its official ticket stores. The lesson is booked with Giant Ski School by form, then WhatsApp or LINE.</span></dd></div>
     <div><dt>Shibuya Sky</dt><dd><a class="go" href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Buy tickets</a><span class="why">Opens in Japanese; the language button is at the top of the page.</span></dd></div>
   </dl>
   <h3>Transport</h3>
   <dl class="facts buy">
-    <div><dt>Tokyo Wide Pass</dt><dd><a class="go" href="https://www.jreast.co.jp/en/multi/pass/tokyowidepass.html" target="_blank" rel="noopener">About the pass</a> · <a class="go" href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank" rel="noopener">Buy and reserve seats</a><span class="why">JR East. Foreign passports only; seats reserved online, passes collected at Narita T1.</span></dd></div>
+    <div><dt>GALA Shinkansen</dt><dd><a class="go" href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank" rel="noopener">Eki-net</a><span class="why">JR East's booking site. Reserved Ueno ⇄ GALA Yuzawa tickets; Tokudane discounts when open.</span></dd></div>
+    <div><dt>Kawaguchiko bus</dt><dd><a class="go" href="https://www.highwaybus.com/gp/inbound/index?lang=EN" target="_blank" rel="noopener">Book Keio buses</a> · <a class="go" href="https://www.fujiyamaconnect.jp/bus/inbound/?wovn=en" target="_blank" rel="noopener">Book Fujikyu buses</a> · <a class="go" href="https://bus.fujikyu.co.jp/en/highway/fujisan/shinjuku-kawaguchiko/" target="_blank" rel="noopener">Timetable and fares</a><span class="why">Run jointly by Keio (highwaybus.com) and Fujikyu (Fujiyama Connect). Check the operator of your bus first.</span></dd></div>
     <div><dt>Skyliner</dt><dd><a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/en/" target="_blank" rel="noopener">Buy Skyliner tickets</a><span class="why">Keisei's e-ticket site.</span></dd></div>
     <div><dt>Narita → Oshiage</dt><dd><a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/directions/oshiage.php" target="_blank" rel="noopener">Access Express route and fare</a></dd></div>
     <div><dt>Welcome Suica</dt><dd><a class="go" href="https://www.jreast.co.jp/en/multi/welcomesuica/welcomesuica.html" target="_blank" rel="noopener">About Welcome Suica</a><span class="why">JR East. Bought at the airport, not online.</span></dd></div>
@@ -320,6 +340,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <h3>Apps</h3>
   <dl class="facts buy">
     <div><dt>Tokyo Disney Resort</dt><dd><a class="go" href="https://www.tokyodisneyresort.jp/en/tdr/app.html" target="_blank" rel="noopener">Get the app</a><span class="why">Tickets, wait times, Premier Access.</span></dd></div>
+    <div><dt>Eki-net</dt><dd><a class="go" href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank" rel="noopener">JR-EAST Train Reservation</a><span class="why">The GALA Shinkansen tickets live here.</span></dd></div>
     <div><dt>EMot</dt><dd><a class="go" href="https://www.emot.jp/noriorikun.eng.chara.html" target="_blank" rel="noopener">Enoden pass in EMot</a><span class="why">Odakyu's travel app, for the digital Noriorikun.</span></dd></div>
   </dl>
   <h3>On the day</h3>
@@ -346,13 +367,13 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <div class="scrollx">
   <table>
     <tr><th>Day</th><th>Plan</th><th>Don't miss</th></tr>
-    <tr><td>1 · Thu 14</td><td>Arrive · Asakusa · Skytree</td><td>Land 07:45, collect Tokyo Wide Passes at T1, bags in lockers until 16:00 check-in, Skytree slot in the evening</td></tr>
-    <tr><td>2 · Fri 15</td><td>Shinjuku · Isetan · Kabukicho</td><td>Free Government Building deck, Golden Gai — leave by midnight or commit to 05:00</td></tr>
-    <tr><td>3 · Sat 16</td><td>Kamakura + Enoshima day trip</td><td>Enoden day pass ¥800, Great Buddha, Fuji + Enoshima from Cape Inamuragasaki, sunset at Enoshima, home via Fujisawa (not Shinjuku)</td></tr>
-    <tr><td>4 · Sun 17</td><td>Mt Fuji · Kawaguchiko day trip</td><td>Mt Fuji by Fuji Excursion 07:30 on the pass, Chureito cut-off 16:15, back 17:00</td></tr>
-    <tr><td>5 · Mon 18</td><td>Yanaka · Ueno · Akihabara</td><td>Yanaka · Ameyoko · Akihabara — near home, laundry and ski kit at night</td></tr>
-    <tr><td>6 · Tue 19</td><td>GALA Yuzawa day trip</td><td>GALA Yuzawa — 07:10 Shinkansen on the pass, lesson 12:00, stop 15:30, DisneySea tomorrow</td></tr>
-    <tr><td>7 · Wed 20</td><td>Tokyo DisneySea</td><td>Gates before 08:00, buy Frozen Journey Premier Access on entry (¥2,500), free standby for the rest, no night show this month</td></tr>
+    <tr><td>1 · Thu 14</td><td>Arrive · Asakusa · Skytree</td><td>Land 07:45, bags in lockers until 16:00 check-in, 15:00 shop for the slopes, Skytree slot in the evening</td></tr>
+    <tr><td>2 · Fri 15</td><td>GALA Yuzawa day trip</td><td>Out 05:30, first Shinkansen ~06:15 from Ueno, lesson 09:00, back at Ueno ~18:00</td></tr>
+    <tr><td>3 · Sat 16</td><td>Kamakura + Enoshima day trip</td><td>The gentle day after skiing: Enoden day pass ¥800, Great Buddha, Fuji + Enoshima from Cape Inamuragasaki, sunset at Enoshima, home via Fujisawa</td></tr>
+    <tr><td>4 · Sun 17</td><td>Yanaka · Ueno · Akihabara</td><td>National Museum, car-free Akiba afternoon, coin laundry at night</td></tr>
+    <tr><td>5 · Mon 18</td><td>Tokyo DisneySea</td><td>Gates before 08:00, Frozen Premier Access optional ¥2,500, no night show this month</td></tr>
+    <tr><td>6 · Tue 19</td><td>Shinjuku · Isetan · Kabukicho</td><td>Free Government Building deck (North), Golden Gai — home by midnight, Fuji bus at 06:30</td></tr>
+    <tr><td>7 · Wed 20</td><td>Mt Fuji · Kawaguchiko day trip</td><td>06:30 bus reserved both ways, Chureito first, leave Oishi by 15:45 for the 16:30 bus. Thursday is the weather backup</td></tr>
     <tr><td>8 · Thu 21</td><td>Harajuku · Omotesando · Shibuya</td><td>Shibuya Sky at sunset, shabu-shabu dinner booked</td></tr>
     <tr><td>9 · Fri 22</td><td>Checkout · Tsukiji · Ginza · farewell</td><td>Bags to Ueno lockers, tax-free haul, yakiniku, manga cafe night</td></tr>
     <tr><td>10 · Sat 23</td><td>Fly home</td><td>05:58 first Skyliner, refund kiosk before check-in</td></tr>
@@ -369,53 +390,120 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   </table>
 </section>
 
+<details class="cmp" id="planb">
+  <summary><span>Plan A vs Plan B — why this week</span></summary>
+  <div class="in">
+    <p><span class="tag">A · chosen</span> the spaced week on Shinkansen tickets — the plan on this page. <span class="tag alt">B · not chosen</span> the JR Tokyo Wide Pass week, kept here so everyone can see what was weighed. The GALA day itself is identical in both. B stays possible until the Shinkansen tickets are bought (~15 Dec); the first real fork is the DisneySea ticket date — 15 Nov for B, 18 Nov for A.</p>
+
+    <h3>The week, side by side</h3>
+    <table class="cmpt">
+      <tr><th>Day</th><th>A · chosen</th><th>B · pass week</th></tr>
+      <tr><td>Thu 14</td><td>Arrival · Asakusa · Skytree</td><td>Same, plus collecting the passes at Narita T1</td></tr>
+      <tr><td>Fri 15</td><td>GALA Yuzawa, Shinkansen tickets</td><td>DisneySea — day two, fresh legs</td></tr>
+      <tr><td>Sat 16</td><td>Kamakura, the gentle day after skiing</td><td>Shinjuku — Golden Gai on a Saturday night</td></tr>
+      <tr><td>Sun 17</td><td>Yanaka · Ueno · Akihabara, car-free Akiba</td><td>Same</td></tr>
+      <tr><td>Mon 18</td><td>DisneySea</td><td>GALA Yuzawa — pass day 1, same first train and 09:00 lesson</td></tr>
+      <tr><td>Tue 19</td><td>Shinjuku · Isetan · Kabukicho</td><td>Kamakura — pass day 2, JR covered</td></tr>
+      <tr><td>Wed 20</td><td>Mt Fuji by bus, Thursday as weather backup</td><td>Mt Fuji by Fuji Excursion 07:30 — pass day 3; cloudy = swap with Tuesday for free</td></tr>
+      <tr><td>Thu 21</td><td>Harajuku · Omotesando · Shibuya</td><td>Same</td></tr>
+      <tr><td>Fri 22 – Sat 23</td><td>Finale · departure</td><td>Same</td></tr>
+    </table>
+
+    <h3>Cost per person, in yen</h3>
+    <table class="cmpt">
+      <tr><th></th><th>A · chosen</th><th>B · pass week</th></tr>
+      <tr><td>Ski day, full kit</td><td>30,300 + Shinkansen 13,400 = 43,700</td><td>30,300 (train on the pass)</td></tr>
+      <tr><td>Fuji day</td><td>8,300 (bus 4,400, ropeway, Red Line, hōtō, Chureito hop)</td><td>3,300 (train on the pass)</td></tr>
+      <tr><td>Tokyo Wide Pass</td><td>—</td><td>16,000</td></tr>
+      <tr><td>Kamakura day</td><td>5,000 (JR 2,000, Enoden 800, temples, lunch)</td><td>3,000 (JR on the pass)</td></tr>
+      <tr><td>Three day trips</td><td>57,000</td><td>52,600</td></tr>
+      <tr><td>DisneySea, ticket + food</td><td>~13,000</td><td>~13,000</td></tr>
+      <tr><td>Skytree, Shibuya Sky, Gyoen</td><td>~6,600</td><td>~6,600</td></tr>
+      <tr><td>Everything above</td><td>~76,600</td><td>~72,200</td></tr>
+      <tr><td>Difference</td><td>—</td><td>¥4,400 less each, ¥17,600 for four</td></tr>
+    </table>
+    <p class="fine">Ski day full kit = lift 4,800, ski set 6,500, helmet 1,200, goggles 800, wear set 5,500, lesson 8,500, lunch + locker 3,000. DisneySea without Premier Access.</p>
+
+    <h3>Bookings that differ</h3>
+    <table class="cmpt">
+      <tr><th>When</th><th>A · chosen</th><th>B · pass week</th></tr>
+      <tr><td>DisneySea sale</td><td>18 Nov 14:00 JST, for Mon 18</td><td>15 Nov 14:00 JST, for Fri 15</td></tr>
+      <tr><td>Before 30 Nov</td><td>Early-bird lift ×4, valid Fri 15</td><td>Valid Mon 18</td></tr>
+      <tr><td>Early Dec</td><td>Giant lesson [2A] 09:00, Fri 15</td><td>Same slot, Mon 18</td></tr>
+      <tr><td>~15 Dec</td><td>Shinkansen tickets on Eki-net for Fri 15; Kawaguchiko bus both ways for Wed 20</td><td>4× Tokyo Wide Pass ¥16,000 (Mon 18 – Wed 20); seats Ueno ⇄ GALA Mon, Shinjuku ⇄ Kawaguchiko 07:30 / 17:00 Wed</td></tr>
+      <tr><td>~15 Dec</td><td>GALA rental for Fri 15</td><td>For Mon 18</td></tr>
+      <tr><td>Day 1</td><td>Nothing</td><td>Pass pickup at Narita T1, with passport</td></tr>
+      <tr><td>Unchanged</td><td colspan="2">Insurance check now, Kamakura needs no booking, Shibuya Sky ~7 Jan, dinners</td></tr>
+    </table>
+
+    <h3>What B would gain, and give up</h3>
+    <ul>
+      <li><strong>Gain:</strong> ¥4,400 each; every outing still on a weekday; a reserved 07:30 train to Fuji instead of a 06:30 bus that sells out and a 05:20 alarm; a free Fuji weather swap with Tuesday's Kamakura; Kamakura's JR for free.</li>
+      <li><strong>Give up:</strong> three out-of-town days in a row (ski Mon, Kamakura Tue, Fuji Wed — Kamakura the soft middle); Shinjuku on a Saturday night; DisneySea on day two; one more booking system and a pass pickup on arrival.</li>
+    </ul>
+    <p class="why-a">Why A: no three-outing block, Shinjuku on a Tuesday rather than a Saturday night, no pass logistics — for ¥4,400 more each. Both are good weeks.</p>
+  </div>
+</details>
+
 <div class="box calm full-only">
   <h3>How the days are built</h3>
-  <p>Sunday to Tuesday is one JR Tokyo Wide Pass: Fuji by reserved train on the Sunday, the near-home Yanaka, Ueno and Akihabara day on the Monday, and GALA on the Tuesday, the morning before DisneySea. Sunday crowds at Kawaguchiko are the price of putting Fuji on the pass. Shinjuku keeps the Friday, Kamakura the Saturday because it needs no reservations, and DisneySea stays on a Wednesday because it is dramatically better midweek. Times are guidance — the sequence matters more than the clock.</p>
-  <p>Sunset is around 16:50, so anything outdoors or view-dependent happens before then. There is no formal rest day; the relief valves are built in instead — Monday stays close to home and starts late, GALA stops at 15:30, DisneySea's 09:00 opening is the fallback the morning after skiing, and Thursday's shrine stop is optional the day after the park. Use them.</p>
+  <p>Every heavy day is a weekday with a Tokyo day between: GALA on the Friday for fresh legs, DisneySea on the Monday, Fuji on the Wednesday — ski, city, city, park, city, mountain, city. Kamakura takes the Saturday because it needs no reservations and is the gentlest day trip, the right one for the morning after skiing; Yanaka, Ueno and Akihabara take the Sunday for Akiba's car-free afternoon. Times are guidance — the sequence matters more than the clock.</p>
+  <p>Sunset is around 16:50, so anything outdoors or view-dependent happens before then. There is no formal rest day, but no two heavy days touch. The relief valves: Saturday and Sunday stay near home with late starts, Tuesday ends at midnight by rule because of the 05:20 Fuji alarm, and Thursday's shrine stop is the thing to drop. Use them.</p>
 </div>
 
 <article class="day" id="d1">
   <div class="head"><div class="num serif">一<small>Thu 14</small></div>
-  <div><h2>Arrival · Asakusa · Skytree</h2><p class="date">Land together, stash the bags, old Tokyo on foot. Everyone slept on a plane — keep it gentle.</p></div></div>
+  <div><h2>Arrival · Asakusa · Skytree</h2><p class="date">Land together, stash the bags, old Tokyo on foot — and buy everything tomorrow's skiing needs. Keep it gentle otherwise.</p></div></div>
   <div class="tl">
     <div class="row"><div class="t">07:45</div><div><div class="what">Land at Narita</div><div class="note">Immigration via the Visit Japan Web QR, JAVES notice ready live on the phone (not a screenshot). Grab a Welcome Suica and ¥30,000–50,000 from the 7-Bank ATM before leaving the terminal. <a class="go" href="https://www.jreast.co.jp/en/multi/welcomesuica/welcomesuica.html" target="_blank" rel="noopener">About Welcome Suica</a></div></div></div>
-    <div class="row"><div class="t">08:30</div><div><div class="what">Collect the Tokyo Wide Passes</div><div class="note">After immigration, at the JR EAST Travel Service Center in Terminal 1 (or a reserved-seat machine, with passport), before heading to Keisei. The passes activate Sunday. <a class="go" href="https://www.jreast.co.jp/en/multi/pass/tokyowidepass.html" target="_blank" rel="noopener">About the pass</a></div></div></div>
     <div class="row"><div class="t">09:00</div><div><div class="what">Keisei Access Express to Oshiage</div><div class="note">About an hour, ~¥1,200, and Oshiage is three Tobu stops from the house — one easy transfer instead of dragging luggage across town. The Skyliner via Ueno adds a second transfer. <a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/directions/oshiage.php" target="_blank" rel="noopener">Route and fare</a></div></div></div>
     <div class="row"><div class="t">10:15</div><div><div class="what">Bags into lockers</div><div class="note">Check-in isn't until 16:00 with nobody on site, so large coin lockers at Skytree Town or Asakusa Station (¥700–1,000) and you're free.</div></div></div>
     <div class="row"><div class="t">11:00</div><div><div class="what">Senso-ji + Nakamise-dori</div><div class="note">Tokyo's oldest temple through the Kaminarimon gate. Ningyo-yaki and age-manju on the approach. A weekday morning keeps the crowds manageable.</div></div></div>
     <div class="row"><div class="t">12:30</div><div><div class="what">Lunch near Asakusa</div><div class="note">Ramen or a tonkatsu set. Nothing that needs a booking today.</div></div></div>
     <div class="row"><div class="t">14:00</div><div><div class="what">Kappabashi Kitchen Street</div><div class="note">Knives, ceramics, plastic food samples, and a clean street-level view of Skytree.</div></div></div>
-    <div class="row"><div class="t">15:00</div><div><div class="what">Shop for the mountain days</div><div class="note">Uniqlo Skytree Town for Heattech Extra Warm and a down jacket for Sunday's mountain. Waterproof over-pants and ski gloves can come from any Don Quijote by Monday night — Asakusa today, Shinjuku on Friday or Akihabara on Monday. Nobody rents ski wear.</div></div></div>
+    <div class="row"><div class="t">15:00</div><div><div class="what">Shop for the slopes — today, not later</div><div class="note">Uniqlo in Skytree Town: Heattech Extra Warm tops and tights, and the down jacket. Don Quijote Asakusa: waterproof gloves and a beanie, and waterproof over-pants only if not renting the wear set. Goggles and helmet come with the rental. Long warm socks, tall enough to clear the boot cuff. Tomorrow you ski in all of it.</div></div></div>
     <div class="row"><div class="t">16:00</div><div><div class="what">Collect bags, check in</div><div class="note">The door code arrives from the host beforehand. Drop everything, catch your breath. Sunset is 16:50.</div></div></div>
     <div class="row"><div class="t">17:30</div><div><div class="what">Tokyo Skytree</div><div class="note">Fifteen minutes from home. Timed slot booked in advance; a clear January evening means city lights plus the Fuji silhouette. ¥2,100–3,400. <a class="go" href="https://en.tokyo-skytree.jp/ticket/" target="_blank" rel="noopener">Buy tickets</a></div></div></div>
     <div class="row"><div class="t">19:30</div><div><div class="what">Dinner + first drink</div><div class="note">Kaiten Sushi Toriton in Skytree Town for conveyor-belt sushi, or the seafood izakaya by Kanegafuchi Station if legs are done.</div></div></div>
-    <div class="row"><div class="t">21:30</div><div><div class="what">Konbini run, early night</div><div class="note">FamilyMart and 7-Eleven are both walkable from the house. Water, breakfast onigiri, hot canned coffee for the morning.</div></div></div>
+    <div class="row"><div class="t">21:30</div><div><div class="what">Konbini run, early night</div><div class="note">FamilyMart and 7-Eleven are both walkable from the house. Water, breakfast onigiri, hot canned coffee — and lay out the ski kit. GALA tomorrow: out the door at 05:30.</div></div></div>
   </div>
 </article>
 
 <article class="day" id="d2">
   <div class="head"><div class="num serif">二<small>Fri 15</small></div>
-  <div><h2>Shinjuku · Isetan · Kabukicho</h2><p class="date">Free skyline views, Japan's greatest department store, the loudest night of the trip. Know the last train — leave Shinjuku around midnight.</p></div></div>
+  <div><h2>Day trip — GALA Yuzawa</h2><p class="date">First day on skis, on a weekday mountain, with a 09:00 private lesson — so the first Shinkansen of the day and a morning with no slack. The station is the resort; the slopes are at the top of the gondola.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">09:30</div><div><div class="what">Metropolitan Government Building</div><div class="note">Free 45F observation deck. Clear January mornings are the year's best odds of seeing Fuji from here.</div></div></div>
-    <div class="row"><div class="t">10:45</div><div><div class="what">Shinjuku Gyoen</div><div class="note">¥500. Bare and quiet in winter, which is its own thing; the greenhouse is warm and worth the detour. <a class="go" href="https://policies.env.go.jp/national-garden/shinjukugyoen/english/index.html" target="_blank" rel="noopener">Hours and tickets</a></div></div></div>
-    <div class="row"><div class="t">12:00</div><div><div class="what">Isetan Shinjuku</div><div class="note">Start in the depachika basement — the best food hall in Japan, graze it as lunch — then the fashion floors. The Men's building next door is its own trip. Tax-free counter handles paperwork over ¥5,000; the refund comes at the airport, so keep receipts.</div></div></div>
-    <div class="row"><div class="t">14:30</div><div><div class="what">Omoide Yokocho</div><div class="note">Lantern-lit alley of yakitori stalls. More photogenic than delicious, but do it once.</div></div></div>
-    <div class="row"><div class="t">15:30</div><div><div class="what">Don Quijote + Daiso</div><div class="note">Multi-floor discount chaos. Scout now, buy souvenirs later — they're cheaper elsewhere.</div></div></div>
-    <div class="row"><div class="t">16:30</div><div><div class="what">Hanazono Shrine</div><div class="note">Hidden shrine tucked between the shopping blocks. A quick stop.</div></div></div>
-    <div class="row"><div class="t">17:30</div><div><div class="what">Gyukatsu Kyoto Katsugyu</div><div class="note">Beef cutlet grilled on a hot stone at the table. The queue is real and worth it.</div></div></div>
-    <div class="row"><div class="t">19:00</div><div><div class="what">Godzilla Road + Kabukicho</div><div class="note">Neon at full strength, Godzilla's head on the Toho building. Ignore every tout — a bar that recruits on the street is a bar to avoid.</div></div></div>
-    <div class="row"><div class="t">20:30</div><div><div class="what">Golden Gai</div><div class="note">Two hundred bars seating eight each. Cover ¥300–500, drinks ¥500–800, lots of cash-only. English signage means tourists welcome; four people may need two adjacent bars.</div></div></div>
-    <div class="row"><div class="t">23:30</div><div><div class="what">Last train or commit</div><div class="note">Home is ~50 minutes with transfers — leave by about midnight, or it's karaoke until the 05:00 first train.</div></div></div>
+    <div class="row"><div class="t">05:30</div><div><div class="what">Out the door</div><div class="note">Tobu to Kita-Senju, JR to Ueno, about 30 minutes. Konbini breakfast; eat it on the platform.</div></div></div>
+    <div class="row"><div class="t">~06:15</div><div><div class="what">First Shinkansen, Ueno → GALA Yuzawa</div><div class="note">The first Tanigawa of the morning, ~75 min, into GALA ~07:30 — confirm the exact departure when booking. ~¥6,700 each way, reserved on Eki-net; Tokudane fares are 10–30% off if still open. Platform → rental → lockers without stepping outside. <a class="go" href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank" rel="noopener">Eki-net</a> · <a class="go" href="https://gala.co.jp/winter/english/access-en/" target="_blank" rel="noopener">Getting to GALA</a></div></div></div>
+    <div class="row"><div class="t">07:35</div><div><div class="what">Rental pickup + lockers</div><div class="note">Pre-booked and paid on GALA's site (the form is online-only, even for walk-ins): ski set, helmet (mandatory for the lesson), goggles (~¥500–1,000 — rent, don't buy), and the jacket + pants set unless you've brought your own waterproof layers (no jeans underneath). Collect at the counter so staff size the boots on the spot — the Pick Up Box is only for anyone sure of their sizes. Lock shoes and bags (¥500–800); phone with the lift QR, a card and cash in the inside pocket. <a class="go" href="https://gala.co.jp/winter/rental/" target="_blank" rel="noopener">GALA rental</a></div></div></div>
+    <div class="row"><div class="t">08:25</div><div><div class="what">Diligence gondola up</div><div class="note">Everything is at the top. The early-bird 1-day ticket covers the gondola and all lifts. Be riding up by 08:30 — the lesson starts and ends on schedule whatever happens on the way.</div></div></div>
+    <div class="row"><div class="t">08:50</div><div><div class="what">Meeting point</div><div class="note">Per the email Giant Ski School sends about a week before. Arrive dressed and ready: equipment on, helmet on, lift QR in the pocket, no bag.</div></div></div>
+    <div class="row"><div class="t">09:00</div><div><div class="what">2-hour private lesson [2A]</div><div class="note">¥34,000 for up to six (¥8,500 each for four), prepaid; SIA-certified instructor, English requested, Mandarin if none is free. Two hours gets beginners gliding, stopping and turning on the beginner slope — not riding chairlifts (Giant's own guide says that takes 4–6 hours). <a class="go" href="https://gala.co.jp/winter/examination-school/" target="_blank" rel="noopener">Ski school</a></div></div></div>
+    <div class="row"><div class="t">11:00</div><div><div class="what">Practise while it's fresh</div><div class="note">The beginner area, straight after the lesson.</div></div></div>
+    <div class="row"><div class="t">11:45</div><div><div class="what">Lunch</div><div class="note">Early beats the 12:30 crush. ~¥2,000.</div></div></div>
+    <div class="row"><div class="t">12:45</div><div><div class="what">Ski, snow play, gondola views</div><div class="note">Until 15:30 — the lifts run to 16:30 but so does the train, and legs are finite. Non-skiers: the sightseeing lift and snow play. <a class="go" href="https://gala.co.jp/winter/hours-pricing/" target="_blank" rel="noopener">Hours and pricing</a></div></div></div>
+    <div class="row"><div class="t">15:45</div><div><div class="what">Return gear</div><div class="note">Change in the locker room; wet over-pants and gloves into a foldable bag.</div></div></div>
+    <div class="row"><div class="t">16:30</div><div><div class="what">Shinkansen back</div><div class="note">Reserved. Ueno ~18:00 — dinner under the tracks at Ameyoko.</div></div></div>
+    <div class="row"><div class="t">20:00</div><div><div class="what">Home, early night</div><div class="note">Kamakura tomorrow: a 07:45 start and a lot of sitting on the Enoden. Legs will still have opinions.</div></div></div>
+    <div class="row"><div class="t">Costs</div><div><div class="what">What the day costs</div><div class="note">Per person: early-bird lift ¥4,800, ski set ~¥6,500, helmet ~¥1,200, goggles ~¥800, wear set ~¥5,500 (optional), lesson ¥8,500, lunch + locker ~¥3,000, Shinkansen ~¥13,400 return (~¥10,000–12,000 Tokudane). ≈ ¥44,000 all in with the full kit; ≈ ¥38,500 without the wear set. Helmet and goggles are estimates.</div></div></div>
+  </div>
+  <div class="box calm">
+    <h3>Booking the lesson</h3>
+    <ul>
+      <li>Giant Ski School's registration form, then a message on WhatsApp (+81 70 9027 2247) or LINE (@giantski) with a name and phone number. They confirm the date and slot and email a quote; full payment within 24 hours or the slot is released. The meeting point is emailed about 7 days before. <a class="go" href="https://gala.co.jp/winter/examination-school/" target="_blank" rel="noopener">Ski school</a></li>
+      <li>Ask for slot [2A], 09:00, Fri 15 Jan, ski, four adults, English requested. Online booking closes 2 days before the date.</li>
+      <li>Cancellation is free 31+ days out — book by 15 Dec to keep that — then 20/40/60/80%, and 100% inside 3 days or for a no-show. Late arrival isn't extended or refunded.</li>
+      <li>Their insurance covers injuries during the lesson only, at designated clinics, capped. Everyone still needs travel cover that includes skiing for the rest of the day.</li>
+      <li>First-timer reading: <a class="go" href="https://watabi.org/en/articles/japan-ski-beginner-guide" target="_blank" rel="noopener">Japan ski beginner guide</a> · <a class="go" href="https://www.wellwornheels.com/day-trip-to-gala-yuzawa-from-tokyo/" target="_blank" rel="noopener">A GALA day trip from Tokyo</a></li>
+    </ul>
   </div>
 </article>
 
 <article class="day" id="d3">
   <div class="head"><div class="num serif">三<small>Sat 16</small></div>
-  <div><h2>Day trip — Kamakura · Enoshima</h2><p class="date">The old capital: a giant Buddha, a seaside railway, and a winter-clear coastline an hour from Tokyo. No reservations needed, which is why it owns the Saturday.</p></div></div>
+  <div><h2>Day trip — Kamakura · Enoshima</h2><p class="date">The old capital: a giant Buddha, a seaside railway, and a winter-clear coastline an hour from Tokyo. No bookings, no early start, sore legs welcome — which is why it follows the ski day.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">07:45</div><div><div class="what">To Tokyo Station, then Kamakura</div><div class="note">About 40 minutes to Tokyo Station, then the JR Yokosuka Line direct to Kamakura, ~55 min, about ¥1,000 since JR East's 15 Mar 2026 fare rise (was ¥945). At Kamakura, get the Enoden 1-day pass, Noriorikun (¥800), from the ticket machines or as a digital ticket in the EMot app. It roughly breaks even on today's hops plus the ride out, so it's about convenience more than savings. Before leaving the house, check a Shichirigahama or Enoshima live camera — Fuji on screen in the morning means the coast will deliver that afternoon. <a class="go" href="https://www.enoden.co.jp/en/tourism/ticket/noriorikun/" target="_blank" rel="noopener">Noriorikun pass</a> · <a class="go" href="https://www.emot.jp/noriorikun.eng.chara.html" target="_blank" rel="noopener">EMot digital ticket</a></div></div></div>
+    <div class="row"><div class="t">07:45</div><div><div class="what">To Tokyo Station, then Kamakura</div><div class="note">About 40 minutes to Tokyo Station, then the JR Yokosuka Line direct to Kamakura, ~55 min, about ¥1,000 since JR East's 15 Mar 2026 fare rise (was ¥945). At Kamakura, get the Enoden 1-day pass, Noriorikun (¥800), from the ticket machines or as a digital ticket in the EMot app. It roughly breaks even on today's hops plus the ride out, so it's about convenience more than savings. Before leaving the house, check a Shichirigahama or Enoshima live camera — Fuji on screen in the morning means the coast will deliver that afternoon. Day-after-ski legs: take the Hasedera steps slowly. <a class="go" href="https://www.enoden.co.jp/en/tourism/ticket/noriorikun/" target="_blank" rel="noopener">Noriorikun pass</a> · <a class="go" href="https://www.emot.jp/noriorikun.eng.chara.html" target="_blank" rel="noopener">EMot digital ticket</a></div></div></div>
     <div class="row"><div class="t">09:30</div><div><div class="what">Tsurugaoka Hachimangū</div><div class="note">Kamakura's great shrine, straight up the approach from the station. Walk up the Dankazura, the raised central path, first, before the crowds. New Year decorations are still up in January; the New Year crowds are long gone.</div></div></div>
     <div class="row"><div class="t">11:00</div><div><div class="what">Komachi-dori grazing</div><div class="note">Street snacks and shops. Shirasu-don (whitebait over rice) is the local dish — for a sit-down bowl, be in a queue by about 11:15. Kamakura lunch queues are real even in winter. Shirasu season: Sagami Bay shirasu fishing is closed 1 Jan to ~10 Mar, so raw nama-shirasu is off — order kamaage (boiled) shirasu-don, the warmer winter bowl anyway.</div></div></div>
     <div class="row"><div class="t">12:30</div><div><div class="what">Enoden to Hase</div><div class="note">Enoden 3 stops from Kamakura to Hase, ~5 min. The Great Buddha (Kōtoku-in, ¥300) is ~7–10 min on foot from Hase Station, so do it first: bronze, 13 metres, sitting outdoors since 1252. Then Hasedera (¥400) on the way back — don't skip its upper viewing platform, which looks out over Sagami Bay.</div></div></div>
@@ -428,72 +516,38 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
 
 <article class="day" id="d4">
   <div class="head"><div class="num serif">四<small>Sun 17</small></div>
-  <div><h2>Day trip — Mt Fuji · Kawaguchiko (by train)</h2><p class="date">Pass day 1 of 3. The Fuji Excursion replaces the bus — no 05:20 start, no sold-out seats. Sunday crowds are the price of the pass. It is properly cold up there — every layer.</p></div></div>
+  <div><h2>Yanaka · Ueno · Akihabara</h2><p class="date">Old Tokyo in the morning, electric town at full volume — Sunday afternoons pedestrianise the main Akiba strip. All of it close to home.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">06:30</div><div><div class="what">Out the door</div><div class="note">To Shinjuku, ~50 min.</div></div></div>
-    <div class="row"><div class="t">07:30</div><div><div class="what">Fuji Excursion to Kawaguchiko</div><div class="note">Shinjuku → Kawaguchiko, ~1h55, reserved on the pass. Reserve a month ahead; Sunday seats sell out. Right-hand side after Otsuki. <a class="go" href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank" rel="noopener">Reserve seats</a></div></div></div>
-    <div class="row"><div class="t">09:30</div><div><div class="what">Arrive, check the mountain</div><div class="note">Live cams the night before say what to expect. The pass also covers Monday, so a cloudy Sunday can swap with Monday for free (see Packing).</div></div></div>
-    <div class="row"><div class="t">10:00</div><div><div class="what">Panoramic ropeway + lake</div><div class="note">Walk ~15 min from the station. Mt Tenjo ropeway, ¥1,200 return. The summit deck is the coldest place on the trip, so wear the heaviest layer. <a class="go" href="https://www.mtfujiropeway.jp/en/" target="_blank" rel="noopener">Ropeway hours and fares</a></div></div></div>
-    <div class="row"><div class="t">12:00</div><div><div class="what">Hōtō lunch</div><div class="note">Hōtō Fudō, station-front branch: thick flat noodles in pumpkin miso hotpot, exactly right on a freezing day. Cash.</div></div></div>
-    <div class="row"><div class="t">13:30</div><div><div class="what">Oishi Park</div><div class="note">North-shore viewpoint, the postcard angle across the water. Red Line sightseeing bus from Kawaguchiko Station, ~30 min, Suica. E-bike option, decided at 09:30: sunny, near-still and a dry road → rent e-bikes after the ropeway (~¥1,500–3,000), ride the north shore (~25 min), hōtō at a north-shore place, bikes back by 14:30. ~16 km round trip. Windy, grey or icy = bus, and it has to be unanimous.</div></div></div>
-    <div class="row"><div class="t">15:00</div><div><div class="what">Optional: Chureito Pagoda</div><div class="note">Fujikyu line 4 stops to Shimoyoshida (covered by the pass), ~10 min on foot and 398 steps. Check the return timetable on arrival. HARD CUT-OFF: on the train back from Shimoyoshida by 16:15.</div></div></div>
-    <div class="row"><div class="t">17:00</div><div><div class="what">Fuji Excursion back</div><div class="note">Reserved; Shinjuku ~19:00. Missed it: Fujikyu local to Otsuki + JR Chuo rapid, also covered, ~2h30.</div></div></div>
-    <div class="row"><div class="t">19:00</div><div><div class="what">Dinner in Shinjuku</div><div class="note">Then home. Tomorrow is close to home and starts late.</div></div></div>
-    <div class="row"><div class="t">Note</div><div><div class="what">Colder than Tokyo</div><div class="note">Kawaguchiko is at 800 m: −3 to 6°C and wind. Every layer, konbini kairo hand warmers, phone in an inside pocket — your train tickets live on it. If the e-bikes happen: 3°C at riding speed feels well below freezing, so proper gloves, beanie and a scarf over the mouth. Weekend ropeway and Red Line queues are the cost of the pass.</div></div></div>
+    <div class="row"><div class="t">09:00</div><div><div class="what">Nezu Shrine</div><div class="note">A small torii tunnel, the quiet cousin of Fushimi Inari. Empty early.</div></div></div>
+    <div class="row"><div class="t">10:00</div><div><div class="what">Yanaka Ginza</div><div class="note">Old-school shopping street, cats everywhere. Find the seven hidden wooden cats.</div></div></div>
+    <div class="row"><div class="t">11:30</div><div><div class="what">Ameyoko Market</div><div class="note">Under the tracks at Ueno. Street food, cheap clothes, cosmetics, loud energy.</div></div></div>
+    <div class="row"><div class="t">13:00</div><div><div class="what">Tokyo National Museum</div><div class="note">¥1,000. Samurai armour, swords, scrolls. Two hours; the Honkan building is the priority.</div></div></div>
+    <div class="row"><div class="t">15:00</div><div><div class="what">2k540 Aki-Oka Artisan</div><div class="note">Craft workshops in the railway arches between Ueno and Akihabara, on the walk down. Uncrowded, good gifts.</div></div></div>
+    <div class="row"><div class="t">16:00</div><div><div class="what">Akihabara — pedestrian paradise</div><div class="note">Chuo-dori closes to cars on Sunday afternoons (until 17:00 in winter) — lit signs over a car-free street at dusk is the shot. Super Potato for retro games after.</div></div></div>
+    <div class="row"><div class="t">18:30</div><div><div class="what">Arcades: HEY + Taito Station</div><div class="note">HEY for classic cabinets, Taito for UFO catchers, rhythm games and purikura.</div></div></div>
+    <div class="row"><div class="t">20:00</div><div><div class="what">Ichiran or CoCo Ichibanya</div><div class="note">Solo-booth ramen as a rite of passage, or build-your-own curry.</div></div></div>
+    <div class="row"><div class="t">21:30</div><div><div class="what">Home + coin laundry</div><div class="note">Close to home tonight. A load at the coin laundry (¥400–600, about an hour), and lay out the DisneySea kit. Gates are 08:00 tomorrow.</div></div></div>
   </div>
 </article>
 
 <article class="day" id="d5">
   <div class="head"><div class="num serif">五<small>Mon 18</small></div>
-  <div><h2>Yanaka · Ueno · Akihabara</h2><p class="date">Old Tokyo in the morning, electric town after — the near-home day between the two pass trains (pass day 2 covers the JR hops). Late start, early night: GALA is tomorrow.</p></div></div>
+  <div><h2>Tokyo DisneySea</h2><p class="date">A weekday in low season means the shortest queues this park ever has. The harbour park: no parade, no fireworks, and this month no night show either — the day is the rides. A low-season Monday after a gentle Sunday: fresh legs, short queues.</p></div></div>
   <div class="tl">
-    <div class="row"><div class="t">09:30</div><div><div class="what">Nezu Shrine</div><div class="note">A small torii tunnel, the quiet cousin of Fushimi Inari. Empty early.</div></div></div>
-    <div class="row"><div class="t">10:30</div><div><div class="what">Yanaka Ginza</div><div class="note">Old-school shopping street, cats everywhere. Find the seven hidden wooden cats.</div></div></div>
-    <div class="row"><div class="t">12:00</div><div><div class="what">Ameyoko Market</div><div class="note">Under the tracks at Ueno. Graze it as lunch: street food, cheap clothes, cosmetics, loud energy.</div></div></div>
-    <div class="row"><div class="t">13:30</div><div><div class="what">2k540 Aki-Oka Artisan</div><div class="note">Craft workshops in the railway arches between Ueno and Akihabara, on the walk down. Uncrowded, good gifts.</div></div></div>
-    <div class="row"><div class="t">14:30</div><div><div class="what">Akihabara Electric Town</div><div class="note">Don Quijote Akihabara is the last chance for waterproof over-pants and ski gloves before tomorrow.</div></div></div>
-    <div class="row"><div class="t">15:30</div><div><div class="what">Super Potato</div><div class="note">Retro games, floor after floor.</div></div></div>
-    <div class="row"><div class="t">17:00</div><div><div class="what">Arcades: HEY + Taito Station</div><div class="note">HEY for classic cabinets, Taito for UFO catchers, rhythm games and purikura.</div></div></div>
-    <div class="row"><div class="t">19:00</div><div><div class="what">Ichiran or CoCo Ichibanya</div><div class="note">Solo-booth ramen as a rite of passage, or build-your-own curry.</div></div></div>
-    <div class="row"><div class="t">20:30</div><div><div class="what">Home, laundry, ski kit</div><div class="note">Hibiya line to Kita-Senju, Tobu home. Coin laundry tonight (¥400–600, about an hour), and lay out the ski kit. GALA: out the door at 06:15.</div></div></div>
-  </div>
-</article>
-
-<article class="day" id="d6">
-  <div class="head"><div class="num serif">六<small>Tue 19</small></div>
-  <div><h2>Day trip — GALA Yuzawa</h2><p class="date">Pass day 3 of 3. First day on skis, weekday mountain; the Shinkansen station is the resort. DisneySea is tomorrow, so stop at 15:30 and get home early.</p></div></div>
-  <div class="tl">
-    <div class="row"><div class="t">06:15</div><div><div class="what">Out the door</div><div class="note">Tobu to Kita-Senju, JR to Ueno, ~30 min. Konbini breakfast.</div></div></div>
-    <div class="row"><div class="t">07:10</div><div><div class="what">Joetsu Shinkansen to GALA Yuzawa</div><div class="note">Ueno → GALA Yuzawa, ~85 min, reserved seats on the pass. Platform → rental counter → lockers without going outside. <a class="go" href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank" rel="noopener">Reserve seats</a></div></div></div>
-    <div class="row"><div class="t">08:45</div><div><div class="what">Rental + lockers</div><div class="note">Pre-booked ski or board set (~¥6,500). No wear rental: Heattech, hoodie, down jacket, waterproof over-pants, waterproof gloves, beanie. Locker ~¥500. Lift QR (early-bird ¥4,800) on the phone. <a class="go" href="https://gala.co.jp/winter/" target="_blank" rel="noopener">GALA Yuzawa</a></div></div></div>
-    <div class="row"><div class="t">09:30</div><div><div class="what">Beginner area</div><div class="note">Magic carpet and the gentle Central area. Non-skiers: gondola + snow play.</div></div></div>
-    <div class="row"><div class="t">11:15</div><div><div class="what">Early lunch</div><div class="note">Before the lesson (~¥2,000).</div></div></div>
-    <div class="row"><div class="t">12:00</div><div><div class="what">2-hour private lesson</div><div class="note">Slot [2B], 12:00–14:00. ¥34,000 for up to 6 (¥8,500 each for four), prepaid, English-speaking; meeting point per booking confirmation. (The 09:00 slot [2A] needs the ~06:10 first train.) <a class="go" href="https://gala.co.jp/winter/examination-school/" target="_blank" rel="noopener">Ski school</a></div></div></div>
-    <div class="row"><div class="t">14:00</div><div><div class="what">Ski</div><div class="note">Stop at 15:30 — tomorrow is twelve hours on your feet. <a class="go" href="https://gala.co.jp/winter/hours-pricing/" target="_blank" rel="noopener">Hours and pricing</a></div></div></div>
-    <div class="row"><div class="t">15:30</div><div><div class="what">Return gear</div><div class="note">Change in the locker room.</div></div></div>
-    <div class="row"><div class="t">16:30</div><div><div class="what">Shinkansen back</div><div class="note">Reserved. Ueno ~18:00; quick dinner at Ameyoko or straight home.</div></div></div>
-    <div class="row"><div class="t">20:00</div><div><div class="what">Home, early night</div><div class="note">DisneySea gates at 08:00. If legs are wrecked, the 09:00 opening with Premier Access bought on entry still works.</div></div></div>
-  </div>
-</article>
-
-<article class="day" id="d7">
-  <div class="head"><div class="num serif">七<small>Wed 20</small></div>
-  <div><h2>Tokyo DisneySea</h2><p class="date">A weekday in low season means the shortest queues this park ever has. The harbour park: no parade, no fireworks, and this month no night show either — the day is the rides. It's the morning after skiing: the 09:00 opening, with Frozen Journey Premier Access bought on entry, is the fallback if legs demand it.</p></div></div>
-  <div class="tl">
-    <div class="row"><div class="t">07:15</div><div><div class="what">To Maihama</div><div class="note">JR Keiyo Line, ~15 min from Tokyo Station. From Maihama, the Disney Resort Line monorail to Tokyo DisneySea Station (Suica works; it's a separate fare from JR), or walk it.</div></div></div>
+    <div class="row"><div class="t">07:15</div><div><div class="what">To Maihama</div><div class="note">JR Keiyo Line, ~15 min from Tokyo Station — the Keiyo platforms are a long ~10-minute walk inside the station. About 50 minutes door to gate. From Maihama, the Disney Resort Line monorail to Tokyo DisneySea Station (Suica works; it's a separate fare from JR), or walk it.</div></div></div>
     <div class="row"><div class="t">08:00</div><div><div class="what">At the gates</div><div class="note">Tokyo Disney Resort app open and logged in, everyone's tickets linked to one phone, a card saved. Arrive before opening — the first 90 minutes are worth three hours later in the day. <a class="go" href="https://www.tokyodisneyresort.jp/en/tdr/app.html" target="_blank" rel="noopener">Get the app</a></div></div></div>
-    <div class="row"><div class="t">On entry</div><div><div class="what">Buy Frozen Journey Premier Access</div><div class="note">BUY — ¥2,500 each. The one must-buy of the day; Fantasy Springs slots go fast once the park opens. Then check the app for Peter Pan and Rapunzel (the box below has how those work).</div></div></div>
+    <div class="row"><div class="t">On entry</div><div><div class="what">Frozen Journey Premier Access — optional</div><div class="note">¥2,500 each in the app, the moment you're inside, if the group wants it — the only reliable way into Fantasy Springs' headline ride. Not in the costs; decide at the gate. Then check the app for Peter Pan and Rapunzel (the box below has how those work).</div></div></div>
     <div class="row"><div class="t">Opening</div><div><div class="what">Soaring: Fantastic Flight</div><div class="note">Free standby. Go straight there — opening is its shortest line of the day. Skipping its ¥2,500 Premier Access is the point.</div></div></div>
     <div class="row"><div class="t">~09:45</div><div><div class="what">Toy Story Mania!</div><div class="note">Free standby, and usually the longest standby in the park, so go early. Already over 60 min? Push it to the last hour (its Premier Access is ¥2,000).</div></div></div>
     <div class="row"><div class="t">~10:45</div><div><div class="what">Tower of Terror</div><div class="note">Free standby. Same area as Toy Story Mania!, so no backtracking.</div></div></div>
     <div class="row"><div class="t">11:30</div><div><div class="what">Gyoza dog lunch</div><div class="note">The Gyoza Sausage Bun, ¥600, at Nautilus Galley in Mysterious Island. Eat before noon, ahead of the lunch queues.</div></div></div>
     <div class="row"><div class="t">12:30</div><div><div class="what">Indiana Jones + Raging Spirits</div><div class="note">Free standby; weekday waits are usually fine. Raging Spirits Premier Access is ¥1,500 if desperate.</div></div></div>
-    <div class="row"><div class="t">At your slot</div><div><div class="what">Fantasy Springs</div><div class="note">Anna and Elsa's Frozen Journey on the paid pass, then Peter Pan's Never Land Adventure and Rapunzel's Lantern Festival the free way (see the box). Backup: pay for Peter Pan only if the free route is gone and the wait is over 60 min. Single Rider is reported on Frozen Journey and Peter Pan — a free shortcut if you don't mind splitting up, so check the app.</div></div></div>
+    <div class="row"><div class="t">At your slot</div><div><div class="what">Fantasy Springs</div><div class="note">With the Frozen pass: go at your return time. Without it: Peter Pan's Never Land Adventure and Rapunzel's Lantern Festival the free way (see the box), Single Rider on Frozen Journey and Peter Pan — a free shortcut if you don't mind splitting up — and Frozen standby as a late-evening gamble.</div></div></div>
     <div class="row"><div class="t">Mid-afternoon</div><div><div class="what">Snacks, then merch</div><div class="note">Smoked turkey leg, a popcorn bucket to refill with the Japan-only flavours, then merch last so there's less to carry. The park's 25th-anniversary "Sparkling Jubilee" runs 15 Apr 2026 – 31 Mar 2027, so its goods will be on sale.</div></div></div>
     <div class="row"><div class="t">18:00</div><div><div class="what">Hot dinner</div><div class="note">Sit down somewhere warm before the cold evening.</div></div></div>
     <div class="row"><div class="t">19:00</div><div><div class="what">Last hour + the harbour at night</div><div class="note">Lines drop after dark, so redo anything missed. Then Mediterranean Harbor and the volcano lit up, the after-dark reward. The night show, Believe! Sea of Dreams, is suspended 6 Jan – 4 Feb, so there is no show tonight; check the app for what is on. Lingering by the water at 20:00 in 2°C is not like walking in it — heavy layer plus kairo hand warmers (¥100 at any konbini). At closing, leave straight away or wait 40 minutes for the crowd.</div></div></div>
     <div class="row"><div class="t">Note</div><div><div class="what">Closed this month</div><div class="note">Journey to the Center of the Earth is shut for refurbishment (8 Jan – 8 Mar) and the DisneySea Electric Railway is closed (8 Jan – 10 Feb). The park's own dates, marked subject to change.</div></div></div>
-    <div class="row"><div class="t">Costs</div><div><div class="what">What it costs</div><div class="note">1-Day Passport ¥7,900–10,900 by date, food ¥1,000–2,000 a meal, plus Premier Access: ~¥2,500 each for Frozen (~¥4,500 if the Peter Pan backup is needed). ≈ ¥15,500–19,500 all in. <a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Buy park tickets</a></div></div></div>
+    <div class="row"><div class="t">Costs</div><div><div class="what">What it costs</div><div class="note">Ticket + food ≈ ¥11,000–15,000: 1-Day Passport ¥7,900–10,900 by date (January weekdays sit low) plus food at ¥1,000–2,000 a meal. Frozen Premier Access ¥2,500 would be extra. <a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Buy park tickets</a></div></div></div>
   </div>
   <div class="box calm">
     <h3>How Premier Access works</h3>
@@ -508,9 +562,43 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   </div>
 </article>
 
+<article class="day" id="d6">
+  <div class="head"><div class="num serif">六<small>Tue 19</small></div>
+  <div><h2>Shinjuku · Isetan · Kabukicho</h2><p class="date">Free skyline views, Japan's greatest department store, the loudest night of the trip — on a Tuesday, between the park and the mountain. Fuji's bus leaves at 06:30 tomorrow, so this is the night to actually go home at midnight.</p></div></div>
+  <div class="tl">
+    <div class="row"><div class="t">09:30</div><div><div class="what">Metropolitan Government Building</div><div class="note">Free 45F observation deck. Clear January mornings are the year's best odds of seeing Fuji from here. On the third Tuesday the South deck is closed — the North deck is open.</div></div></div>
+    <div class="row"><div class="t">10:45</div><div><div class="what">Shinjuku Gyoen</div><div class="note">¥500. Bare and quiet in winter, which is its own thing; the greenhouse is warm and worth the detour. <a class="go" href="https://policies.env.go.jp/national-garden/shinjukugyoen/english/index.html" target="_blank" rel="noopener">Hours and tickets</a></div></div></div>
+    <div class="row"><div class="t">12:00</div><div><div class="what">Isetan Shinjuku</div><div class="note">Start in the depachika basement — the best food hall in Japan, graze it as lunch — then the fashion floors. The Men's building next door is its own trip. Tax-free counter handles paperwork over ¥5,000; the refund comes at the airport, so keep receipts.</div></div></div>
+    <div class="row"><div class="t">14:30</div><div><div class="what">Omoide Yokocho</div><div class="note">Lantern-lit alley of yakitori stalls. More photogenic than delicious, but do it once.</div></div></div>
+    <div class="row"><div class="t">15:30</div><div><div class="what">Don Quijote + Daiso</div><div class="note">Multi-floor discount chaos. Scout only — the real haul is Friday.</div></div></div>
+    <div class="row"><div class="t">16:30</div><div><div class="what">Hanazono Shrine</div><div class="note">Hidden shrine tucked between the shopping blocks. A quick stop.</div></div></div>
+    <div class="row"><div class="t">17:30</div><div><div class="what">Gyukatsu Kyoto Katsugyu</div><div class="note">Beef cutlet grilled on a hot stone at the table. The queue is real and worth it.</div></div></div>
+    <div class="row"><div class="t">19:00</div><div><div class="what">Godzilla Road + Kabukicho</div><div class="note">Neon at full strength, Godzilla's head on the Toho building. Ignore every tout — a bar that recruits on the street is a bar to avoid.</div></div></div>
+    <div class="row"><div class="t">20:30</div><div><div class="what">Golden Gai</div><div class="note">Two hundred bars seating eight each. Cover ¥300–500, drinks ¥500–800, lots of cash-only. English signage means tourists welcome; four people may need two adjacent bars.</div></div></div>
+    <div class="row"><div class="t">23:30</div><div><div class="what">Last train, no debate</div><div class="note">Home is ~50 minutes with transfers, and the Fuji bus means a 05:20 alarm. Leave Shinjuku by 00:00 tonight, no debate.</div></div></div>
+  </div>
+</article>
+
+<article class="day" id="d7">
+  <div class="head"><div class="num serif">七<small>Wed 20</small></div>
+  <div><h2>Day trip — Mt Fuji · Kawaguchiko</h2><p class="date">Tentative on weather, not on booking: Wednesday is booked, Thursday is the fallback, decided Tuesday evening from the live cams and forecast. January is the best Fuji visibility of the year, and a weekday keeps the buses and viewpoints calm. Chureito before Oishi — the pagoda wants morning light, the north shore wants afternoon light.</p></div></div>
+  <div class="tl">
+    <div class="row"><div class="t">05:20</div><div><div class="what">Out the door</div><div class="note">First trains to Shinjuku; Busta Shinjuku (above JR Shinjuku's New South Exit) is about an hour away. Konbini breakfast on the way.</div></div></div>
+    <div class="row"><div class="t">06:30</div><div><div class="what">Highway bus to Kawaguchiko</div><div class="note">~1h45–2h30 by traffic, ¥2,200 each way (¥2,000 online). Reserve both directions the moment booking opens, about a month out — both sell out. Keio and Fujikyu run the route jointly: Keio-run departures book on highwaybus.com, Fujikyu-run ones on Fujiyama Connect, so check which operator runs your bus. The Fuji Excursion train (¥4,130, reserved) is the fallback. <a class="go" href="https://www.highwaybus.com/gp/inbound/index?lang=EN" target="_blank" rel="noopener">Book Keio buses</a> · <a class="go" href="https://www.fujiyamaconnect.jp/bus/inbound/?wovn=en" target="_blank" rel="noopener">Book Fujikyu buses</a> · <a class="go" href="https://bus.fujikyu.co.jp/en/highway/fujisan/shinjuku-kawaguchiko/" target="_blank" rel="noopener">Timetable</a></div></div></div>
+    <div class="row"><div class="t">09:30</div><div><div class="what">Arrive, check the mountain</div><div class="note">Mornings are clearest. If Tuesday evening's cams and forecast were hopeless, the bus is already rebooked to Thursday; if it's cloudy on arrival, the lake, ropeway and hōtō are still a good day, and Fuji often clears late morning.</div></div></div>
+    <div class="row"><div class="t">10:00</div><div><div class="what">Panoramic ropeway</div><div class="note">Walk ~15 min from the station (faster than the bus queue). Mt Tenjo ropeway, ¥1,200 return. The summit deck is the coldest place on the trip — quick, 45 minutes. <a class="go" href="https://www.mtfujiropeway.jp/en/" target="_blank" rel="noopener">Ropeway hours and fares</a></div></div></div>
+    <div class="row"><div class="t">11:15</div><div><div class="what">Chureito Pagoda</div><div class="note">Fujikyu line 4 stops to Shimoyoshida (~15 min, ~¥300), ~10 min on foot, then 398 steps. Late morning the sun is behind you and Fuji is lit — this is the photograph of the day, so it goes first.</div></div></div>
+    <div class="row"><div class="t">13:00</div><div><div class="what">Hōtō lunch</div><div class="note">Back to Kawaguchiko. Hōtō Fudō's station-front branch: thick flat noodles in pumpkin miso hotpot, exactly right at 0°C. Cash.</div></div></div>
+    <div class="row"><div class="t">14:30</div><div><div class="what">Oishi Park</div><div class="note">Red Line sightseeing bus, ~30 min, Suica works. Fuji side-lit from the south-west by now — the north-shore postcard angle. E-bike option, decided at the ropeway: sunny, near-still and a dry road → rent e-bikes at the station after lunch (~¥1,500–3,000), ride the north shore (~25 min), bikes back by 16:00. ~16 km round trip. Windy, grey or icy = bus, and it has to be unanimous.</div></div></div>
+    <div class="row"><div class="t">15:45</div><div><div class="what">Leave Oishi</div><div class="note">Red Line back to the station — HARD CUT-OFF for the 16:30 bus. Oishi is the thing that gets cut if anything ran long, never the bus.</div></div></div>
+    <div class="row"><div class="t">16:30</div><div><div class="what">Reserved bus back</div><div class="note">Shinjuku ~18:30; eat there before the train home. Harajuku tomorrow starts gently.</div></div></div>
+    <div class="row"><div class="t">Note</div><div><div class="what">Cold, and the phone</div><div class="note">Kawaguchiko sits at 800 m: −3 to 6°C and wind. Every layer, konbini kairo hand warmers, phone in an inside pocket — the bus tickets live on it. If the e-bikes happen: real gloves, beanie, scarf over the mouth.</div></div></div>
+  </div>
+</article>
+
 <article class="day" id="d8">
   <div class="head"><div class="num serif">八<small>Thu 21</small></div>
-  <div><h2>Harajuku · Omotesando · Shibuya</h2><p class="date">Fashion, the crossing, and the classic west-side day. It comes straight after the park, so legs won't be fresh — Meiji Jingu is optional and the rest is unhurried walking.</p></div></div>
+  <div><h2>Harajuku · Omotesando · Shibuya</h2><p class="date">Fashion, the crossing, and the classic west-side day. The day after Fuji, so Meiji Jingu is optional and nothing starts before 09:00.</p></div></div>
   <div class="tl">
     <div class="row"><div class="t">09:00</div><div><div class="what">Meiji Jingu</div><div class="note">Forested walk through the torii gates, free and genuinely peaceful before 10:00. (Vintage hunters can vote to swap this morning for Shimokitazawa, four minutes from Shibuya on the Inokashira line.)</div></div></div>
     <div class="row"><div class="t">10:30</div><div><div class="what">Takeshita Street</div><div class="note">Youth-fashion chaos, crepes, oddities. Go early — it packs out by noon.</div></div></div>
@@ -664,7 +752,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
     <li>Carry ¥10,000–15,000 cash at all times. Golden Gai, small restaurants, temples and market stalls are cash-only.</li>
     <li>7-Bank ATMs (inside 7-Eleven) and Japan Post ATMs take foreign Visa and Mastercard reliably. The fee is flat, so fewer, larger withdrawals beat many small ones.</li>
     <li>Check your card's foreign transaction fee before relying on it — some charge 1–3% plus a markup.</li>
-    <li>Skip the nationwide JR Pass, but buy the JR Tokyo Wide Pass (¥16,000, 3 consecutive days, foreign passports only) for Sun 17 – Tue 19. It covers the Fuji Excursion to Kawaguchiko, including the Fujikyu line to Shimoyoshida, Monday's JR hops and the GALA Shinkansen. Kamakura on Saturday is outside the window, so those JR fares are paid. <a class="go" href="https://www.jreast.co.jp/en/multi/pass/tokyowidepass.html" target="_blank" rel="noopener">About the pass</a></li>
+    <li>No rail pass. The nationwide JR Pass never paid, and the JR Tokyo Wide Pass (¥16,000, three consecutive days) was priced and dropped: with the day trips spread across the week it can't cover both GALA and Fuji, so the GALA Shinkansen and the Fuji bus are paid individually. <a href="#planb">Plan A vs B</a> has the sums.</li>
   </ul>
   <h2 id="costs">Costs in yen</h2>
   <p class="sub">What the paid parts of the plan cost per person, so nobody is surprised at a ticket gate.</p>
@@ -676,28 +764,34 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   <table class="wide1">
     <tr><th>Sight</th><th>Price</th><th>Day</th></tr>
     <tr><td><a class="go" href="https://en.tokyo-skytree.jp/ticket/" target="_blank" rel="noopener">Tokyo Skytree</a></td><td>¥2,100–3,400</td><td>1</td></tr>
-    <tr><td><a class="go" href="https://policies.env.go.jp/national-garden/shinjukugyoen/english/index.html" target="_blank" rel="noopener">Shinjuku Gyoen</a></td><td>¥500</td><td>2</td></tr>
-    <tr><td>Golden Gai cover</td><td>¥300–500 a bar</td><td>2</td></tr>
+    <tr><td><a class="go" href="https://gala.co.jp/winter/information/lifttickethayawarisale20261015/" target="_blank" rel="noopener">GALA lift, early-bird</a></td><td>¥4,800 (¥7,500 online / ¥8,000 window after 30 Nov)</td><td>2</td></tr>
+    <tr><td><a class="go" href="https://gala.co.jp/winter/rental/" target="_blank" rel="noopener">GALA ski set</a></td><td>~¥6,500 (last season's price)</td><td>2</td></tr>
+    <tr><td>GALA helmet (mandatory for the lesson)</td><td>~¥1,200 (estimate)</td><td>2</td></tr>
+    <tr><td>GALA goggles</td><td>~¥800 (estimate)</td><td>2</td></tr>
+    <tr><td>GALA wear set, optional</td><td>~¥5,500 (estimate; or ~¥2,500 for bought over-pants)</td><td>2</td></tr>
+    <tr><td><a class="go" href="https://gala.co.jp/winter/examination-school/" target="_blank" rel="noopener">GALA 2-hour private lesson [2A]</a></td><td>¥8,500 each (¥34,000 for 1–6, split four ways); English not guaranteed</td><td>2</td></tr>
+    <tr><td>GALA lunch + locker</td><td>~¥3,000</td><td>2</td></tr>
+    <tr><td>GALA day, all in with the Shinkansen</td><td>≈¥44,000 with the full kit; ≈¥38,500 without the wear set</td><td>2</td></tr>
     <tr><td><a class="go" href="https://www.enoden.co.jp/en/tourism/ticket/noriorikun/" target="_blank" rel="noopener">Enoden day pass</a></td><td>¥800</td><td>3</td></tr>
     <tr><td>Kōtoku-in (Great Buddha)</td><td>¥300</td><td>3</td></tr>
     <tr><td>Hasedera</td><td>¥400</td><td>3</td></tr>
-    <tr><td><a class="go" href="https://www.mtfujiropeway.jp/en/" target="_blank" rel="noopener">Mt Fuji Panoramic Ropeway</a></td><td>¥1,200 return from 1 Nov 2026</td><td>4</td></tr>
-    <tr><td><a class="go" href="https://gala.co.jp/winter/information/lifttickethayawarisale20261015/" target="_blank" rel="noopener">GALA lift, early-bird</a></td><td>¥4,800 (¥7,500 online / ¥8,000 window after 30 Nov)</td><td>6</td></tr>
-    <tr><td>GALA ski or board set</td><td>~¥6,500 (last season's price)</td><td>6</td></tr>
-    <tr><td><a class="go" href="https://gala.co.jp/winter/examination-school/" target="_blank" rel="noopener">GALA 2-hour private lesson</a></td><td>¥8,500 each (¥34,000 for 1–6, split four ways)</td><td>6</td></tr>
-    <tr><td>GALA lunch + locker</td><td>~¥3,000</td><td>6</td></tr>
-    <tr><td>Sento (Mimatsuyu, near the house)</td><td>~¥550</td><td>Any night</td></tr>
-    <tr><td><a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Tokyo DisneySea ticket</a></td><td>¥7,900–10,900 by date</td><td>7</td></tr>
-    <tr><td><a class="go" href="https://www.tokyodisneyresort.jp/en/tds/guide/disneypremieraccess.html" target="_blank" rel="noopener">DisneySea Premier Access, Frozen Journey</a></td><td>¥2,500 (~¥4,500 with the Peter Pan backup)</td><td>7</td></tr>
-    <tr><td>DisneySea, all in with food and Premier Access</td><td>≈¥15,500–19,500</td><td>7</td></tr>
+    <tr><td>Tokyo National Museum</td><td>¥1,000</td><td>4</td></tr>
+    <tr><td><a class="go" href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" rel="noopener">Tokyo DisneySea ticket</a></td><td>¥7,900–10,900 by date</td><td>5</td></tr>
+    <tr><td>DisneySea, ticket + food</td><td>≈¥11,000–15,000</td><td>5</td></tr>
+    <tr><td><a class="go" href="https://www.tokyodisneyresort.jp/en/tds/guide/disneypremieraccess.html" target="_blank" rel="noopener">Frozen Journey Premier Access</a></td><td>¥2,500, optional — not counted above</td><td>5</td></tr>
+    <tr><td><a class="go" href="https://policies.env.go.jp/national-garden/shinjukugyoen/english/index.html" target="_blank" rel="noopener">Shinjuku Gyoen</a></td><td>¥500</td><td>6</td></tr>
+    <tr><td>Golden Gai cover</td><td>¥300–500 a bar</td><td>6</td></tr>
+    <tr><td><a class="go" href="https://www.mtfujiropeway.jp/en/" target="_blank" rel="noopener">Mt Fuji Panoramic Ropeway</a></td><td>¥1,200 return from 1 Nov 2026</td><td>7</td></tr>
     <tr><td><a class="go" href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Shibuya Sky</a></td><td>¥3,400 for the 17:15 slot (¥2,700 before 15:00)</td><td>8</td></tr>
+    <tr><td>Sento (Mimatsuyu, near the house)</td><td>~¥550</td><td>Any night</td></tr>
   </table>
   <p>Free: the Metropolitan Government Building deck, Meiji Jingu, and the Shibuya Scramble Square 12F viewpoint.</p>
   <h3>Getting there</h3>
   <table class="wide1">
     <tr><td>Narita → Oshiage</td><td>~¥1,200, Keisei Access Express, ~60 min. Arrival day. <a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/directions/oshiage.php" target="_blank" rel="noopener">Route and fare</a></td></tr>
     <tr><td>Tokyo → Kamakura</td><td>About ¥1,000 each way since JR East's 15 Mar 2026 fare rise (was ¥945), JR Yokosuka Line, ~55 min; the way home from Fujisawa is about the same. With the Enoden pass the Kamakura day comes to about ¥2,800 in trains.</td></tr>
-    <tr><td>JR Tokyo Wide Pass</td><td>¥16,000, three consecutive days, Sun 17 – Tue 19. Covers the Fuji Excursion to Kawaguchiko and back, Monday's JR hops and the GALA Shinkansen both ways. Seat reservations are free with it. <a class="go" href="https://www.jreast.co.jp/en/multi/pass/tokyowidepass.html" target="_blank" rel="noopener">About the pass</a></td></tr>
+    <tr><td>Ueno ⇄ GALA Yuzawa</td><td>Joetsu Shinkansen, ~75 min, ~¥6,700 each way — ~¥13,400 return, ~¥10,000–12,000 with Tokudane. Reserved on Eki-net. <a class="go" href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank" rel="noopener">Eki-net</a></td></tr>
+    <tr><td>Shinjuku ⇄ Kawaguchiko</td><td>Highway bus, ¥2,200 each way (¥2,000 paid online), ~1h45–2h30 by traffic — ¥4,400 return, ¥4,000 online. Plus the Fujikyu hop to Shimoyoshida for Chureito, ~¥600 return. The fallback Fuji Excursion train is ¥4,130 one way. <a class="go" href="https://bus.fujikyu.co.jp/en/highway/fujisan/shinjuku-kawaguchiko/" target="_blank" rel="noopener">Timetable and fares</a></td></tr>
     <tr><td>Ueno → Narita</td><td>Skyliner, first train 05:58, at Narita ~06:44. The fare isn't in this plan — check it on Keisei's site before the day. <a class="go" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/e-ticket/en/" target="_blank" rel="noopener">Buy Skyliner tickets</a></td></tr>
     <tr><td>Everyday trains</td><td>Load ¥5,000 on the Suica at the airport and top up as it runs down.</td></tr>
   </table>
@@ -718,8 +812,9 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
     <tr><td>JAVES access</td><td>Whatever gets you to the original approval email fast — it must display live. <a class="go" href="https://www.evisa.mofa.go.jp/personal/logintoko" target="_blank" rel="noopener">JAVES log-in</a></td></tr>
     <tr><td>Tabelog</td><td>The review app locals use. Above 3.5 is genuinely good — the scale is harsh.</td></tr>
     <tr><td>GO</td><td>Taxis.</td></tr>
-    <tr><td>Tokyo Disney Resort</td><td>Wait times, Standby Passes and Premier Access. Essential on Day 7. <a class="go" href="https://www.tokyodisneyresort.jp/en/tdr/app.html" target="_blank" rel="noopener">Get the app</a></td></tr>
-    <tr><td>JR-EAST Train Reservation</td><td>Buys the Tokyo Wide Pass and reserves the Fuji Excursion and GALA seats. <a class="go" href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank" rel="noopener">Open the site</a></td></tr>
+    <tr><td>Tokyo Disney Resort</td><td>Wait times, Standby Passes and Premier Access. Essential on Day 5. <a class="go" href="https://www.tokyodisneyresort.jp/en/tdr/app.html" target="_blank" rel="noopener">Get the app</a></td></tr>
+    <tr><td>Eki-net</td><td>JR East's booking site (JR-EAST Train Reservation): the reserved GALA Shinkansen tickets. <a class="go" href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank" rel="noopener">Open the site</a></td></tr>
+    <tr><td>highwaybus.com / Fujiyama Connect</td><td>The Kawaguchiko bus tickets, whichever operator runs your bus. <a class="go" href="https://www.highwaybus.com/gp/inbound/index?lang=EN" target="_blank" rel="noopener">Keio</a> · <a class="go" href="https://www.fujiyamaconnect.jp/bus/inbound/?wovn=en" target="_blank" rel="noopener">Fujikyu</a></td></tr>
   </table>
   <h3>Etiquette that actually matters</h3>
   <ul>
@@ -739,7 +834,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
     <tr><td>Base</td><td>2–3 thermal base layers. Buy Uniqlo Heattech Extra Warm in Tokyo rather than before the trip — cheaper there.</td></tr>
     <tr><td>Mid</td><td>3–4 long-sleeve shirts, sweaters or fleeces — the layer you add and remove all day.</td></tr>
     <tr><td>Outer</td><td>One insulated or down jacket. Wind-resistant matters more than heavy; the Kawaguchiko ropeway deck is the windiest place on this trip.</td></tr>
-    <tr><td>Legs</td><td>2 pairs of jeans or trousers, thermal leggings underneath for the Fuji day, GALA and the DisneySea evening. Waterproof over-pants for GALA — any Don Quijote, ~¥2,000–3,000, by Monday night.</td></tr>
+    <tr><td>Legs</td><td>2 pairs of jeans or trousers, thermal leggings underneath for the Fuji day, GALA and the DisneySea evening. Waterproof over-pants for GALA only if not renting the wear set — Don Quijote Asakusa on day one, ~¥2,000–3,000. No jeans under ski wear.</td></tr>
     <tr><td>Extremities</td><td>Beanie, two pairs of gloves (one waterproof, for the snow), scarf, 5+ pairs of warm socks. Cheap, and they do more than a heavier coat.</td></tr>
     <tr><td>Shoes</td><td>Waterproof and comfortable, easy to slip off: 15,000–20,000 steps a day, and they come off at every temple and at the house.</td></tr>
     <tr><td>One good outfit</td><td>For the farewell dinner and any club night — clubs turn away sportswear.</td></tr>
@@ -765,11 +860,12 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
 
   <h2>If things go wrong</h2>
   <table class="wide1">
-    <tr><td>Fuji is hiding</td><td>Check the Kawaguchiko live cams the night before. Solid cloud on Sunday: the pass also covers Monday, so swap Fuji with the Yanaka / Akihabara day for free — move the Fuji Excursion seats to Monday on JR-EAST Train Reservation (subject to availability). Akihabara on the Sunday even gets its car-free afternoon back. January clarity means this mostly won't happen.</td></tr>
-    <tr><td>Morning after GALA is DisneySea</td><td>Open at 09:00 instead of 08:00, buy Frozen Journey Premier Access on entry as planned, and skip Soaring's standby if it's over 45 minutes. And nobody buys a lift ticket until their travel insurance is confirmed to cover skiing.</td></tr>
-    <tr><td>Rain</td><td>Unlikely. Monday is the most indoor-friendly day, and DisneySea runs in rain. Shuffle a soaked outdoor day toward museums, arcades and department stores rather than cancelling it.</td></tr>
+    <tr><td>Fuji is hiding</td><td>Wednesday 20 is tentative by design. Decide on Tuesday evening from the Kawaguchiko live cams and forecast: if it's hopeless, rebook the bus to Thursday (seats permitting) and swap with Harajuku / Shibuya — Shibuya Sky rebooks and dinner is one call. No Thursday seats: go Wednesday anyway, Chureito first. January clarity means this mostly won't happen.</td></tr>
+    <tr><td>Missed the first train to GALA</td><td>The 09:00 lesson is lost — Giant doesn't extend or refund for late arrival. The 12:00 slot [2B] only if an instructor happens to be free. The 05:30 alarm is not negotiable.</td></tr>
+    <tr><td>Someone is wrecked after GALA</td><td>The morning after is Kamakura, by design: no bookings, a 07:45 start and lots of sitting on the Enoden. Start late, skip Enoshima, keep the Buddha and the cape. And nobody buys a lift ticket until their travel insurance is confirmed to cover skiing.</td></tr>
+    <tr><td>Rain</td><td>Unlikely. Sunday (museum, Ameyoko, arcades) and Tuesday (Isetan) absorb a wet day, and DisneySea runs in rain. Shuffle a soaked outdoor day toward museums, arcades and department stores rather than cancelling it.</td></tr>
     <tr><td>Snow in central Tokyo</td><td>Possible, uncommon. Trains slow but rarely stop. It's a photo opportunity at Senso-ji more than a problem — waterproof shoes handle it.</td></tr>
-    <tr><td>DisneySea sells out for the 20th</td><td>Move it to Thursday 21 and Harajuku / Shibuya to Wednesday 20 — Shibuya Sky is bookable either day. Tuesday is locked by the pass. Never the weekend.</td></tr>
+    <tr><td>DisneySea sells out for the 18th</td><td>Move it to Tuesday 19 and Shinjuku to Monday 18 — nothing on either day is booked except dinner. Never the weekend.</td></tr>
     <tr><td>Someone gets sick</td><td>Drugstores cover the basics; bigger hospitals have English-speaking staff. Japanese healthcare is excellent and expensive — this is what travel insurance is for.</td></tr>
     <tr><td>Money runs short</td><td>Cut the shopping, never the experiences. Uniqlo exists at home; the Fuji day doesn't. Food can drop to ¥3,000 a day without suffering.</td></tr>
     <tr><td>Group money friction</td><td>Split fixed costs (the stay, group dinners), keep everything discretionary individual. A shared pot for nine days never survives four people.</td></tr>
@@ -822,6 +918,7 @@ body.compact .full-only, body.compact nav.days, body.compact article.day{display
   }
   function fromHash(scroll){
     var h=(location.hash||"").slice(1);
+    if(h==="planb"){ var cmp=document.getElementById("planb"); if(cmp) cmp.open=true; }
     try{ h=decodeURIComponent(h); }catch(e){}
     if(ALIAS.hasOwnProperty(h)) h=ALIAS[h];
     if(TABS.indexOf(h)>=0){ show(h, scroll); return true; }
